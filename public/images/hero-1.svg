@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600" width="1920" height="600">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A2332"/>
+      <stop offset="100%" style="stop-color:#2D3748"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3ECF8E;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#4AADAD;stop-opacity:0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="600" fill="url(#bg1)"/>
+  <!-- Abstract franchise/business shapes -->
+  <rect x="100" y="80" width="200" height="280" rx="12" fill="none" stroke="#3ECF8E" stroke-opacity="0.12" stroke-width="2"/>
+  <rect x="140" y="120" width="200" height="280" rx="12" fill="none" stroke="#4AADAD" stroke-opacity="0.08" stroke-width="2"/>
+  <rect x="1500" y="60" width="180" height="240" rx="12" fill="none" stroke="#3ECF8E" stroke-opacity="0.1" stroke-width="2"/>
+  <rect x="1540" y="100" width="180" height="240" rx="12" fill="none" stroke="#4AADAD" stroke-opacity="0.07" stroke-width="2"/>
+  <!-- Building shapes -->
+  <rect x="800" y="200" width="60" height="300" fill="#3ECF8E" fill-opacity="0.06" rx="4"/>
+  <rect x="880" y="150" width="60" height="350" fill="#4AADAD" fill-opacity="0.06" rx="4"/>
+  <rect x="960" y="250" width="60" height="250" fill="#3ECF8E" fill-opacity="0.04" rx="4"/>
+  <rect x="1040" y="180" width="60" height="320" fill="#4AADAD" fill-opacity="0.05" rx="4"/>
+  <!-- Connection lines -->
+  <line x1="400" y1="300" x2="700" y2="300" stroke="#3ECF8E" stroke-opacity="0.08" stroke-width="1.5" stroke-dasharray="8,6"/>
+  <line x1="1200" y1="300" x2="1450" y2="300" stroke="#4AADAD" stroke-opacity="0.08" stroke-width="1.5" stroke-dasharray="8,6"/>
+  <!-- Circles representing network nodes -->
+  <circle cx="400" cy="300" r="8" fill="#3ECF8E" fill-opacity="0.15"/>
+  <circle cx="550" cy="250" r="6" fill="#4AADAD" fill-opacity="0.12"/>
+  <circle cx="700" cy="300" r="8" fill="#3ECF8E" fill-opacity="0.15"/>
+  <circle cx="1200" cy="300" r="8" fill="#4AADAD" fill-opacity="0.15"/>
+  <circle cx="1350" cy="350" r="6" fill="#3ECF8E" fill-opacity="0.12"/>
+  <circle cx="1450" cy="300" r="8" fill="#4AADAD" fill-opacity="0.15"/>
+  <!-- Subtle diagonal lines -->
+  <line x1="0" y1="600" x2="600" y2="0" stroke="#3ECF8E" stroke-opacity="0.04" stroke-width="1"/>
+  <line x1="200" y1="600" x2="800" y2="0" stroke="#4AADAD" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="1200" y1="600" x2="1920" y2="100" stroke="#3ECF8E" stroke-opacity="0.04" stroke-width="1"/>
+  <!-- Bottom gradient overlay -->
+  <rect x="0" y="500" width="1920" height="100" fill="url(#accent1)"/>
+</svg>

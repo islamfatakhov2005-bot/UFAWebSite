@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="nbg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A2332"/>
+      <stop offset="100%" style="stop-color:#2D3748"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#nbg1)"/>
+  <!-- Newspaper/article icon -->
+  <rect x="300" y="130" width="200" height="190" rx="12" fill="none" stroke="#3ECF8E" stroke-opacity="0.2" stroke-width="2"/>
+  <line x1="330" y1="170" x2="470" y2="170" stroke="#3ECF8E" stroke-opacity="0.25" stroke-width="3"/>
+  <line x1="330" y1="195" x2="470" y2="195" stroke="#4AADAD" stroke-opacity="0.15" stroke-width="2"/>
+  <line x1="330" y1="215" x2="440" y2="215" stroke="#4AADAD" stroke-opacity="0.12" stroke-width="2"/>
+  <line x1="330" y1="235" x2="460" y2="235" stroke="#4AADAD" stroke-opacity="0.12" stroke-width="2"/>
+  <line x1="330" y1="255" x2="420" y2="255" stroke="#4AADAD" stroke-opacity="0.1" stroke-width="2"/>
+  <rect x="330" y="275" width="60" height="25" rx="4" fill="#3ECF8E" fill-opacity="0.15"/>
+  <!-- Decorative elements -->
+  <circle cx="150" cy="100" r="40" fill="none" stroke="#3ECF8E" stroke-opacity="0.08" stroke-width="1"/>
+  <circle cx="680" cy="370" r="50" fill="none" stroke="#4AADAD" stroke-opacity="0.08" stroke-width="1"/>
+</svg>

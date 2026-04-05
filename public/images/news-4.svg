@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="nbg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D3748"/>
+      <stop offset="100%" style="stop-color:#4AADAD"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#nbg4)"/>
+  <!-- Calendar/event icon -->
+  <rect x="300" y="120" width="200" height="200" rx="16" fill="none" stroke="#3ECF8E" stroke-opacity="0.2" stroke-width="2"/>
+  <rect x="300" y="120" width="200" height="50" rx="16" fill="#3ECF8E" fill-opacity="0.1"/>
+  <rect x="300" y="154" width="200" height="2" fill="#3ECF8E" fill-opacity="0.15"/>
+  <!-- Calendar dots -->
+  <circle cx="340" cy="200" r="8" fill="#3ECF8E" fill-opacity="0.15"/>
+  <circle cx="380" cy="200" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="420" cy="200" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="460" cy="200" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="340" cy="240" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="380" cy="240" r="8" fill="#4AADAD" fill-opacity="0.15"/>
+  <circle cx="420" cy="240" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="460" cy="240" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="340" cy="280" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="380" cy="280" r="8" fill="white" fill-opacity="0.06"/>
+  <circle cx="420" cy="280" r="8" fill="#3ECF8E" fill-opacity="0.12"/>
+  <circle cx="460" cy="280" r="8" fill="white" fill-opacity="0.06"/>
+  <!-- Decorative -->
+  <circle cx="120" cy="380" r="60" fill="none" stroke="#3ECF8E" stroke-opacity="0.06" stroke-width="1"/>
+  <circle cx="700" cy="80" r="45" fill="none" stroke="#4AADAD" stroke-opacity="0.08" stroke-width="1"/>
+</svg>

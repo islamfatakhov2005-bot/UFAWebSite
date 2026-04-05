@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="nbg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4AADAD"/>
+      <stop offset="100%" style="stop-color:#1A2332"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#nbg3)"/>
+  <!-- People/community icon -->
+  <circle cx="360" cy="180" r="35" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="2"/>
+  <circle cx="440" cy="180" r="35" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="2"/>
+  <circle cx="400" cy="160" r="35" fill="none" stroke="#3ECF8E" stroke-opacity="0.2" stroke-width="2"/>
+  <!-- Body shapes -->
+  <path d="M 330 260 Q 330 220 370 210" fill="none" stroke="white" stroke-opacity="0.1" stroke-width="2"/>
+  <path d="M 470 260 Q 470 220 430 210" fill="none" stroke="white" stroke-opacity="0.1" stroke-width="2"/>
+  <path d="M 350 250 Q 350 210 400 200" fill="none" stroke="#3ECF8E" stroke-opacity="0.15" stroke-width="2"/>
+  <path d="M 450 250 Q 450 210 400 200" fill="none" stroke="#3ECF8E" stroke-opacity="0.15" stroke-width="2"/>
+  <!-- Connection dots -->
+  <circle cx="250" cy="300" r="4" fill="#3ECF8E" fill-opacity="0.15"/>
+  <circle cx="550" cy="300" r="4" fill="#3ECF8E" fill-opacity="0.15"/>
+  <line x1="260" y1="300" x2="340" y2="260" stroke="#3ECF8E" stroke-opacity="0.08" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="540" y1="300" x2="460" y2="260" stroke="#3ECF8E" stroke-opacity="0.08" stroke-width="1" stroke-dasharray="4,4"/>
+</svg>

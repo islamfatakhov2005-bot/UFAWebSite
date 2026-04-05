@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh -o StrictHostKeyChecking=no root@85.198.69.235 \"mkdir -p /var/www/franchise-association.uz && cp /tmp/index.html /var/www/franchise-association.uz/index.html\")",
+      "WebSearch",
+      "WebFetch(domain:lawsofux.com)",
+      "WebFetch(domain:genesysgrowth.com)",
+      "WebFetch(domain:trustmary.com)"
+    ]
+  }
+}
