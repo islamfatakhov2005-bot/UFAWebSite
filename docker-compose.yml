@@ -33,9 +33,17 @@ services:
       CRM_API_URL: "${CRM_API_URL:-}"
       CRM_API_KEY: "${CRM_API_KEY:-}"
       NEXT_PUBLIC_SITE_NAME: "UFA - Uzbekistan Franchising Association"
+    networks:
+      - default
+      - nginx_network
     depends_on:
       postgres:
         condition: service_healthy
 
 volumes:
   postgres_data:
+
+networks:
+  nginx_network:
+    external: true
+    name: docker_internal
