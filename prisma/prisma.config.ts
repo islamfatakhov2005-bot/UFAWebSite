@@ -4,6 +4,9 @@ import { defineConfig } from "prisma/config";
 
 export default defineConfig({
   schema: path.join(__dirname, "schema.prisma"),
+  async url() {
+    return process.env.DATABASE_URL ?? "postgresql://ufa:ufa_password@localhost:5432/ufa_website";
+  },
   migrate: {
     async url() {
       return process.env.DATABASE_URL ?? "postgresql://ufa:ufa_password@localhost:5432/ufa_website";
