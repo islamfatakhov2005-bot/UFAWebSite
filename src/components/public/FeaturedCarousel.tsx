@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface FeaturedFranchise {
-  id: string;
+  id: number | string;
   name: string;
   slug: string;
   logo?: string | null;

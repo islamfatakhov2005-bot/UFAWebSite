@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -31,13 +31,6 @@ interface StatItem {
   isActive: boolean;
 }
 
-const initialStats: StatItem[] = [
-  { id: 1, value: "150+", label: "Членов ассоциации", sortOrder: 1, isActive: true },
-  { id: 2, value: "50+", label: "Франшиз", sortOrder: 2, isActive: true },
-  { id: 3, value: "12", label: "Лет опыта", sortOrder: 3, isActive: true },
-  { id: 4, value: "30+", label: "Мероприятий в год", sortOrder: 4, isActive: true },
-];
-
 const emptyForm = {
   value: "",
   label: "",
@@ -46,8 +39,15 @@ const emptyForm = {
 };
 
 export default function AdminStatisticsPage() {
-  const [stats, setStats] = useState<StatItem[]>(initialStats);
+  const [stats, setStats] = useState<StatItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/statistics")
+      .then((res) => res.json())
+      .then((data) => setStats(data))
+      .catch(() => {});
+  }, []);
   const [editing, setEditing] = useState<StatItem | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
@@ -82,43 +82,23 @@ export default function AdminStatisticsPage() {
 
     try {
       if (editing) {
-        try {
-          const res = await fetch(`/api/admin/statistics/${editing.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const updated = await res.json();
-            setStats((prev) => prev.map((s) => (s.id === editing.id ? updated : s)));
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          setStats((prev) =>
-            prev.map((s) => (s.id === editing.id ? { ...s, ...form } : s))
-          );
-        }
+        const res = await fetch(`/api/admin/statistics/${editing.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const updated = await res.json();
+        setStats((prev) => prev.map((s) => (s.id === editing.id ? updated : s)));
       } else {
-        try {
-          const res = await fetch("/api/admin/statistics", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const created = await res.json();
-            setStats((prev) => [...prev, created]);
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          const newItem: StatItem = {
-            ...form,
-            id: Math.max(0, ...stats.map((s) => s.id)) + 1,
-          };
-          setStats((prev) => [...prev, newItem]);
-        }
+        const res = await fetch("/api/admin/statistics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const created = await res.json();
+        setStats((prev) => [...prev, created]);
       }
       setDialogOpen(false);
     } catch {
@@ -131,11 +111,12 @@ export default function AdminStatisticsPage() {
   async function handleDelete(id: number) {
     if (!confirm("Удалить этот показатель?")) return;
     try {
-      await fetch(`/api/admin/statistics/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/statistics/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("API error");
+      setStats((prev) => prev.filter((s) => s.id !== id));
     } catch {
-      // Continue
+      setError("Ошибка при удалении");
     }
-    setStats((prev) => prev.filter((s) => s.id !== id));
   }
 
   function moveItem(id: number, direction: "up" | "down") {

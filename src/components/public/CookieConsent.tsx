@@ -27,8 +27,8 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[90] p-4 lg:p-6">
-      <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl border border-gray-100 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+    <div className="fixed bottom-0 left-0 right-0 z-[90] p-4 lg:p-6 mb-[env(safe-area-inset-bottom)]">
+      <div className="max-w-3xl mx-auto mb-24 lg:mb-0 bg-white rounded-xl shadow-2xl border border-gray-100 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <div className="flex-1">
           <p className="text-sm text-gray-700 leading-relaxed">
             Мы используем файлы cookie для улучшения работы сайта и аналитики.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,36 +43,6 @@ function slugify(text: string): string {
     .substring(0, 200);
 }
 
-const initialPages: PageItem[] = [
-  {
-    id: 1,
-    title: "О нас",
-    slug: "about",
-    content: "Узбекистанская Ассоциация Франчайзинга (UFA) — ведущая организация...",
-    metaDescription: "О компании UFA — Узбекистанская Ассоциация Франчайзинга",
-    isPublished: true,
-    createdAt: "2026-01-15T10:00:00Z",
-  },
-  {
-    id: 2,
-    title: "Контакты",
-    slug: "contacts",
-    content: "Свяжитесь с нами: info@ufa.uz, +998 71 123 45 67...",
-    metaDescription: "Контакты UFA — свяжитесь с нами",
-    isPublished: true,
-    createdAt: "2026-01-15T10:00:00Z",
-  },
-  {
-    id: 3,
-    title: "Членство",
-    slug: "membership",
-    content: "Станьте членом UFA и получите доступ к эксклюзивным преимуществам...",
-    metaDescription: "Членство в UFA — преимущества и условия",
-    isPublished: false,
-    createdAt: "2026-03-20T10:00:00Z",
-  },
-];
-
 const emptyForm = {
   title: "",
   slug: "",
@@ -82,8 +52,15 @@ const emptyForm = {
 };
 
 export default function AdminPagesPage() {
-  const [pages, setPages] = useState<PageItem[]>(initialPages);
+  const [pages, setPages] = useState<PageItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/pages")
+      .then((res) => res.json())
+      .then((data) => setPages(data))
+      .catch(() => {});
+  }, []);
   const [editing, setEditing] = useState<PageItem | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
@@ -131,44 +108,23 @@ export default function AdminPagesPage() {
 
     try {
       if (editing) {
-        try {
-          const res = await fetch(`/api/admin/pages/${editing.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const updated = await res.json();
-            setPages((prev) => prev.map((p) => (p.id === editing.id ? updated : p)));
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          setPages((prev) =>
-            prev.map((p) => (p.id === editing.id ? { ...p, ...form } : p))
-          );
-        }
+        const res = await fetch(`/api/admin/pages/${editing.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const updated = await res.json();
+        setPages((prev) => prev.map((p) => (p.id === editing.id ? updated : p)));
       } else {
-        try {
-          const res = await fetch("/api/admin/pages", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const created = await res.json();
-            setPages((prev) => [...prev, created]);
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          const newItem: PageItem = {
-            ...form,
-            id: Math.max(0, ...pages.map((p) => p.id)) + 1,
-            createdAt: new Date().toISOString(),
-          };
-          setPages((prev) => [...prev, newItem]);
-        }
+        const res = await fetch("/api/admin/pages", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const created = await res.json();
+        setPages((prev) => [...prev, created]);
       }
       setDialogOpen(false);
     } catch {
@@ -181,11 +137,12 @@ export default function AdminPagesPage() {
   async function handleDelete(id: number) {
     if (!confirm("Удалить эту страницу?")) return;
     try {
-      await fetch(`/api/admin/pages/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/pages/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("API error");
+      setPages((prev) => prev.filter((p) => p.id !== id));
     } catch {
-      // Continue
+      setError("Ошибка при удалении");
     }
-    setPages((prev) => prev.filter((p) => p.id !== id));
   }
 
   return (

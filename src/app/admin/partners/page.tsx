@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,49 +34,6 @@ interface Partner {
   isActive: boolean;
 }
 
-const initialPartners: Partner[] = [
-  {
-    id: 1,
-    name: "Franchise Group",
-    logo: "/partners/franchise-group.png",
-    website: "https://franchisegroup.uz",
-    description: "Ведущая франчайзинговая компания Узбекистана",
-    category: "Франчайзинг",
-    sortOrder: 1,
-    isActive: true,
-  },
-  {
-    id: 2,
-    name: "BizStart Capital",
-    logo: "/partners/bizstart.png",
-    website: "https://bizstart.uz",
-    description: "Инвестиционный фонд",
-    category: "Инвестиции",
-    sortOrder: 2,
-    isActive: true,
-  },
-  {
-    id: 3,
-    name: "Trade Connect",
-    logo: "/partners/trade-connect.png",
-    website: "https://tradeconnect.uz",
-    description: "Торговая платформа",
-    category: "Технологии",
-    sortOrder: 3,
-    isActive: true,
-  },
-  {
-    id: 4,
-    name: "Legal Partners UZ",
-    logo: "/partners/legal.png",
-    website: "",
-    description: "Юридическая фирма",
-    category: "Юриспруденция",
-    sortOrder: 4,
-    isActive: false,
-  },
-];
-
 const emptyForm = {
   name: "",
   logo: "",
@@ -98,8 +55,15 @@ const categories = [
 ];
 
 export default function AdminPartnersPage() {
-  const [partners, setPartners] = useState<Partner[]>(initialPartners);
+  const [partners, setPartners] = useState<Partner[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/partners")
+      .then((res) => res.json())
+      .then((data) => setPartners(data))
+      .catch(() => {});
+  }, []);
   const [editing, setEditing] = useState<Partner | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
@@ -137,43 +101,23 @@ export default function AdminPartnersPage() {
 
     try {
       if (editing) {
-        try {
-          const res = await fetch(`/api/admin/partners/${editing.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const updated = await res.json();
-            setPartners((prev) => prev.map((p) => (p.id === editing.id ? updated : p)));
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          setPartners((prev) =>
-            prev.map((p) => (p.id === editing.id ? { ...p, ...form } : p))
-          );
-        }
+        const res = await fetch(`/api/admin/partners/${editing.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const updated = await res.json();
+        setPartners((prev) => prev.map((p) => (p.id === editing.id ? updated : p)));
       } else {
-        try {
-          const res = await fetch("/api/admin/partners", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const created = await res.json();
-            setPartners((prev) => [...prev, created]);
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          const newItem: Partner = {
-            ...form,
-            id: Math.max(0, ...partners.map((p) => p.id)) + 1,
-          };
-          setPartners((prev) => [...prev, newItem]);
-        }
+        const res = await fetch("/api/admin/partners", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const created = await res.json();
+        setPartners((prev) => [...prev, created]);
       }
       setDialogOpen(false);
     } catch {
@@ -186,11 +130,12 @@ export default function AdminPartnersPage() {
   async function handleDelete(id: number) {
     if (!confirm("Удалить этого партнёра?")) return;
     try {
-      await fetch(`/api/admin/partners/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/partners/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("API error");
+      setPartners((prev) => prev.filter((p) => p.id !== id));
     } catch {
-      // Continue
+      setError("Ошибка при удалении");
     }
-    setPartners((prev) => prev.filter((p) => p.id !== id));
   }
 
   return (

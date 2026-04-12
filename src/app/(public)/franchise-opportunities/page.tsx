@@ -5,15 +5,13 @@ import FranchiseCard from "@/components/public/FranchiseCard";
 import FeaturedCarousel from "@/components/public/FeaturedCarousel";
 import FranchiseFilters from "@/components/public/FranchiseFilters";
 import { Select } from "@/components/ui/select";
-import { ALL_FRANCHISES } from "@/lib/franchises-data";
+import prisma from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Каталог франшиз | UFA",
   description:
     "Найдите лучшие франшизы для инвестирования. Полный каталог франчайзинговых возможностей.",
 };
-
-const SAMPLE_FRANCHISES = ALL_FRANCHISES;
 
 const ITEMS_PER_PAGE = 12;
 
@@ -29,32 +27,52 @@ export default async function FranchiseDirectoryPage({ searchParams }: PageProps
   const sortBy = typeof params.sort === "string" ? params.sort : "featured";
   const page = typeof params.page === "string" ? Math.max(1, parseInt(params.page, 10) || 1) : 1;
 
-  let filtered = SAMPLE_FRANCHISES.filter((f) => {
-    if (query && !f.name.toLowerCase().includes(query)) return false;
-    if (category && f.category !== category) return false;
-    return true;
-  });
-
-  if (sortBy === "alpha") {
-    filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortBy === "new") {
-    filtered = [...filtered].reverse();
-  } else {
-    filtered = [...filtered].sort((a, b) => {
-      if (a.isFeatured && !b.isFeatured) return -1;
-      if (!a.isFeatured && b.isFeatured) return 1;
-      return a.name.localeCompare(b.name);
-    });
+  // Build Prisma where clause
+  const where: Record<string, unknown> = { isActive: true };
+  if (query) {
+    where.name = { contains: query, mode: "insensitive" };
+  }
+  if (category) {
+    where.category = category;
   }
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const paginatedFranchises = filtered.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  // Build orderBy
+  let orderBy: Record<string, string>[] = [];
+  if (sortBy === "alpha") {
+    orderBy = [{ name: "asc" }];
+  } else if (sortBy === "new") {
+    orderBy = [{ createdAt: "desc" }];
+  } else {
+    orderBy = [{ isFeatured: "desc" }, { sortOrder: "asc" }, { name: "asc" }];
+  }
 
-  const featuredFranchises = SAMPLE_FRANCHISES.filter((f) => f.isFeatured);
+  let franchises: { id: number; name: string; slug: string; logo: string | null; category: string; isFeatured: boolean }[] = [];
+  let totalCount = 0;
+  let featuredFranchises: { id: number; name: string; slug: string; logo: string | null }[] = [];
+
+  try {
+    [franchises, totalCount, featuredFranchises] = await Promise.all([
+      prisma.franchise.findMany({
+        where,
+        orderBy,
+        skip: (page - 1) * ITEMS_PER_PAGE,
+        take: ITEMS_PER_PAGE,
+        select: { id: true, name: true, slug: true, logo: true, category: true, isFeatured: true },
+      }),
+      prisma.franchise.count({ where }),
+      prisma.franchise.findMany({
+        where: { isActive: true, isFeatured: true },
+        orderBy: { sortOrder: "asc" },
+        take: 10,
+        select: { id: true, name: true, slug: true, logo: true },
+      }),
+    ]);
+  } catch {
+    // DB unavailable — show empty state
+  }
+
+  const totalPages = Math.max(1, Math.ceil(totalCount / ITEMS_PER_PAGE));
+  const currentPage = Math.min(page, totalPages);
 
   function buildUrl(overrides: Record<string, string>): string {
     const p = new URLSearchParams();
@@ -78,7 +96,7 @@ export default async function FranchiseDirectoryPage({ searchParams }: PageProps
           </h1>
           <div className="w-16 h-1.5 bg-[#3ECF8E] rounded-full mt-3" />
           <p className="text-white/70 mt-3 text-lg">
-            Найдите идеальную франшизу для вашего бизнеса
+            Найди��е идеальную франшизу для вашего бизнеса
           </p>
         </div>
       </div>
@@ -90,11 +108,13 @@ export default async function FranchiseDirectoryPage({ searchParams }: PageProps
           </Suspense>
 
           <div className="flex-1 min-w-0">
-            <FeaturedCarousel franchises={featuredFranchises} />
+            {featuredFranchises.length > 0 && (
+              <FeaturedCarousel franchises={featuredFranchises} />
+            )}
 
             <div className="flex items-center justify-between mb-6">
               <p className="text-sm text-gray-500">
-                Найдено: <span className="font-medium text-[#333333]">{filtered.length}</span> франшиз
+                Найдено: <span className="font-medium text-[#333333]">{totalCount}</span> франшиз
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Сортировать по:</span>
@@ -102,17 +122,17 @@ export default async function FranchiseDirectoryPage({ searchParams }: PageProps
               </div>
             </div>
 
-            {paginatedFranchises.length > 0 ? (
+            {franchises.length > 0 ? (
               <div
                 className="grid gap-6"
                 style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}
               >
-                {paginatedFranchises.map((franchise) => (
+                {franchises.map((franchise) => (
                   <FranchiseCard
                     key={franchise.id}
                     name={franchise.name}
                     slug={franchise.slug}
-                    logo={franchise.logo}
+                    logo={franchise.logo || "/complogo/1.png"}
                     category={franchise.category}
                     isFeatured={franchise.isFeatured}
                   />

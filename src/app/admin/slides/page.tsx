@@ -34,39 +34,6 @@ interface Slide {
   isActive: boolean;
 }
 
-const initialSlides: Slide[] = [
-  {
-    id: 1,
-    title: "Uzbekistan Franchising Association",
-    subtitle: "Развиваем франчайзинг в Узбекистане",
-    image: "/slides/hero-1.jpg",
-    buttonText: "Подробнее",
-    buttonUrl: "/about",
-    sortOrder: 1,
-    isActive: true,
-  },
-  {
-    id: 2,
-    title: "Franchise Expo 2026",
-    subtitle: "Главная выставка франшиз Центральной Азии",
-    image: "/slides/hero-2.jpg",
-    buttonText: "Регистрация",
-    buttonUrl: "/events",
-    sortOrder: 2,
-    isActive: true,
-  },
-  {
-    id: 3,
-    title: "Стань частью сообщества",
-    subtitle: "Присоединяйтесь к ведущим франчайзинговым компаниям",
-    image: "/slides/hero-3.jpg",
-    buttonText: "Вступить",
-    buttonUrl: "/membership",
-    sortOrder: 3,
-    isActive: false,
-  },
-];
-
 const emptySlide: Omit<Slide, "id"> = {
   title: "",
   subtitle: "",
@@ -78,8 +45,15 @@ const emptySlide: Omit<Slide, "id"> = {
 };
 
 export default function AdminSlidesPage() {
-  const [slides, setSlides] = useState<Slide[]>(initialSlides);
+  const [slides, setSlides] = useState<Slide[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/slides")
+      .then((res) => res.json())
+      .then((data) => setSlides(data))
+      .catch(() => {});
+  }, []);
   const [editingSlide, setEditingSlide] = useState<Slide | null>(null);
   const [form, setForm] = useState<Omit<Slide, "id">>(emptySlide);
   const [loading, setLoading] = useState(false);
@@ -117,51 +91,25 @@ export default function AdminSlidesPage() {
 
     try {
       if (editingSlide) {
-        // Update
-        try {
-          const res = await fetch(`/api/admin/slides/${editingSlide.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const updated = await res.json();
-            setSlides((prev) =>
-              prev.map((s) => (s.id === editingSlide.id ? updated : s))
-            );
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          // Fallback: update locally
-          setSlides((prev) =>
-            prev.map((s) =>
-              s.id === editingSlide.id ? { ...s, ...form } : s
-            )
-          );
-        }
+        const res = await fetch(`/api/admin/slides/${editingSlide.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const updated = await res.json();
+        setSlides((prev) =>
+          prev.map((s) => (s.id === editingSlide.id ? updated : s))
+        );
       } else {
-        // Create
-        try {
-          const res = await fetch("/api/admin/slides", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const created = await res.json();
-            setSlides((prev) => [...prev, created]);
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          // Fallback: create locally
-          const newSlide: Slide = {
-            ...form,
-            id: Math.max(0, ...slides.map((s) => s.id)) + 1,
-          };
-          setSlides((prev) => [...prev, newSlide]);
-        }
+        const res = await fetch("/api/admin/slides", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const created = await res.json();
+        setSlides((prev) => [...prev, created]);
       }
       setDialogOpen(false);
     } catch {
@@ -175,19 +123,29 @@ export default function AdminSlidesPage() {
     if (!confirm("Удалить этот слайд?")) return;
 
     try {
-      await fetch(`/api/admin/slides/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/slides/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("API error");
+      setSlides((prev) => prev.filter((s) => s.id !== id));
     } catch {
-      // Continue with local deletion
+      setError("Ошибка при удалении");
     }
-    setSlides((prev) => prev.filter((s) => s.id !== id));
   }
 
-  function toggleActive(slide: Slide) {
-    setSlides((prev) =>
-      prev.map((s) =>
-        s.id === slide.id ? { ...s, isActive: !s.isActive } : s
-      )
-    );
+  async function toggleActive(slide: Slide) {
+    try {
+      const res = await fetch(`/api/admin/slides/${slide.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isActive: !slide.isActive }),
+      });
+      if (!res.ok) throw new Error("API error");
+      const updated = await res.json();
+      setSlides((prev) =>
+        prev.map((s) => (s.id === slide.id ? updated : s))
+      );
+    } catch {
+      setError("Ошибка при обновлении статуса");
+    }
   }
 
   return (

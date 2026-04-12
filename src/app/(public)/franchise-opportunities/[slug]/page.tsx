@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ALL_FRANCHISES, getFranchiseBySlug } from "@/lib/franchises-data";
+import prisma from "@/lib/db";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -12,23 +12,32 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const franchise = getFranchiseBySlug(slug);
+  let franchise;
+  try {
+    franchise = await prisma.franchise.findUnique({ where: { slug } });
+  } catch {
+    return { title: "Франшиза не найдена | UFA" };
+  }
   if (!franchise) return { title: "Франшиза не найдена | UFA" };
   return {
     title: `${franchise.name} — Франшиза | UFA`,
-    description: franchise.description.slice(0, 160),
+    description: (franchise.description || "").slice(0, 160),
   };
-}
-
-export function generateStaticParams() {
-  return ALL_FRANCHISES.map((f) => ({ slug: f.slug }));
 }
 
 export default async function FranchiseDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const franchise = getFranchiseBySlug(slug);
 
-  if (!franchise) notFound();
+  let franchise;
+  try {
+    franchise = await prisma.franchise.findUnique({
+      where: { slug },
+    });
+  } catch {
+    notFound();
+  }
+
+  if (!franchise || !franchise.isActive) notFound();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -56,74 +65,108 @@ export default async function FranchiseDetailPage({ params }: PageProps) {
 
             {/* Stats row */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white border border-[#e5e7eb] rounded-xl p-5 text-center">
-                <div className="text-xl font-bold bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] bg-clip-text text-transparent">{franchise.startupCost}</div>
-                <div className="text-sm text-gray-500 mt-1">Начальные затраты</div>
-              </div>
-              <div className="bg-white border border-[#e5e7eb] rounded-xl p-5 text-center">
-                <div className="text-xl font-bold bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] bg-clip-text text-transparent">{franchise.totalInvestment}</div>
-                <div className="text-sm text-gray-500 mt-1">Общие инвестиции</div>
-              </div>
-              <div className="bg-white border border-[#e5e7eb] rounded-xl p-5 text-center">
-                <div className="text-xl font-bold bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] bg-clip-text text-transparent">{franchise.franchisingSince}</div>
-                <div className="text-sm text-gray-500 mt-1">Франчайзинг с</div>
-              </div>
+              {franchise.startupCost && (
+                <div className="bg-white border border-[#e5e7eb] rounded-xl p-5 text-center">
+                  <div className="text-xl font-bold bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] bg-clip-text text-transparent">{franchise.startupCost}</div>
+                  <div className="text-sm text-gray-500 mt-1">Начальные затраты</div>
+                </div>
+              )}
+              {franchise.totalInvestment && (
+                <div className="bg-white border border-[#e5e7eb] rounded-xl p-5 text-center">
+                  <div className="text-xl font-bold bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] bg-clip-text text-transparent">{franchise.totalInvestment}</div>
+                  <div className="text-sm text-gray-500 mt-1">Общие инвестиции</div>
+                </div>
+              )}
+              {franchise.franchisingSince && (
+                <div className="bg-white border border-[#e5e7eb] rounded-xl p-5 text-center">
+                  <div className="text-xl font-bold bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] bg-clip-text text-transparent">{franchise.franchisingSince}</div>
+                  <div className="text-sm text-gray-500 mt-1">Франчайзинг с</div>
+                </div>
+              )}
             </div>
 
-            <Button size="lg" className="w-full mb-3 h-14 text-base font-semibold">Запросить информацию</Button>
-            <div className="text-center mb-8">
-              <a href={franchise.website} target="_blank" rel="noopener noreferrer" className="text-sm text-[#3ECF8E] hover:underline">Посетить сайт</a>
-            </div>
+            <Link href="/contact">
+              <Button size="lg" className="w-full mb-3 h-14 text-base font-semibold">Запросить информацию</Button>
+            </Link>
+            {franchise.website && (
+              <div className="text-center mb-8">
+                <a href={franchise.website} target="_blank" rel="noopener noreferrer" className="text-sm text-[#3ECF8E] hover:underline">Посетить сайт</a>
+              </div>
+            )}
 
-            <div className="bg-white border border-[#e5e7eb] rounded-xl p-6 mb-6">
-              <h2 className="text-xl font-bold text-[#333333] mb-4">О компании</h2>
-              <p className="text-gray-600 leading-relaxed">{franchise.description}</p>
-            </div>
+            {franchise.description && (
+              <div className="bg-white border border-[#e5e7eb] rounded-xl p-6 mb-6">
+                <h2 className="text-xl font-bold text-[#333333] mb-4">О компании</h2>
+                <p className="text-gray-600 leading-relaxed whitespace-pre-line">{franchise.description}</p>
+              </div>
+            )}
 
             <div className="bg-white border border-[#e5e7eb] rounded-xl p-6">
               <h2 className="text-xl font-bold text-[#333333] mb-4">Детали</h2>
               <dl className="space-y-3">
-                <div className="flex flex-col sm:flex-row sm:gap-2">
-                  <dt className="text-sm font-medium text-gray-500 sm:w-40">Штаб-квартира:</dt>
-                  <dd className="text-sm text-[#333333]">{franchise.headquarters}</dd>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:gap-2">
-                  <dt className="text-sm font-medium text-gray-500 sm:w-40">Телефон:</dt>
-                  <dd className="text-sm text-[#333333]"><a href={`tel:${franchise.phone}`} className="hover:text-[#3ECF8E]">{franchise.phone}</a></dd>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:gap-2">
-                  <dt className="text-sm font-medium text-gray-500 sm:w-40">Email:</dt>
-                  <dd className="text-sm text-[#333333]"><a href={`mailto:${franchise.email}`} className="hover:text-[#3ECF8E]">{franchise.email}</a></dd>
-                </div>
+                {franchise.headquarters && (
+                  <div className="flex flex-col sm:flex-row sm:gap-2">
+                    <dt className="text-sm font-medium text-gray-500 sm:w-40">Штаб-квартира:</dt>
+                    <dd className="text-sm text-[#333333]">{franchise.headquarters}</dd>
+                  </div>
+                )}
+                {franchise.contactPhone && (
+                  <div className="flex flex-col sm:flex-row sm:gap-2">
+                    <dt className="text-sm font-medium text-gray-500 sm:w-40">Телефон:</dt>
+                    <dd className="text-sm text-[#333333]"><a href={`tel:${franchise.contactPhone}`} className="hover:text-[#3ECF8E]">{franchise.contactPhone}</a></dd>
+                  </div>
+                )}
+                {franchise.contactEmail && (
+                  <div className="flex flex-col sm:flex-row sm:gap-2">
+                    <dt className="text-sm font-medium text-gray-500 sm:w-40">Email:</dt>
+                    <dd className="text-sm text-[#333333]"><a href={`mailto:${franchise.contactEmail}`} className="hover:text-[#3ECF8E]">{franchise.contactEmail}</a></dd>
+                  </div>
+                )}
+                {franchise.veteransDiscount && franchise.discountDetails && (
+                  <div className="flex flex-col sm:flex-row sm:gap-2">
+                    <dt className="text-sm font-medium text-gray-500 sm:w-40">Скидка для ветеранов:</dt>
+                    <dd className="text-sm text-[#333333]">{franchise.discountDetails}</dd>
+                  </div>
+                )}
               </dl>
             </div>
           </div>
 
           {/* Right Column */}
           <div className="lg:w-[35%]">
-            <div className="bg-white border border-[#e5e7eb] rounded-xl p-8 mb-6 flex items-center justify-center">
-              <div className="relative w-full h-32">
-                <Image src={franchise.logo} alt={`${franchise.name} logo`} fill className="object-contain" unoptimized />
+            {franchise.logo && (
+              <div className="bg-white border border-[#e5e7eb] rounded-xl p-8 mb-6 flex items-center justify-center">
+                <div className="relative w-full h-32">
+                  <Image src={franchise.logo} alt={`${franchise.name} logo`} fill className="object-contain" unoptimized />
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="bg-white border border-[#e5e7eb] rounded-xl p-6 sticky top-24">
               <h3 className="text-lg font-bold text-[#333333] mb-4">Связаться</h3>
               <div className="space-y-3 text-sm">
-                <div>
-                  <span className="text-gray-500">Телефон:</span><br />
-                  <a href={`tel:${franchise.phone}`} className="text-[#333333] hover:text-[#3ECF8E]">{franchise.phone}</a>
-                </div>
-                <div>
-                  <span className="text-gray-500">Email:</span><br />
-                  <a href={`mailto:${franchise.email}`} className="text-[#333333] hover:text-[#3ECF8E]">{franchise.email}</a>
-                </div>
-                <div>
-                  <span className="text-gray-500">Сайт:</span><br />
-                  <a href={franchise.website} target="_blank" rel="noopener noreferrer" className="text-[#3ECF8E] hover:underline">{franchise.website}</a>
-                </div>
+                {franchise.contactPhone && (
+                  <div>
+                    <span className="text-gray-500">Телефон:</span><br />
+                    <a href={`tel:${franchise.contactPhone}`} className="text-[#333333] hover:text-[#3ECF8E]">{franchise.contactPhone}</a>
+                  </div>
+                )}
+                {franchise.contactEmail && (
+                  <div>
+                    <span className="text-gray-500">Email:</span><br />
+                    <a href={`mailto:${franchise.contactEmail}`} className="text-[#333333] hover:text-[#3ECF8E]">{franchise.contactEmail}</a>
+                  </div>
+                )}
+                {franchise.website && (
+                  <div>
+                    <span className="text-gray-500">Сайт:</span><br />
+                    <a href={franchise.website} target="_blank" rel="noopener noreferrer" className="text-[#3ECF8E] hover:underline">{franchise.website}</a>
+                  </div>
+                )}
               </div>
-              <Button size="lg" className="w-full mt-5">Запросить информацию</Button>
+              <Link href="/contact">
+                <Button size="lg" className="w-full mt-5">Запросить информацию</Button>
+              </Link>
             </div>
           </div>
         </div>

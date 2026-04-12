@@ -36,7 +36,7 @@ export default function TelegramFAB() {
       href="https://t.me/ufa_uz"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-24 right-6 z-50 w-14 h-14 bg-[#0088cc] hover:bg-[#006daa] text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+      className="fixed bottom-36 lg:bottom-24 right-6 z-50 w-14 h-14 bg-[#0088cc] hover:bg-[#006daa] text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
       aria-label="Написать в Telegram"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >

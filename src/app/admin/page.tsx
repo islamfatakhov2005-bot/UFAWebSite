@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -21,22 +22,66 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const stats = [
-  { label: "Новости", value: "24", icon: FileText, color: "from-blue-500 to-blue-600" },
-  { label: "Мероприятия", value: "8", icon: Calendar, color: "from-purple-500 to-purple-600" },
-  { label: "Партнёры", value: "32", icon: Building2, color: "from-emerald-500 to-emerald-600" },
-  { label: "Новые заявки", value: "5", icon: MessageSquare, color: "from-orange-500 to-orange-600" },
-];
+interface DashboardStat {
+  label: string;
+  value: string;
+  icon: typeof FileText;
+  color: string;
+}
 
-const recentLeads = [
-  { id: 1, name: "Алексей Петров", email: "alex@example.com", formType: "contact", date: "Сегодня", isRead: false },
-  { id: 2, name: "Мария Иванова", email: "maria@example.com", formType: "partnership", date: "Вчера", isRead: true },
-  { id: 3, name: "Дмитрий Сидоров", email: "dmitry@example.com", formType: "contact", date: "2 дня назад", isRead: false },
-  { id: 4, name: "Елена Козлова", email: "elena@example.com", formType: "event", date: "3 дня назад", isRead: false },
-  { id: 5, name: "Руслан Абдуллаев", email: "ruslan@example.com", formType: "membership", date: "4 дня назад", isRead: true },
-];
+interface Lead {
+  id: number;
+  name: string;
+  email: string;
+  formType: string;
+  date: string;
+  isRead: boolean;
+  createdAt?: string;
+}
+
+function formatRelativeDate(dateStr: string): string {
+  const now = new Date();
+  const date = new Date(dateStr);
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  if (diffDays === 0) return "Сегодня";
+  if (diffDays === 1) return "Вчера";
+  return `${diffDays} дн. назад`;
+}
 
 export default function AdminDashboardPage() {
+  const [stats, setStats] = useState<DashboardStat[]>([
+    { label: "Новости", value: "...", icon: FileText, color: "from-blue-500 to-blue-600" },
+    { label: "Мероприятия", value: "...", icon: Calendar, color: "from-purple-500 to-purple-600" },
+    { label: "Партнёры", value: "...", icon: Building2, color: "from-emerald-500 to-emerald-600" },
+    { label: "Новые заявки", value: "...", icon: MessageSquare, color: "from-orange-500 to-orange-600" },
+  ]);
+  const [recentLeads, setRecentLeads] = useState<Lead[]>([]);
+
+  useEffect(() => {
+    Promise.all([
+      fetch("/api/admin/news").then((r) => r.json()).catch(() => []),
+      fetch("/api/admin/partners").then((r) => r.json()).catch(() => []),
+      fetch("/api/admin/slides").then((r) => r.json()).catch(() => []),
+      fetch("/api/leads").then((r) => r.json()).catch(() => []),
+    ]).then(([news, partners, slides, leads]) => {
+      setStats([
+        { label: "Новости", value: String(Array.isArray(news) ? news.length : 0), icon: FileText, color: "from-blue-500 to-blue-600" },
+        { label: "Мероприятия", value: String(Array.isArray(slides) ? slides.length : 0), icon: Calendar, color: "from-purple-500 to-purple-600" },
+        { label: "Партнёры", value: String(Array.isArray(partners) ? partners.length : 0), icon: Building2, color: "from-emerald-500 to-emerald-600" },
+        { label: "Новые заявки", value: String(Array.isArray(leads) ? leads.filter((l: Lead) => !l.isRead).length : 0), icon: MessageSquare, color: "from-orange-500 to-orange-600" },
+      ]);
+      if (Array.isArray(leads)) {
+        setRecentLeads(
+          leads.slice(0, 5).map((l: Lead) => ({
+            ...l,
+            date: l.createdAt ? formatRelativeDate(l.createdAt) : l.date || "",
+          }))
+        );
+      }
+    });
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Greeting */}

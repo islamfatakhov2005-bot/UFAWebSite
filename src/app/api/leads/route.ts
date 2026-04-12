@@ -2,11 +2,22 @@ import { NextRequest, NextResponse } from "next/server";
 import { sendLeadToCrm } from "@/lib/crm";
 import prisma from "@/lib/db";
 import { requireAdmin } from "@/lib/auth";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit: 10 submissions per hour per IP
+    const ip = getClientIp(request.headers);
+    const rl = rateLimit(`leads:${ip}`, 10, 60 * 60 * 1000);
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: "Слишком много заявок. Попробуйте позже." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { name, email, phone, company, subject, message, formType } = body;
 

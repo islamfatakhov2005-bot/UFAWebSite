@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Partner {
   id: string | number;
@@ -16,13 +16,27 @@ interface PartnersSectionProps {
 
 export default function PartnersSection({ partners }: PartnersSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [userPaused, setUserPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  // Detect prefers-reduced-motion
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
+    // Don't animate if user prefers reduced motion or manually paused
+    if (reducedMotion || userPaused) return;
+
     let animationId: number;
-    let scrollPos = 0;
+    let scrollPos = container.scrollLeft;
 
     const animate = () => {
       scrollPos += 0.5;
@@ -33,16 +47,16 @@ export default function PartnersSection({ partners }: PartnersSectionProps) {
       animationId = requestAnimationFrame(animate);
     };
 
-    let paused = false;
+    let hoverPaused = false;
     animationId = requestAnimationFrame(animate);
 
     const pauseScroll = () => {
-      paused = true;
+      hoverPaused = true;
       cancelAnimationFrame(animationId);
     };
     const resumeScroll = () => {
-      if (paused) {
-        paused = false;
+      if (hoverPaused) {
+        hoverPaused = false;
         animationId = requestAnimationFrame(animate);
       }
     };
@@ -66,7 +80,7 @@ export default function PartnersSection({ partners }: PartnersSectionProps) {
       container.removeEventListener("mouseleave", resumeScroll);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
-  }, []);
+  }, [reducedMotion, userPaused]);
 
   // Double the array for infinite scroll effect
   const doubledPartners = [...partners, ...partners];
@@ -74,9 +88,20 @@ export default function PartnersSection({ partners }: PartnersSectionProps) {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] green-underline-center text-center mb-12">
-          Компании-участники
-        </h2>
+        <div className="flex items-center justify-center gap-4 mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] green-underline-center text-center">
+            Компании-участники
+          </h2>
+        </div>
+        <div className="flex justify-center mb-4">
+          <button
+            onClick={() => setUserPaused((p) => !p)}
+            aria-label={userPaused || reducedMotion ? "Возобновить прокрутку" : "Остановить прокрутку"}
+            className="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-full px-3 py-1 transition-colors"
+          >
+            {userPaused || reducedMotion ? "▶ Возобновить" : "⏸ Пауза"}
+          </button>
+        </div>
       </div>
       <div
         ref={scrollRef}

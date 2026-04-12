@@ -20,6 +20,7 @@ interface HeroCarouselProps {
 
 export default function HeroCarousel({ slides }: HeroCarouselProps) {
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length);
@@ -30,17 +31,37 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
   }, [slides.length]);
 
   useEffect(() => {
+    if (paused) return;
     const interval = setInterval(next, 5000);
     return () => clearInterval(interval);
-  }, [next]);
+  }, [next, paused]);
 
   if (slides.length === 0) return null;
 
   return (
-    <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    <section
+      className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden"
+      aria-roledescription="carousel"
+      aria-label="Баннер-карусель"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+          setPaused(false);
+        }
+      }}
+    >
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        Слайд {current + 1} из {slides.length}: {slides[current]?.title}
+      </div>
       {slides.map((slide, index) => (
         <div
           key={slide.id}
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`Слайд ${index + 1} из ${slides.length}`}
+          aria-hidden={index !== current}
           className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
             index === current ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}

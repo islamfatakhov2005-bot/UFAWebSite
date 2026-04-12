@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Calculator, TrendingUp } from "lucide-react";
 
 const categories = [
-  { label: "Общепит / Рестораны", avgMonthlyRevenue: 45000000, avgMargin: 0.2 },
-  { label: "Ритейл / Магазины", avgMonthlyRevenue: 35000000, avgMargin: 0.15 },
-  { label: "Образование", avgMonthlyRevenue: 25000000, avgMargin: 0.25 },
-  { label: "Красота / Здоровье", avgMonthlyRevenue: 20000000, avgMargin: 0.3 },
-  { label: "IT / Услуги", avgMonthlyRevenue: 30000000, avgMargin: 0.35 },
-  { label: "Другое", avgMonthlyRevenue: 25000000, avgMargin: 0.2 },
+  { label: "Общепит / Рестораны", revenuePerInvested: 0.9, avgMargin: 0.2, rampUpMonths: 3 },
+  { label: "Ритейл / Магазины", revenuePerInvested: 0.7, avgMargin: 0.15, rampUpMonths: 2 },
+  { label: "Образование", revenuePerInvested: 0.5, avgMargin: 0.25, rampUpMonths: 4 },
+  { label: "Красота / Здоровье", revenuePerInvested: 0.4, avgMargin: 0.3, rampUpMonths: 3 },
+  { label: "IT / Услуги", revenuePerInvested: 0.6, avgMargin: 0.35, rampUpMonths: 2 },
+  { label: "Другое", revenuePerInvested: 0.5, avgMargin: 0.2, rampUpMonths: 3 },
 ];
 
 function formatSum(n: number): string {
@@ -25,10 +25,19 @@ export default function ROICalculator() {
 
   const cat = categories[categoryIdx];
   const investmentSum = investment * 1_000_000;
-  const monthlyProfit = cat.avgMonthlyRevenue * cat.avgMargin;
-  const paybackMonths = Math.ceil(investmentSum / monthlyProfit);
-  const yearlyProfit = monthlyProfit * 12;
-  const roi3Years = ((yearlyProfit * 3 - investmentSum) / investmentSum) * 100;
+  // Revenue scales with investment but with diminishing returns (sqrt factor)
+  const scaleFactor = Math.sqrt(investmentSum / 50_000_000);
+  const baseMonthlyRevenue = investmentSum * cat.revenuePerInvested;
+  const monthlyRevenue = baseMonthlyRevenue * (0.7 + 0.3 * scaleFactor);
+  const monthlyProfit = monthlyRevenue * cat.avgMargin;
+  // Payback accounts for ramp-up period where profit is lower
+  const rampUpProfit = monthlyProfit * 0.4 * cat.rampUpMonths;
+  const remainingToRecover = investmentSum - rampUpProfit;
+  const paybackMonths = cat.rampUpMonths + Math.ceil(Math.max(0, remainingToRecover) / monthlyProfit);
+  const yearlyProfit = monthlyProfit * (12 - cat.rampUpMonths) + monthlyProfit * 0.4 * cat.rampUpMonths;
+  const steadyYearlyProfit = monthlyProfit * 12;
+  const totalProfit3Years = yearlyProfit + steadyYearlyProfit * 2;
+  const roi3Years = ((totalProfit3Years - investmentSum) / investmentSum) * 100;
 
   return (
     <section className="py-20 bg-white">
@@ -45,6 +54,11 @@ export default function ROICalculator() {
           <p className="text-gray-600 max-w-xl mx-auto">
             Рассчитайте примерный срок окупаемости и доходность на основе средних показателей рынка Узбекистана
           </p>
+          <div className="mt-4 mx-auto max-w-2xl bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+            <p className="text-xs text-amber-700">
+              ⚠ Данные носят ознакомительный характер и не являются финансовым прогнозом. Реальные показатели зависят от множества факторов.
+            </p>
+          </div>
         </div>
 
         <div className="bg-[#f5f7fa] rounded-xl p-8">
@@ -127,6 +141,11 @@ export default function ROICalculator() {
               <div className="md:col-span-3 text-center">
                 <p className="text-xs text-gray-400 mt-2">
                   * Расчёт основан на средних показателях рынка. Реальные результаты зависят от конкретной франшизы, локации и управления.
+                </p>
+                <p className="text-sm text-gray-500 mt-3">
+                  Для точного расчёта и персональной консультации{" "}
+                  <a href="/contacts" className="text-[#3ECF8E] hover:underline font-medium">свяжитесь с UFA</a>
+                  {" "}— наши специалисты помогут подобрать оптимальную франшизу.
                 </p>
               </div>
             </div>

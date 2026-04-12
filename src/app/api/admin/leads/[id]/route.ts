@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
+import { requireAdmin } from "@/lib/auth";
 
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await requireAdmin();
     const { id } = await params;
     const leadId = parseInt(id, 10);
     if (isNaN(leadId)) {

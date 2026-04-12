@@ -1,35 +1,72 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { Search, X } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Search, X, Loader2 } from "lucide-react";
 import Link from "next/link";
 
-const pages = [
-  { title: "Главная", href: "/", keywords: "главная домой" },
-  { title: "О нас", href: "/about", keywords: "ассоциация история миссия команда" },
-  { title: "Членство", href: "/membership", keywords: "вступить тарифы цены членство" },
-  { title: "Каталог франшиз", href: "/franchise-opportunities", keywords: "каталог франшизы найти купить" },
-  { title: "Обзор франчайзинга", href: "/franchising-overview", keywords: "что такое франчайзинг основы" },
-  { title: "Образование", href: "/education", keywords: "курсы обучение сертификация CFE" },
-  { title: "Мероприятия", href: "/events", keywords: "выставка конференция форум expo" },
-  { title: "Поддержка", href: "/advocacy", keywords: "юридическая защита законодательство" },
-  { title: "Программы", href: "/programs", keywords: "менторство стипендии сообщество" },
-  { title: "Новости", href: "/news", keywords: "новости статьи блог" },
-  { title: "Контакты", href: "/contact", keywords: "связаться адрес телефон email" },
+interface SearchResult {
+  title: string;
+  url: string;
+  type: string;
+}
+
+interface SearchResponse {
+  news: SearchResult[];
+  events: SearchResult[];
+  franchises: SearchResult[];
+  pages: SearchResult[];
+}
+
+const groupOrder: { key: keyof SearchResponse; label: string }[] = [
+  { key: "pages", label: "Страницы" },
+  { key: "news", label: "Новости" },
+  { key: "events", label: "Мероприятия" },
+  { key: "franchises", label: "Франшизы" },
 ];
 
 export default function SearchDialog() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState<SearchResponse | null>(null);
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const filtered = query.trim()
-    ? pages.filter(
-        (p) =>
-          p.title.toLowerCase().includes(query.toLowerCase()) ||
-          p.keywords.toLowerCase().includes(query.toLowerCase())
-      )
-    : pages;
+  const fetchResults = useCallback((q: string) => {
+    // Cancel any in-flight request
+    abortRef.current?.abort();
+
+    if (!q.trim()) {
+      setResults(null);
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    const controller = new AbortController();
+    abortRef.current = controller;
+
+    fetch(`/api/search?q=${encodeURIComponent(q.trim())}`, {
+      signal: controller.signal,
+    })
+      .then((res) => res.json())
+      .then((data: SearchResponse) => {
+        setResults(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          setLoading(false);
+        }
+      });
+  }, []);
+
+  const handleQueryChange = (value: string) => {
+    setQuery(value);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => fetchResults(value), 300);
+  };
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -48,10 +85,31 @@ export default function SearchDialog() {
       setTimeout(() => inputRef.current?.focus(), 100);
     } else {
       setQuery("");
+      setResults(null);
+      setLoading(false);
+      abortRef.current?.abort();
+      if (debounceRef.current) clearTimeout(debounceRef.current);
     }
   }, [open]);
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      abortRef.current?.abort();
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, []);
+
   if (!open) return null;
+
+  const hasResults =
+    results &&
+    (results.pages.length > 0 ||
+      results.news.length > 0 ||
+      results.events.length > 0 ||
+      results.franchises.length > 0);
+
+  const showEmpty = query.trim() && !loading && results && !hasResults;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh]">
@@ -66,10 +124,13 @@ export default function SearchDialog() {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => handleQueryChange(e.target.value)}
             placeholder="Поиск по сайту..."
             className="flex-1 py-4 text-sm outline-none bg-transparent placeholder:text-gray-400"
           />
+          {loading && (
+            <Loader2 className="w-4 h-4 text-gray-400 animate-spin flex-shrink-0" />
+          )}
           <button
             onClick={() => setOpen(false)}
             className="text-gray-400 hover:text-gray-600 p-1"
@@ -78,22 +139,40 @@ export default function SearchDialog() {
           </button>
         </div>
         <div className="max-h-[300px] overflow-y-auto p-2">
-          {filtered.length === 0 ? (
+          {showEmpty && (
             <p className="text-sm text-gray-400 text-center py-8">
               Ничего не найдено по запросу &laquo;{query}&raquo;
             </p>
-          ) : (
-            filtered.map((page) => (
-              <Link
-                key={page.href}
-                href={page.href}
-                onClick={() => setOpen(false)}
-                className="block px-3 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-[#3ECF8E]/10 hover:text-[#2A9D6F] transition-colors"
-              >
-                {page.title}
-              </Link>
-            ))
           )}
+
+          {!query.trim() && !results && (
+            <p className="text-sm text-gray-400 text-center py-8">
+              Начните вводить для поиска...
+            </p>
+          )}
+
+          {hasResults &&
+            groupOrder.map(({ key, label }) => {
+              const items = results[key];
+              if (!items || items.length === 0) return null;
+              return (
+                <div key={key} className="mb-2">
+                  <p className="px-3 py-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    {label}
+                  </p>
+                  {items.map((item) => (
+                    <Link
+                      key={item.url}
+                      href={item.url}
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-2.5 rounded-lg text-sm text-gray-700 hover:bg-[#3ECF8E]/10 hover:text-[#2A9D6F] transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              );
+            })}
         </div>
         <div className="px-4 py-2 border-t border-gray-100 text-xs text-gray-400">
           <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-[10px]">Ctrl</kbd>

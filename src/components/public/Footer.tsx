@@ -49,16 +49,16 @@ const navGroups = [
   {
     title: "О нас",
     links: [
-      { label: "Контакты", href: "/contact" },
-      { label: "Карьера", href: "/about#careers" },
       { label: "О UFA", href: "/about" },
+      { label: "Контакты", href: "/contact" },
+      { label: "Кодекс этики", href: "/code-of-ethics" },
     ],
   },
   {
     title: "Франчайзинг",
     links: [
-      { label: "Каталог", href: "/franchising/catalog" },
-      { label: "Членство", href: "/membership" },
+      { label: "Каталог франшиз", href: "/franchise-opportunities" },
+      { label: "Обзор франчайзинга", href: "/franchising-overview" },
       { label: "Мероприятия", href: "/events" },
       { label: "Новости", href: "/news" },
     ],
@@ -66,9 +66,10 @@ const navGroups = [
   {
     title: "Ресурсы",
     links: [
-      { label: "Образование", href: "/education/courses" },
-      { label: "Исследования", href: "/research/reports" },
-      { label: "Юридическая помощь", href: "/support/legal" },
+      { label: "Образование", href: "/education" },
+      { label: "Программы", href: "/programs" },
+      { label: "Членство", href: "/membership" },
+      { label: "Поддержка", href: "/advocacy" },
     ],
   },
 ];

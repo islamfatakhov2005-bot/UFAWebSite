@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/advocacy",
     "/programs",
     "/news",
+    "/code-of-ethics",
   ];
 
   return staticPages.map((path) => ({

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -46,45 +46,6 @@ function slugify(text: string): string {
     .substring(0, 200);
 }
 
-const initialNews: NewsItem[] = [
-  {
-    id: 1,
-    title: "UFA провела ежегодную конференцию",
-    slug: "ufa-annual-conference",
-    excerpt: "Более 200 участников приняли участие в конференции",
-    content: "Полный текст статьи...",
-    image: "/news/conf.jpg",
-    isPublished: true,
-    publishedAt: "2026-03-15T10:00:00Z",
-    views: 342,
-    createdAt: "2026-03-14T08:00:00Z",
-  },
-  {
-    id: 2,
-    title: "Новые члены ассоциации",
-    slug: "new-members-2026",
-    excerpt: "5 новых компаний присоединились к UFA",
-    content: "Полный текст статьи...",
-    image: "/news/members.jpg",
-    isPublished: true,
-    publishedAt: "2026-03-10T10:00:00Z",
-    views: 128,
-    createdAt: "2026-03-09T12:00:00Z",
-  },
-  {
-    id: 3,
-    title: "Анонс Franchise Expo 2026",
-    slug: "franchise-expo-2026-announcement",
-    excerpt: "Главное событие года в мире франчайзинга",
-    content: "Черновик...",
-    image: "",
-    isPublished: false,
-    publishedAt: null,
-    views: 0,
-    createdAt: "2026-04-01T09:00:00Z",
-  },
-];
-
 const emptyForm = {
   title: "",
   slug: "",
@@ -95,8 +56,15 @@ const emptyForm = {
 };
 
 export default function AdminNewsPage() {
-  const [news, setNews] = useState<NewsItem[]>(initialNews);
+  const [news, setNews] = useState<NewsItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/news")
+      .then((res) => res.json())
+      .then((data) => setNews(data))
+      .catch(() => {});
+  }, []);
   const [editing, setEditing] = useState<NewsItem | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
@@ -145,50 +113,23 @@ export default function AdminNewsPage() {
 
     try {
       if (editing) {
-        try {
-          const res = await fetch(`/api/admin/news/${editing.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const updated = await res.json();
-            setNews((prev) => prev.map((n) => (n.id === editing.id ? updated : n)));
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          setNews((prev) =>
-            prev.map((n) =>
-              n.id === editing.id
-                ? { ...n, ...form, publishedAt: form.isPublished && !n.publishedAt ? new Date().toISOString() : n.publishedAt }
-                : n
-            )
-          );
-        }
+        const res = await fetch(`/api/admin/news/${editing.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const updated = await res.json();
+        setNews((prev) => prev.map((n) => (n.id === editing.id ? updated : n)));
       } else {
-        try {
-          const res = await fetch("/api/admin/news", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const created = await res.json();
-            setNews((prev) => [...prev, created]);
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          const newItem: NewsItem = {
-            ...form,
-            id: Math.max(0, ...news.map((n) => n.id)) + 1,
-            publishedAt: form.isPublished ? new Date().toISOString() : null,
-            views: 0,
-            createdAt: new Date().toISOString(),
-          };
-          setNews((prev) => [...prev, newItem]);
-        }
+        const res = await fetch("/api/admin/news", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const created = await res.json();
+        setNews((prev) => [...prev, created]);
       }
       setDialogOpen(false);
     } catch {
@@ -201,11 +142,12 @@ export default function AdminNewsPage() {
   async function handleDelete(id: number) {
     if (!confirm("Удалить эту новость?")) return;
     try {
-      await fetch(`/api/admin/news/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/news/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("API error");
+      setNews((prev) => prev.filter((n) => n.id !== id));
     } catch {
-      // Continue with local deletion
+      setError("Ошибка при удалении");
     }
-    setNews((prev) => prev.filter((n) => n.id !== id));
   }
 
   function formatDate(dateStr: string | null) {

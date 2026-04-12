@@ -47,6 +47,7 @@ const megaMenuData: Record<string, { title: string; links: { label: string; href
       title: "Ресурсы",
       links: [
         { label: "Поддержка и защита интересов", href: "/advocacy" },
+        { label: "Кодекс этики", href: "/code-of-ethics" },
       ],
     },
   ],

@@ -149,8 +149,10 @@ export default function ContactForm() {
             onBlur={() => handleBlur("name")}
             className={inputClass("name")}
             placeholder="Ваше имя"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "error-name" : undefined}
           />
-          {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+          {errors.name && <p id="error-name" className="mt-1 text-xs text-red-500">{errors.name}</p>}
         </div>
 
         <div>
@@ -164,8 +166,10 @@ export default function ContactForm() {
             onBlur={() => handleBlur("email")}
             className={inputClass("email")}
             placeholder="name@company.uz"
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "error-email" : undefined}
           />
-          {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+          {errors.email && <p id="error-email" className="mt-1 text-xs text-red-500">{errors.email}</p>}
         </div>
 
         <div>
@@ -205,6 +209,8 @@ export default function ContactForm() {
           onChange={(e) => handleChange("subject", e.target.value)}
           onBlur={() => handleBlur("subject")}
           className={inputClass("subject")}
+          aria-invalid={!!errors.subject}
+          aria-describedby={errors.subject ? "error-subject" : undefined}
         >
           {subjects.map((s) => (
             <option key={s.value} value={s.value}>
@@ -212,7 +218,7 @@ export default function ContactForm() {
             </option>
           ))}
         </select>
-        {errors.subject && <p className="mt-1 text-xs text-red-500">{errors.subject}</p>}
+        {errors.subject && <p id="error-subject" className="mt-1 text-xs text-red-500">{errors.subject}</p>}
       </div>
 
       <div>
@@ -226,8 +232,10 @@ export default function ContactForm() {
           className={`${inputClass("message")} min-h-[140px] resize-y`}
           placeholder="Опишите ваш вопрос или запрос..."
           rows={5}
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "error-message" : undefined}
         />
-        {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
+        {errors.message && <p id="error-message" className="mt-1 text-xs text-red-500">{errors.message}</p>}
       </div>
 
       <div>

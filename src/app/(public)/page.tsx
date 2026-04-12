@@ -1,18 +1,21 @@
+import type { Metadata } from "next";
 import HeroCarousel from "@/components/public/HeroCarousel";
 import FranchisingTogether from "@/components/public/FranchisingTogether";
 import NewsGrid from "@/components/public/NewsGrid";
 import EventsPreview from "@/components/public/EventsPreview";
 import StatsBar from "@/components/public/StatsBar";
 import ThreeColumns from "@/components/public/ThreeColumns";
-import ImpactSection from "@/components/public/ImpactSection";
-import FindFranchiseCTA from "@/components/public/FindFranchiseCTA";
 import MembershipCTA from "@/components/public/MembershipCTA";
 import PartnersSection from "@/components/public/PartnersSection";
 import TestimonialsSection from "@/components/public/TestimonialsSection";
 import NewsletterForm from "@/components/public/NewsletterForm";
-import ROICalculator from "@/components/public/ROICalculator";
 import FranchiseQuiz from "@/components/public/FranchiseQuiz";
 import prisma from "@/lib/db";
+
+export const metadata: Metadata = {
+  title: "UFA — Ассоциация Франчайзинга Узбекистана",
+  description: "Ведущая ассоциация франчайзинга в Узбекистане. 500+ франшиз, образовательные программы, мероприятия и поддержка бизнеса.",
+};
 
 // Fallback data used when DB is not available (first run without PostgreSQL)
 const fallbackSlides = [
@@ -129,17 +132,14 @@ export default async function HomePage() {
       <HeroCarousel slides={slides} />
       <StatsBar stats={stats} />
       <FranchisingTogether />
+      <ThreeColumns />
       {formattedNews.length > 0 && <NewsGrid news={formattedNews} />}
       <EventsPreview />
-      <ThreeColumns />
-      <ImpactSection />
-      <FindFranchiseCTA />
       <TestimonialsSection />
-      <ROICalculator />
       <FranchiseQuiz />
       <MembershipCTA />
-      <NewsletterForm />
       <PartnersSection partners={partners} />
+      <NewsletterForm />
     </>
   );
 }

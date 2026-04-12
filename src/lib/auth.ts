@@ -4,10 +4,13 @@ import { cookies } from "next/headers";
 
 function getJwtSecret(): string {
   const secret = process.env.JWT_SECRET;
-  if (!secret && process.env.NODE_ENV === "production") {
-    throw new Error("JWT_SECRET env var must be set in production");
+  if (!secret) {
+    throw new Error(
+      "JWT_SECRET environment variable is required. " +
+      "Generate one with: openssl rand -base64 48"
+    );
   }
-  return secret ?? "dev-secret-local-only";
+  return secret;
 }
 
 const JWT_EXPIRES = "24h";

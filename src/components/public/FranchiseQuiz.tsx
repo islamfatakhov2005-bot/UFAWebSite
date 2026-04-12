@@ -43,13 +43,115 @@ const steps = [
   },
 ];
 
-const results: Record<string, { title: string; description: string; count: string }> = {
-  default: {
+interface QuizResult {
+  title: string;
+  description: string;
+  count: string;
+  catalogHref: string;
+  categories: string[];
+}
+
+function getRecommendation(answers: string[]): QuizResult {
+  const [budget, interest, experience, location] = answers;
+
+  // Premium investor profile
+  if ((budget === "premium" || budget === "high") && experience === "experienced") {
+    return {
+      title: "Премиум-франшизы для опытных инвесторов",
+      description: "Вам подходят крупные сетевые франшизы с высоким потенциалом прибыли и масштабирования.",
+      count: "8+",
+      catalogHref: "/franchise-opportunities?investmentMax=premium",
+      categories: interest === "food"
+        ? ["Рестораны полного цикла", "Сетевые кафе", "Премиум-фастфуд"]
+        : interest === "retail"
+        ? ["Крупный ритейл", "Торговые сети", "Маркетплейсы"]
+        : ["Крупные сетевые франшизы", "Мастер-франшизы"],
+    };
+  }
+
+  // Beginner-friendly profile
+  if (experience === "none" && (budget === "low" || budget === "medium")) {
+    return {
+      title: "Франшизы для начинающих предпринимателей",
+      description: "Мы подобрали франшизы с сильной поддержкой, обучением и доступным порогом входа — идеально для первого бизнеса.",
+      count: "15+",
+      catalogHref: "/franchise-opportunities?investmentMax=medium",
+      categories: interest === "education"
+        ? ["Детские центры", "Языковые школы", "Онлайн-образование"]
+        : interest === "beauty"
+        ? ["Салоны красоты", "Барбершопы", "Студии маникюра"]
+        : interest === "services"
+        ? ["IT-курсы", "Клининг", "Доставка"]
+        : ["Микро-франшизы", "Мобильный бизнес", "Островки в ТЦ"],
+    };
+  }
+
+  // Regional expansion profile
+  if (location === "multi" || (location === "other" && budget !== "low")) {
+    return {
+      title: "Франшизы для регионального развития",
+      description: "Отличный выбор для открытия бизнеса за пределами столицы или масштабирования в нескольких городах.",
+      count: "10+",
+      catalogHref: "/franchise-opportunities",
+      categories: interest === "food"
+        ? ["Фастфуд", "Пекарни", "Кофейни"]
+        : interest === "retail"
+        ? ["Продуктовые магазины", "Минимаркеты", "Дрогери"]
+        : ["Сетевые франшизы", "Франшизы с доставкой", "Образовательные центры"],
+    };
+  }
+
+  // Mid-budget interest-specific profile
+  if (budget === "medium" || budget === "high") {
+    const industryMap: Record<string, QuizResult> = {
+      food: {
+        title: "Франшизы в сфере общепита",
+        description: "Сфера общепита — одна из самых динамичных в Узбекистане. Мы нашли варианты под ваш бюджет.",
+        count: "12+",
+        catalogHref: "/franchise-opportunities?category=food",
+        categories: ["Кофейни", "Фастфуд", "Пекарни", "Рестораны"],
+      },
+      retail: {
+        title: "Франшизы в ритейле",
+        description: "Розничная торговля остаётся надёжным направлением. Вот лучшие варианты для вас.",
+        count: "9+",
+        catalogHref: "/franchise-opportunities?category=retail",
+        categories: ["Магазины одежды", "Продуктовый ритейл", "Дрогери"],
+      },
+      education: {
+        title: "Образовательные франшизы",
+        description: "Спрос на качественное образование растёт. Эти франшизы помогут вам войти в перспективную нишу.",
+        count: "7+",
+        catalogHref: "/franchise-opportunities?category=education",
+        categories: ["Детские центры", "Языковые школы", "IT-курсы"],
+      },
+      beauty: {
+        title: "Франшизы в сфере красоты",
+        description: "Индустрия красоты показывает стабильный рост. Подобрали лучшие варианты.",
+        count: "8+",
+        catalogHref: "/franchise-opportunities?category=beauty",
+        categories: ["Салоны красоты", "Барбершопы", "Фитнес-студии"],
+      },
+      services: {
+        title: "Франшизы в IT и услугах",
+        description: "Сектор услуг и IT активно развивается в Узбекистане. Вот подходящие франшизы.",
+        count: "6+",
+        catalogHref: "/franchise-opportunities?category=services",
+        categories: ["IT-компании", "Клининг", "Логистика"],
+      },
+    };
+    if (interest && industryMap[interest]) return industryMap[interest];
+  }
+
+  // Default fallback
+  return {
     title: "Франшизы для вас подобраны!",
     description: "На основе ваших ответов мы нашли несколько подходящих вариантов в нашем каталоге.",
     count: "12+",
-  },
-};
+    catalogHref: "/franchise-opportunities",
+    categories: ["Общепит", "Ритейл", "Услуги"],
+  };
+}
 
 export default function FranchiseQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -78,7 +180,7 @@ export default function FranchiseQuiz() {
     setDone(false);
   };
 
-  const result = results.default;
+  const result = done ? getRecommendation(answers) : null;
   const progress = done ? 100 : ((currentStep) / steps.length) * 100;
 
   return (
@@ -147,15 +249,25 @@ export default function FranchiseQuiz() {
                 <Sparkles className="w-8 h-8 text-[#3ECF8E]" />
               </div>
               <h3 className="text-2xl font-bold text-[#1A2332] mb-2">
-                {result.title}
+                {result!.title}
               </h3>
-              <p className="text-gray-600 mb-2">{result.description}</p>
+              <p className="text-gray-600 mb-2">{result!.description}</p>
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
+                {result!.categories.map((cat) => (
+                  <span
+                    key={cat}
+                    className="inline-block bg-[#3ECF8E]/10 text-[#2A9D6F] text-xs font-medium px-3 py-1 rounded-full"
+                  >
+                    {cat}
+                  </span>
+                ))}
+              </div>
               <p className="text-3xl font-extrabold gradient-text mb-6">
-                {result.count} подходящих франшиз
+                {result!.count} подходящих франшиз
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
-                  href="/franchise-opportunities"
+                  href={result!.catalogHref}
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-8 py-3.5 rounded-lg font-semibold transition-all shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25"
                 >
                   Смотреть каталог

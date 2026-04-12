@@ -69,7 +69,7 @@ export default function AdminSettingsPage() {
 
     try {
       const res = await fetch("/api/admin/settings", {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
@@ -81,8 +81,8 @@ export default function AdminSettingsPage() {
       }
     } catch {
       setMessage({
-        type: "success",
-        text: "Настройки сохранены (локально)",
+        type: "error",
+        text: "Ошибка при сохранении настроек",
       });
     } finally {
       setSaving(false);

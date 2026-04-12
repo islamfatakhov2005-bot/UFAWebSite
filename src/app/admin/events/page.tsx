@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,48 +47,6 @@ function slugify(text: string): string {
     .substring(0, 200);
 }
 
-const initialEvents: EventItem[] = [
-  {
-    id: 1,
-    title: "Franchise Expo Uzbekistan 2026",
-    slug: "franchise-expo-2026",
-    description: "Главная международная выставка франшиз",
-    image: "/events/expo.jpg",
-    location: "Ташкент, Uzexpocentre",
-    startDate: "2026-09-15",
-    endDate: "2026-09-17",
-    registrationUrl: "https://expo.ufa.uz",
-    isPublished: true,
-    createdAt: "2026-03-01T10:00:00Z",
-  },
-  {
-    id: 2,
-    title: "Мастер-класс: Как запустить франшизу",
-    slug: "masterclass-franchise-launch",
-    description: "Практический семинар для предпринимателей",
-    image: "/events/masterclass.jpg",
-    location: "Ташкент, Hilton Hotel",
-    startDate: "2026-05-20",
-    endDate: "",
-    registrationUrl: "",
-    isPublished: true,
-    createdAt: "2026-04-01T10:00:00Z",
-  },
-  {
-    id: 3,
-    title: "Годовое собрание членов UFA",
-    slug: "annual-meeting-2026",
-    description: "Ежегодное собрание членов ассоциации",
-    image: "",
-    location: "Ташкент",
-    startDate: "2026-12-10",
-    endDate: "2026-12-10",
-    registrationUrl: "",
-    isPublished: false,
-    createdAt: "2026-04-02T10:00:00Z",
-  },
-];
-
 const emptyForm = {
   title: "",
   slug: "",
@@ -102,8 +60,15 @@ const emptyForm = {
 };
 
 export default function AdminEventsPage() {
-  const [events, setEvents] = useState<EventItem[]>(initialEvents);
+  const [events, setEvents] = useState<EventItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/events")
+      .then((res) => res.json())
+      .then((data) => setEvents(data))
+      .catch(() => {});
+  }, []);
   const [editing, setEditing] = useState<EventItem | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
@@ -155,44 +120,23 @@ export default function AdminEventsPage() {
 
     try {
       if (editing) {
-        try {
-          const res = await fetch(`/api/admin/events/${editing.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const updated = await res.json();
-            setEvents((prev) => prev.map((e) => (e.id === editing.id ? updated : e)));
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          setEvents((prev) =>
-            prev.map((e) => (e.id === editing.id ? { ...e, ...form } : e))
-          );
-        }
+        const res = await fetch(`/api/admin/events/${editing.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const updated = await res.json();
+        setEvents((prev) => prev.map((e) => (e.id === editing.id ? updated : e)));
       } else {
-        try {
-          const res = await fetch("/api/admin/events", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-          });
-          if (res.ok) {
-            const created = await res.json();
-            setEvents((prev) => [...prev, created]);
-          } else {
-            throw new Error("API error");
-          }
-        } catch {
-          const newItem: EventItem = {
-            ...form,
-            id: Math.max(0, ...events.map((e) => e.id)) + 1,
-            createdAt: new Date().toISOString(),
-          };
-          setEvents((prev) => [...prev, newItem]);
-        }
+        const res = await fetch("/api/admin/events", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("API error");
+        const created = await res.json();
+        setEvents((prev) => [...prev, created]);
       }
       setDialogOpen(false);
     } catch {
@@ -205,11 +149,12 @@ export default function AdminEventsPage() {
   async function handleDelete(id: number) {
     if (!confirm("Удалить это мероприятие?")) return;
     try {
-      await fetch(`/api/admin/events/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/events/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("API error");
+      setEvents((prev) => prev.filter((e) => e.id !== id));
     } catch {
-      // Continue
+      setError("Ошибка при удалении");
     }
-    setEvents((prev) => prev.filter((e) => e.id !== id));
   }
 
   function formatDate(dateStr: string) {

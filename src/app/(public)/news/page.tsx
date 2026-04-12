@@ -1,76 +1,73 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import prisma from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Новости — UFA",
-  description: "Последние новости франчайзинга в Узбекистане.",
+  description: "Последние новости франчайзинга в Узбекистане и Центральной Азии.",
 };
 
-const allNews = [
+const fallbackNews = [
   {
     id: 1,
     title: "Franchise Expo Tashkent 2026: регистрация открыта",
     slug: "franchise-expo-2026",
     excerpt:
-      "Крупнейшее мероприятие в сфере франчайзинга Центральной Азии пройдёт 15-17 мая в Tashkent City. Более 200 брендов из 25 стран представят свои франшизы.",
+      "Крупнейшее мероприятие в сфере франчайзинга Центральной Азии пройдёт 15-17 мая в Tashkent City.",
     image: "/images/news-1.jpg",
-    publishedAt: "2026-03-28",
-    category: "Мероприятия",
+    publishedAt: new Date("2026-03-28"),
   },
   {
     id: 2,
     title: "UFA подписала меморандум с IFA",
     slug: "ufa-ifa-memorandum",
     excerpt:
-      "Международная Ассоциация Франчайзинга и UFA объединяют усилия для развития рынка Узбекистана. Соглашение предусматривает обмен опытом и совместные программы.",
+      "Международная Ассоциация Франчайзинга и UFA объединяют усилия для развития рынка Узбекистана.",
     image: "/images/news-2.jpg",
-    publishedAt: "2026-03-20",
-    category: "Партнёрство",
+    publishedAt: new Date("2026-03-20"),
   },
   {
     id: 3,
     title: "Новые программы поддержки франчайзи",
     slug: "support-programs-2026",
     excerpt:
-      "UFA запускает программу менторства и финансовой поддержки для начинающих франчайзи. Программа включает индивидуальные консультации и доступ к льготному кредитованию.",
+      "UFA запускает программу менторства и финансовой поддержки для начинающих франчайзи.",
     image: "/images/news-3.jpg",
-    publishedAt: "2026-03-15",
-    category: "Программы",
+    publishedAt: new Date("2026-03-15"),
   },
   {
     id: 4,
     title: "Рейтинг лучших франшиз Узбекистана 2026",
     slug: "top-franchises-2026",
     excerpt:
-      "Опубликован ежегодный рейтинг самых успешных и перспективных франшиз страны. В этом году в рейтинг вошли 50 брендов из 12 отраслей.",
+      "Опубликован ежегодный рейтинг самых успешных и перспективных франшиз страны.",
     image: "/images/news-4.jpg",
-    publishedAt: "2026-03-10",
-    category: "Исследования",
-  },
-  {
-    id: 5,
-    title: "Франчайзинг в сфере образования: тренды 2026",
-    slug: "education-franchising-trends",
-    excerpt:
-      "Образовательные франшизы показывают рост 35% в год. Анализ рынка и перспективные направления.",
-    image: "/images/news-1.jpg",
-    publishedAt: "2026-03-05",
-    category: "Исследования",
-  },
-  {
-    id: 6,
-    title: "Вебинар: Как выбрать франшизу",
-    slug: "webinar-choose-franchise",
-    excerpt:
-      "Бесплатный вебинар от экспертов UFA о ключевых критериях выбора франшизы и типичных ошибках начинающих предпринимателей.",
-    image: "/images/news-2.jpg",
-    publishedAt: "2026-02-28",
-    category: "Образование",
+    publishedAt: new Date("2026-03-10"),
   },
 ];
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  let articles: typeof fallbackNews = fallbackNews;
+
+  try {
+    const dbNews = await prisma.news.findMany({
+      where: { isPublished: true },
+      orderBy: { publishedAt: "desc" },
+      select: { id: true, title: true, slug: true, excerpt: true, image: true, publishedAt: true },
+    });
+    if (dbNews.length > 0) {
+      articles = dbNews.map((n) => ({
+        ...n,
+        excerpt: n.excerpt || "",
+        image: n.image || "/images/news-1.jpg",
+        publishedAt: n.publishedAt || new Date(),
+      }));
+    }
+  } catch {
+    // use fallback
+  }
+
   return (
     <>
       {/* Hero */}
@@ -86,18 +83,17 @@ export default function NewsPage() {
         <div className="relative max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Новости</h1>
           <div className="w-16 h-1.5 bg-[#3ECF8E] rounded-full mb-4" />
-          <p className="text-lg text-white/80 max-w-2xl mb-8">
+          <p className="text-lg text-white/80 max-w-2xl">
             Последние новости из мира франчайзинга Узбекистана и Центральной Азии.
           </p>
-          <Link href="#news" className="inline-block border-2 border-white/60 hover:border-white hover:bg-white/10 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">Все новости ↓</Link>
         </div>
       </section>
 
       {/* News grid */}
-      <section className="py-16">
+      <section id="news" className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allNews.map((item) => (
+            {articles.map((item) => (
               <Link
                 key={item.id}
                 href={`/news/${item.slug}`}
@@ -105,23 +101,22 @@ export default function NewsPage() {
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image
-                    src={item.image}
+                    src={item.image || "/images/news-1.jpg"}
                     alt={item.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-3 left-3 bg-[#3ECF8E] text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    {item.category}
-                  </span>
                 </div>
                 <div className="p-6">
-                  <time className="text-xs text-gray-400 font-medium">
-                    {new Date(item.publishedAt).toLocaleDateString("ru-RU", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </time>
+                  {item.publishedAt && (
+                    <time className="text-xs text-gray-400 font-medium">
+                      {new Date(item.publishedAt).toLocaleDateString("ru-RU", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </time>
+                  )}
                   <h2 className="mt-2 text-lg font-bold text-[#1A2332] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
                     {item.title}
                   </h2>
