@@ -77,10 +77,12 @@ function AnimatedStat({ value, label }: Stat) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-5xl font-bold text-white mb-2">
+      <div className="text-4xl md:text-5xl font-bold text-[#3ECF8E] mb-3">
         {display}
       </div>
-      <div className="text-sm text-gray-400">{label}</div>
+      <div className="text-xs text-white/80 uppercase tracking-[0.08em] leading-[1.5]">
+        {label}
+      </div>
     </div>
   );
 }
@@ -89,9 +91,14 @@ export default function StatsBar({ stats }: StatsBarProps) {
   return (
     <section className="bg-[#1A2332] py-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="section-heading white-underline-center text-center text-white mb-12">
-          Франчайзинг в цифрах
-        </h2>
+        <div className="text-center mb-12">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
+            UFA в цифрах
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.3]">
+            Что даёт франчайзинг Узбекистану
+          </h2>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {stats.map((stat, index) => (
             <AnimatedStat key={index} value={stat.value} label={stat.label} />

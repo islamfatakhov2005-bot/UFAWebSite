@@ -1,27 +1,27 @@
 import Link from "next/link";
-import { GraduationCap, Calendar, Shield } from "lucide-react";
+import { Building2, Store, Package } from "lucide-react";
 
-const columns = [
+const types = [
   {
-    icon: GraduationCap,
-    title: "Образование",
+    icon: Building2,
+    title: "Франчайзеры",
     description:
-      "Обучающие программы, курсы и сертификация для франчайзеров и франчайзи. Развивайте навыки управления франшизой с экспертами отрасли.",
-    href: "/education/courses",
+      "Для брендов, которые продают франшизы и развивают сеть. Лиды, исследования, маркетинг, юридическая поддержка.",
+    href: "/membership",
   },
   {
-    icon: Calendar,
-    title: "Мероприятия",
+    icon: Store,
+    title: "Франчайзи",
     description:
-      "Конференции, выставки и нетворкинг-сессии. Узнайте о последних трендах франчайзинга и найдите новых партнёров.",
-    href: "/events",
+      "Для владельцев одной или нескольких точек. Обучение, нетворкинг, аналитика и голос в отраслевой повестке.",
+    href: "/membership",
   },
   {
-    icon: Shield,
-    title: "Поддержка",
+    icon: Package,
+    title: "Поставщики",
     description:
-      "Юридические консультации, помощь в финансировании и экспертная поддержка на каждом этапе развития вашей франшизы.",
-    href: "/support/consulting",
+      "Для компаний, обслуживающих отрасль: юристы, IT, маркетинг, финансы. Прямой выход на лиц, принимающих решения.",
+    href: "/membership",
   },
 ];
 
@@ -29,30 +29,36 @@ export default function ThreeColumns() {
   return (
     <section className="py-20 bg-[#F4F4F4]">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="section-heading green-underline-center text-center mb-12">
-          Как мы можем помочь вашему бизнесу?
-        </h2>
+        <div className="text-center mb-16">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
+            Членство UFA
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1A2332] leading-[1.3]">
+            Выберите тип членства, подходящий вам
+          </h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {columns.map((col) => {
-            const Icon = col.icon;
+          {types.map((type) => {
+            const Icon = type.icon;
             return (
-              <div
-                key={col.title}
-                className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow"
+              <Link
+                key={type.title}
+                href={type.href}
+                className="group bg-white rounded-lg p-8 block hover:shadow-md transition-shadow"
               >
-                <div className="w-14 h-14 bg-[#3ECF8E] rounded-lg flex items-center justify-center mb-6">
-                  <Icon className="w-7 h-7 text-white" />
+                <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6">
+                  <Icon className="w-7 h-7 text-[#3ECF8E]" />
                 </div>
-                <h3 className="text-xl font-bold text-[#1A2332] mb-3">{col.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">{col.description}</p>
-                <Link
-                  href={col.href}
-                  className="inline-flex items-center gap-2 text-[#3ECF8E] font-medium text-sm"
-                >
-                  Узнать больше
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                  {type.title}
+                </h3>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-6">
+                  {type.description}
+                </p>
+                <span className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] group-hover:underline">
+                  Подробнее →
+                </span>
+              </Link>
             );
           })}
         </div>

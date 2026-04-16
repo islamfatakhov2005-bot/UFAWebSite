@@ -6,7 +6,12 @@
       "WebFetch(domain:lawsofux.com)",
       "WebFetch(domain:genesysgrowth.com)",
       "WebFetch(domain:trustmary.com)",
-      "WebFetch(domain:www.franchise.org)"
+      "WebFetch(domain:www.franchise.org)",
+      "Read(//c/Users/islam/.claude/agents/**)",
+      "Read(//c/Users/islam/.claude/commands/**)",
+      "Read(//c/Users/islam/.claude/**)",
+      "Bash(npx next *)",
+      "Bash(python scripts/deploy.py)"
     ]
   }
 }

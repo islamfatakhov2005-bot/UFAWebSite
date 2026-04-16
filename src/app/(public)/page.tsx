@@ -1,9 +1,10 @@
 import HeroCarousel from "@/components/public/HeroCarousel";
 import FranchisingTogether from "@/components/public/FranchisingTogether";
+import FindYourFranchise from "@/components/public/FindYourFranchise";
 import NewsGrid from "@/components/public/NewsGrid";
+import EventsSpotlight from "@/components/public/EventsSpotlight";
 import StatsBar from "@/components/public/StatsBar";
 import ThreeColumns from "@/components/public/ThreeColumns";
-import ImpactSection from "@/components/public/ImpactSection";
 import MembershipCTA from "@/components/public/MembershipCTA";
 import prisma from "@/lib/db";
 
@@ -12,7 +13,7 @@ const fallbackSlides = [
     id: 1,
     title: "Franchise Expo Tashkent 2026",
     subtitle: "Крупнейшая выставка франшиз в Центральной Азии. Более 200 брендов, 5000 посетителей.",
-    image: "/images/hero-1.svg",
+    image: "/images/hero-1.jpg",
     buttonText: "Зарегистрироваться",
     buttonUrl: "/events",
   },
@@ -20,7 +21,7 @@ const fallbackSlides = [
     id: 2,
     title: "Развивайте бизнес с UFA",
     subtitle: "Присоединяйтесь к Ассоциации Франчайзинга Узбекистана.",
-    image: "/images/hero-2.svg",
+    image: "/images/hero-2.jpg",
     buttonText: "Вступить в UFA",
     buttonUrl: "/membership",
   },
@@ -28,7 +29,7 @@ const fallbackSlides = [
     id: 3,
     title: "Образование и сертификация",
     subtitle: "Программы обучения мирового уровня для франчайзеров и франчайзи.",
-    image: "/images/hero-3.svg",
+    image: "/images/hero-3.jpg",
     buttonText: "Узнать больше",
     buttonUrl: "/education",
   },
@@ -98,10 +99,11 @@ export default async function HomePage() {
     <>
       <HeroCarousel slides={slides} />
       <FranchisingTogether />
+      <FindYourFranchise />
       {formattedNews.length > 0 && <NewsGrid news={formattedNews} />}
+      <EventsSpotlight />
       <StatsBar stats={stats} />
       <ThreeColumns />
-      <ImpactSection />
       <MembershipCTA />
     </>
   );

@@ -40,7 +40,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
 
   return (
     <section
-      className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden"
+      className="relative w-full h-[420px] md:h-[520px] lg:h-[600px] overflow-hidden"
       aria-roledescription="carousel"
       aria-label="Баннер-карусель"
       onMouseEnter={() => setPaused(true)}
@@ -74,25 +74,25 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             priority={index === 0}
             unoptimized={slide.image.endsWith(".svg")}
           />
-          <div className="absolute inset-0 bg-[#1A2332]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/85 via-[#1A2332]/55 to-[#1A2332]/30" />
           <div className="absolute inset-0 flex items-center">
-            <div className="max-w-7xl mx-auto px-4 w-full">
-              <div className="max-w-2xl mx-auto text-center">
-                <h1 className="text-2xl md:text-4xl lg:text-5xl font-medium uppercase tracking-[0.16em] text-white leading-[1.2] mb-3">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+              <div className="max-w-xl">
+                <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
+                  Ассоциация Франчайзинга Узбекистана
+                </span>
+                <h1 className="text-3xl md:text-4xl lg:text-[44px] font-bold text-white leading-[1.15] mb-5">
                   {slide.title}
                 </h1>
-                <div className="w-16 h-1 bg-[#3ECF8E] mb-6 mx-auto" />
-                <p className="text-base md:text-lg text-white/80 font-normal leading-[1.8] mb-8 max-w-xl mx-auto">
+                <p className="text-base md:text-lg text-white/85 leading-[1.7] mb-8">
                   {slide.subtitle}
                 </p>
-                <div className="flex items-center justify-center">
-                  <Link
-                    href={slide.buttonUrl}
-                    className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3 rounded font-semibold transition-colors"
-                  >
-                    {slide.buttonText}
-                  </Link>
-                </div>
+                <Link
+                  href={slide.buttonUrl}
+                  className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3.5 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+                >
+                  {slide.buttonText}
+                </Link>
               </div>
             </div>
           </div>
@@ -121,10 +121,10 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`h-1.5 rounded-full transition-all duration-300 ${
               index === current
-                ? "bg-[#3ECF8E]"
-                : "bg-white/50 hover:bg-white/75"
+                ? "bg-[#3ECF8E] w-8"
+                : "bg-white/50 hover:bg-white/75 w-4"
             }`}
             aria-label={`Слайд ${index + 1}`}
           />

@@ -1,63 +1,79 @@
 import Link from "next/link";
-import { Users, Shield, GraduationCap, Calendar } from "lucide-react";
+import { GraduationCap, Users, Megaphone } from "lucide-react";
 
-const ctaBoxes = [
-  {
-    icon: Users,
-    title: "Членство",
-    description: "Станьте частью крупнейшего сообщества",
-    href: "/membership",
-  },
-  {
-    icon: Shield,
-    title: "Поддержка",
-    description: "Защита интересов франчайзинга",
-    href: "/support",
-  },
+const pillars = [
   {
     icon: GraduationCap,
     title: "Образование",
-    description: "Программы обучения мирового уровня",
+    description:
+      "Практическое обучение, сертификация CFE, UFA Academy с 200+ курсами и живые семинары для всего франчайзингового сообщества.",
     href: "/education",
+    cta: "Изучить программы",
   },
   {
-    icon: Calendar,
-    title: "Мероприятия",
-    description: "Конференции и выставки",
-    href: "/events",
+    icon: Users,
+    title: "Сотрудничество",
+    description:
+      "Мы объединяем франчайзеров, франчайзи и поставщиков в одно сообщество. 1200+ участников, 10 региональных сетей, 12 программ.",
+    href: "/programs",
+    cta: "Наши сообщества",
+  },
+  {
+    icon: Megaphone,
+    title: "Адвокация",
+    description:
+      "Голос франчайзинга в Олий Мажлисе и министерствах. Законодательные инициативы, налоговые льготы, защита отношений франчайзинга.",
+    href: "/advocacy",
+    cta: "Наши приоритеты",
   },
 ];
 
 export default function FranchisingTogether() {
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="section-heading green-underline-center text-center mb-2">
-          Мы развиваем франчайзинг вместе
-        </h2>
-        <p className="text-sm text-gray-500 text-center max-w-2xl mx-auto mb-12 font-normal">
-          Узбекская Ассоциация Франчайзинга объединяет бренды, предпринимателей и
-          экспертов для развития франчайзинга в Узбекистане
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {ctaBoxes.map((box) => {
-            const Icon = box.icon;
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
+            Франчайзинг вместе
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1A2332] max-w-3xl mx-auto leading-[1.3]">
+            UFA помогает людям строить собственный бизнес и поддерживать свои сообщества
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
             return (
-              <Link
-                key={box.title}
-                href={box.href}
-                className="group bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow text-left"
+              <div
+                key={pillar.title}
+                className="bg-[#F4F4F4] rounded-lg p-8 flex flex-col"
               >
-                <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-5">
-                  <Icon className="w-7 h-7 text-[#3ECF8E]" />
+                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-6">
+                  <Icon className="w-8 h-8 text-[#3ECF8E]" />
                 </div>
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2">
-                  {box.title}
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-4">
+                  {pillar.title}
                 </h3>
-                <p className="text-sm text-gray-500">{box.description}</p>
-              </Link>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-6 flex-1">
+                  {pillar.description}
+                </p>
+                <Link
+                  href={pillar.href}
+                  className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] hover:underline"
+                >
+                  {pillar.cta} →
+                </Link>
+              </div>
             );
           })}
+        </div>
+        <div className="text-center mt-12">
+          <Link
+            href="/membership"
+            className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+          >
+            Вступить в UFA
+          </Link>
         </div>
       </div>
     </section>
