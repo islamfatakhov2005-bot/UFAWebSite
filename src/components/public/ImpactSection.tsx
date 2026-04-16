@@ -2,12 +2,12 @@ import Link from "next/link";
 
 export default function ImpactSection() {
   return (
-    <section className="py-20 bg-[#f5f7fa]">
+    <section className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] green-underline mb-8">
-          Влияние франчайзинга на экономику Узбекистана
+        <h2 className="section-heading green-underline mb-8">
+          Влияние франчайзинга на экономику
         </h2>
-        <div className="space-y-4 text-gray-600 leading-relaxed">
+        <div className="space-y-4 text-[#020409] text-sm leading-[1.8]">
           <p>
             Франчайзинг является одним из наиболее динамично развивающихся
             секторов экономики Узбекистана. Благодаря франшизной модели бизнеса
@@ -28,7 +28,7 @@ export default function ImpactSection() {
         </div>
         <Link
           href="/about"
-          className="inline-block mt-8 bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25"
+          className="inline-block mt-8 bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3 rounded font-semibold transition-colors"
         >
           Узнать больше
         </Link>

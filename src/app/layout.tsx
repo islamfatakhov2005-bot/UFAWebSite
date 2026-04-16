@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin", "cyrillic-ext"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -50,10 +43,7 @@ export const metadata: Metadata = {
       "Вступайте в крупнейшую ассоциацию франчайзинга Узбекистана. 500+ компаний-членов.",
     images: ["/og-image.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 const jsonLd = {
@@ -64,7 +54,7 @@ const jsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/logos/logo.png`,
   description:
-    "Ведущая организация по развитию и поддержке франчайзинга в Узбекистане. 500+ компаний-членов.",
+    "Ведущая организация по развитию и поддержке франчайзинга в Узбекистане.",
   foundingDate: "2019",
   address: {
     "@type": "PostalAddress",
@@ -81,10 +71,6 @@ const jsonLd = {
     "https://linkedin.com/company/ufa-uz",
     "https://youtube.com/@ufa_uz",
   ],
-  areaServed: {
-    "@type": "Country",
-    name: "Uzbekistan",
-  },
 };
 
 export default function RootLayout({
@@ -93,10 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ru"
-      className={`h-full antialiased ${plusJakartaSans.variable} ${inter.variable}`}
-    >
+    <html lang="ru" className={`h-full antialiased ${montserrat.variable}`}>
       <head>
         <script
           type="application/ld+json"

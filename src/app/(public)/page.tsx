@@ -1,23 +1,12 @@
-import type { Metadata } from "next";
 import HeroCarousel from "@/components/public/HeroCarousel";
 import FranchisingTogether from "@/components/public/FranchisingTogether";
 import NewsGrid from "@/components/public/NewsGrid";
-import EventsPreview from "@/components/public/EventsPreview";
 import StatsBar from "@/components/public/StatsBar";
 import ThreeColumns from "@/components/public/ThreeColumns";
+import ImpactSection from "@/components/public/ImpactSection";
 import MembershipCTA from "@/components/public/MembershipCTA";
-import PartnersSection from "@/components/public/PartnersSection";
-import TestimonialsSection from "@/components/public/TestimonialsSection";
-import NewsletterForm from "@/components/public/NewsletterForm";
-import FranchiseQuiz from "@/components/public/FranchiseQuiz";
 import prisma from "@/lib/db";
 
-export const metadata: Metadata = {
-  title: "UFA — Ассоциация Франчайзинга Узбекистана",
-  description: "Ведущая ассоциация франчайзинга в Узбекистане. 500+ франшиз, образовательные программы, мероприятия и поддержка бизнеса.",
-};
-
-// Fallback data used when DB is not available (first run without PostgreSQL)
 const fallbackSlides = [
   {
     id: 1,
@@ -41,7 +30,7 @@ const fallbackSlides = [
     subtitle: "Программы обучения мирового уровня для франчайзеров и франчайзи.",
     image: "/images/hero-3.svg",
     buttonText: "Узнать больше",
-    buttonUrl: "/about",
+    buttonUrl: "/education",
   },
 ];
 
@@ -54,18 +43,10 @@ const fallbackStats = [
   { value: "200+", label: "Международных брендов" },
 ];
 
-const fallbackPartners = Array.from({ length: 40 }, (_, i) => ({
-  id: i + 1,
-  name: `Партнёр ${i + 1}`,
-  logo: `/complogo/${i + 1}.png`,
-  website: "#",
-}));
-
 export default async function HomePage() {
   let slides = fallbackSlides;
   let stats = fallbackStats;
   let news: { id: number; title: string; slug: string; excerpt: string | null; image: string | null; publishedAt: Date | null }[] = [];
-  let partners = fallbackPartners;
 
   try {
     const dbSlides = await prisma.slide.findMany({
@@ -94,25 +75,11 @@ export default async function HomePage() {
     const dbNews = await prisma.news.findMany({
       where: { isPublished: true },
       orderBy: { publishedAt: "desc" },
-      take: 4,
+      take: 6,
       select: { id: true, title: true, slug: true, excerpt: true, image: true, publishedAt: true },
     });
     if (dbNews.length > 0) {
       news = dbNews;
-    }
-
-    const dbPartners = await prisma.partner.findMany({
-      where: { isActive: true },
-      orderBy: { sortOrder: "asc" },
-      select: { id: true, name: true, logo: true, website: true },
-    });
-    if (dbPartners.length > 0) {
-      partners = dbPartners.map((p) => ({
-        id: p.id,
-        name: p.name,
-        logo: p.logo,
-        website: p.website || "#",
-      }));
     }
   } catch {
     // DB not available — use fallback data
@@ -130,16 +97,12 @@ export default async function HomePage() {
   return (
     <>
       <HeroCarousel slides={slides} />
-      <StatsBar stats={stats} />
       <FranchisingTogether />
-      <ThreeColumns />
       {formattedNews.length > 0 && <NewsGrid news={formattedNews} />}
-      <EventsPreview />
-      <TestimonialsSection />
-      <FranchiseQuiz />
+      <StatsBar stats={stats} />
+      <ThreeColumns />
+      <ImpactSection />
       <MembershipCTA />
-      <PartnersSection partners={partners} />
-      <NewsletterForm />
     </>
   );
 }

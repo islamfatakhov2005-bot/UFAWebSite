@@ -16,10 +16,10 @@ interface NewsGridProps {
 
 export default function NewsGrid({ news }: NewsGridProps) {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-[#F4F4F4]">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] green-underline">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="section-heading green-underline">
             Последние новости
           </h2>
           <Link
@@ -29,19 +29,19 @@ export default function NewsGrid({ news }: NewsGridProps) {
             Центр новостей &rarr;
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((item) => (
             <Link
               key={item.id}
               href={`/news/${item.slug}`}
-              className="group bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden"
             >
-              <div className="relative aspect-video overflow-hidden rounded-t-2xl">
+              <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover"
                 />
               </div>
               <div className="p-5">
@@ -52,11 +52,11 @@ export default function NewsGrid({ news }: NewsGridProps) {
                     year: "numeric",
                   })}
                 </time>
-                <h3 className="mt-2 font-semibold text-[#1A2332] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
+                <h3 className="mt-2 font-semibold text-[#1A2332] line-clamp-2">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 line-clamp-2">{item.excerpt}</p>
-                <span className="inline-block mt-4 text-sm font-semibold text-[#3ECF8E] group-hover:translate-x-1 transition-transform">
+                <span className="inline-block mt-4 text-[#3ECF8E] font-medium text-sm">
                   Подробнее &rarr;
                 </span>
               </div>

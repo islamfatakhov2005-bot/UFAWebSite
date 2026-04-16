@@ -27,24 +27,27 @@ const columns = [
 
 export default function ThreeColumns() {
   return (
-    <section className="py-20 bg-[#f5f7fa]">
+    <section className="py-20 bg-[#F4F4F4]">
       <div className="max-w-7xl mx-auto px-4">
+        <h2 className="section-heading green-underline-center text-center mb-12">
+          Как мы можем помочь вашему бизнесу?
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {columns.map((col) => {
             const Icon = col.icon;
             return (
               <div
                 key={col.title}
-                className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex items-center justify-center mb-6">
+                <div className="w-14 h-14 bg-[#3ECF8E] rounded-lg flex items-center justify-center mb-6">
                   <Icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-[#1A2332] mb-3">{col.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-6">{col.description}</p>
                 <Link
                   href={col.href}
-                  className="inline-flex items-center gap-2 text-[#2A9D6F] font-semibold text-sm hover:gap-3 transition-all duration-300"
+                  className="inline-flex items-center gap-2 text-[#3ECF8E] font-medium text-sm"
                 >
                   Узнать больше
                   <span aria-hidden="true">&rarr;</span>

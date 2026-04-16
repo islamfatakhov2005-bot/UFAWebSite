@@ -115,7 +115,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/10 hover:bg-[#3ECF8E] rounded-lg flex items-center justify-center transition-colors duration-300"
+                    className="w-10 h-10 bg-white/10 hover:bg-[#3ECF8E] rounded-full flex items-center justify-center transition-colors duration-300"
                     aria-label={social.label}
                   >
                     <Icon className="w-4 h-4" />
@@ -158,7 +158,7 @@ export default function Footer() {
             </div>
             <Link
               href="/membership"
-              className="inline-flex bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25"
+              className="inline-flex bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3 rounded font-semibold transition-colors"
             >
               Вступить в UFA
             </Link>
@@ -193,7 +193,7 @@ export default function Footer() {
       {/* Scroll to top */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:shadow-xl"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-[#3ECF8E] hover:bg-[#35B67A] text-white rounded-full shadow-lg flex items-center justify-center transition-colors"
         aria-label="Наверх"
       >
         <ArrowUp className="w-5 h-5" />

@@ -5,7 +5,8 @@
       "WebSearch",
       "WebFetch(domain:lawsofux.com)",
       "WebFetch(domain:genesysgrowth.com)",
-      "WebFetch(domain:trustmary.com)"
+      "WebFetch(domain:trustmary.com)",
+      "WebFetch(domain:www.franchise.org)"
     ]
   }
 }

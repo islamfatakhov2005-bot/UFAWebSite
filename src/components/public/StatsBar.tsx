@@ -77,18 +77,21 @@ function AnimatedStat({ value, label }: Stat) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-4xl font-extrabold gradient-text mb-2">
+      <div className="text-5xl font-bold text-white mb-2">
         {display}
       </div>
-      <div className="text-sm text-gray-600">{label}</div>
+      <div className="text-sm text-gray-400">{label}</div>
     </div>
   );
 }
 
 export default function StatsBar({ stats }: StatsBarProps) {
   return (
-    <section className="bg-[#f5f7fa] py-16">
+    <section className="bg-[#1A2332] py-20">
       <div className="max-w-7xl mx-auto px-4">
+        <h2 className="section-heading white-underline-center text-center text-white mb-12">
+          Франчайзинг в цифрах
+        </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {stats.map((stat, index) => (
             <AnimatedStat key={index} value={stat.value} label={stat.label} />

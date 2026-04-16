@@ -32,10 +32,10 @@ export default function FranchisingTogether() {
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] mb-4">
-          ВМЕСТЕ РАЗВИВАЕМ ФРАНЧАЙЗИНГ
+        <h2 className="section-heading green-underline-center text-center mb-2">
+          Мы развиваем франчайзинг вместе
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+        <p className="text-sm text-gray-500 text-center max-w-2xl mx-auto mb-12 font-normal">
           Узбекская Ассоциация Франчайзинга объединяет бренды, предпринимателей и
           экспертов для развития франчайзинга в Узбекистане
         </p>
@@ -46,12 +46,12 @@ export default function FranchisingTogether() {
               <Link
                 key={box.title}
                 href={box.href}
-                className="group bg-white rounded-xl shadow-sm p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-left"
+                className="group bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow text-left"
               >
-                <div className="w-14 h-14 bg-[#3ECF8E]/10 rounded-xl flex items-center justify-center mb-5">
+                <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-5">
                   <Icon className="w-7 h-7 text-[#3ECF8E]" />
                 </div>
-                <h3 className="text-lg font-bold text-[#1A2332] mb-2 group-hover:text-[#3ECF8E] transition-colors">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2">
                   {box.title}
                 </h3>
                 <p className="text-sm text-gray-500">{box.description}</p>

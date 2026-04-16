@@ -74,29 +74,23 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             priority={index === 0}
             unoptimized={slide.image.endsWith(".svg")}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/80 via-[#1A2332]/50 to-transparent" />
+          <div className="absolute inset-0 bg-[#1A2332]/60" />
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
-              <div className="max-w-2xl mx-auto text-center lg:mx-0 lg:text-left">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-[-0.02em] mb-3">
+              <div className="max-w-2xl mx-auto text-center">
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-medium uppercase tracking-[0.16em] text-white leading-[1.2] mb-3">
                   {slide.title}
                 </h1>
-                <div className="w-16 h-1.5 bg-[#3ECF8E] rounded-full mb-6 mx-auto lg:mx-0" />
-                <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <div className="w-16 h-1 bg-[#3ECF8E] mb-6 mx-auto" />
+                <p className="text-base md:text-lg text-white/80 font-normal leading-[1.8] mb-8 max-w-xl mx-auto">
                   {slide.subtitle}
                 </p>
-                <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                <div className="flex items-center justify-center">
                   <Link
                     href={slide.buttonUrl}
-                    className="inline-block bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25"
+                    className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3 rounded font-semibold transition-colors"
                   >
                     {slide.buttonText}
-                  </Link>
-                  <Link
-                    href="/membership"
-                    className="inline-block border-2 border-white/60 hover:border-white hover:bg-white/10 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-                  >
-                    Узнать о членстве
                   </Link>
                 </div>
               </div>
@@ -129,7 +123,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             onClick={() => setCurrent(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === current
-                ? "bg-[#3ECF8E] w-8"
+                ? "bg-[#3ECF8E]"
                 : "bg-white/50 hover:bg-white/75"
             }`}
             aria-label={`Слайд ${index + 1}`}

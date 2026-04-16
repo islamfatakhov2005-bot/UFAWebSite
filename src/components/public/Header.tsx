@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { SearchTrigger } from "./SearchDialog";
-import DarkModeToggle from "./DarkModeToggle";
 
 const megaMenuData: Record<string, { title: string; links: { label: string; href: string }[] }[]> = {
   "Что такое франчайзинг?": [
@@ -119,13 +118,12 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-3 ml-auto">
             <SearchTrigger />
-            <DarkModeToggle />
             <Link href="/admin/login" className="hover:text-[#3ECF8E] transition-colors">
               Войти
             </Link>
             <Link
               href="/membership"
-              className="bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-4 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm hover:shadow-md hover:shadow-[#3ECF8E]/20"
+              className="bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-4 py-1.5 rounded text-xs font-semibold transition-colors"
             >
               Вступить в UFA
             </Link>
@@ -157,7 +155,7 @@ export default function Header() {
                 onMouseLeave={() => setActiveMenu(null)}
               >
                 <button
-                  className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-lg ${
+                  className={`flex items-center gap-1 px-3 py-2 uppercase tracking-[0.05em] text-[13px] font-medium transition-colors rounded-lg ${
                     isMenuActive(item, pathname)
                       ? "text-[#3ECF8E]"
                       : "text-gray-700 hover:text-[#3ECF8E]"
@@ -204,7 +202,7 @@ export default function Header() {
           {/* Find a Franchise CTA */}
           <Link
             href="/franchise-opportunities"
-            className="hidden lg:inline-flex bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25"
+            className="hidden lg:inline-flex bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-5 py-2 rounded text-sm font-semibold transition-colors whitespace-nowrap"
           >
             Найти франшизу
           </Link>
@@ -271,7 +269,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/membership"
-                className="block w-full text-center bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] text-white py-3 rounded-lg font-semibold shadow-sm"
+                className="block w-full text-center bg-[#3ECF8E] hover:bg-[#35B67A] text-white py-3 rounded font-semibold transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Вступить в UFA
