@@ -11,7 +11,13 @@
       "Read(//c/Users/islam/.claude/commands/**)",
       "Read(//c/Users/islam/.claude/**)",
       "Bash(npx next *)",
-      "Bash(python scripts/deploy.py)"
+      "Bash(python scripts/deploy.py)",
+      "Bash(curl -s -o /dev/null -w \"/ %{http_code}\\\\n\" https://ufa.gmlb.ru/)",
+      "Bash(curl -s -o /dev/null -w \"terms %{http_code}\\\\n\" https://ufa.gmlb.ru/terms)",
+      "Bash(curl -s -o /dev/null -w \"privacy %{http_code}\\\\n\" https://ufa.gmlb.ru/privacy)",
+      "Bash(curl -s -o /dev/null -w \"careers %{http_code}\\\\n\" https://ufa.gmlb.ru/careers)",
+      "Bash(curl -s -o /dev/null -w \"media-kit %{http_code}\\\\n\" https://ufa.gmlb.ru/media-kit)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' https://ufa.gmlb.ru/__TRACKED_VAR__)"
     ]
   }
 }

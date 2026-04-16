@@ -9,7 +9,7 @@ HOST = "85.198.69.235"
 USER = "root"
 PASSWORD = "kJ(4kfNy8C@M"
 
-CMD = "cd /root/UFAWebSite && docker rm -f ufa-website ufa-postgres 2>/dev/null; docker compose up -d --build 2>&1"
+CMD = "cd /root/UFAWebSite && git pull && docker rm -f ufa-website ufa-postgres 2>/dev/null; docker compose up -d --build 2>&1"
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
