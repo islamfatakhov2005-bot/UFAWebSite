@@ -114,7 +114,7 @@ export default async function NewsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Центр новостей и исследований
@@ -137,7 +137,7 @@ export default async function NewsPage() {
                 className={`px-5 py-2 rounded text-xs font-bold uppercase tracking-[0.08em] transition-colors ${
                   i === 0
                     ? "bg-[#3ECF8E] text-white"
-                    : "bg-[#F4F4F4] text-[#1A2332] hover:bg-[#3ECF8E] hover:text-white"
+                    : "bg-[#F4F4F4] text-[#0B2645] hover:bg-[#3ECF8E] hover:text-white"
                 }`}
               >
                 {cat}
@@ -175,7 +175,7 @@ export default async function NewsPage() {
                       })}
                     </time>
                   )}
-                  <h2 className="mt-3 text-base font-semibold text-[#1A2332] leading-[1.5] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
+                  <h2 className="mt-3 text-base font-semibold text-[#0B2645] leading-[1.5] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
                     {item.title}
                   </h2>
                   <p className="mt-3 text-sm text-[#020409] leading-[1.8] line-clamp-3">
@@ -209,7 +209,7 @@ export default async function NewsPage() {
                   <div className="w-12 h-12 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                     {resource.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">

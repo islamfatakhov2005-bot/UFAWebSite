@@ -4,9 +4,13 @@
   --color-primary: #3ECF8E;
   --color-primary-dark: #35B67A;
   --color-primary-text: #2A9D6F;
-  --color-dark: #1A2332;
-  --color-dark-secondary: #2A3A4F;
-  --color-light: #F4F4F4;
+  --color-navy: #0B2645;
+  --color-navy-dark: #07192E;
+  --color-navy-light: #143B6B;
+  --color-dark: #0B2645;
+  --color-dark-secondary: #143B6B;
+  --color-light: #F5F6F8;
+  --color-border: #D5DCE5;
   --font-sans: 'Montserrat', system-ui, sans-serif;
 }
 
@@ -16,13 +20,15 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: #020409;
+  color: #0B2645;
   background: #ffffff;
-  line-height: 1.8;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #3ECF8E;
+  background-color: #0B2645;
   color: white;
 }
 
@@ -36,63 +42,66 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #F5F6F8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3ECF8E;
-  border-radius: 4px;
+  background: #0B2645;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #35B67A;
+  background: #143B6B;
 }
 
+/* Corporate-style heading: tight, bold, no automatic underline */
 .section-heading {
-  font-size: 1.25rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #1A2332;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0B2645;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 @media (min-width: 768px) {
   .section-heading {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
-.green-underline::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #3ECF8E;
-  margin-top: 12px;
+@media (min-width: 1024px) {
+  .section-heading {
+    font-size: 2.25rem;
+  }
 }
 
-.green-underline-center::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #3ECF8E;
-  margin-top: 12px;
-  margin-left: auto;
-  margin-right: auto;
+/* Small eyebrow label above major headings */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #0B2645;
 }
 
+/* Legacy underlines kept for backward compat, but thinner, subtler */
+.green-underline::after,
+.green-underline-center::after,
 .white-underline-center::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 4px;
+  width: 48px;
+  height: 2px;
   background: #3ECF8E;
-  margin-top: 12px;
+  margin-top: 16px;
+}
+
+.green-underline-center::after,
+.white-underline-center::after {
   margin-left: auto;
   margin-right: auto;
 }

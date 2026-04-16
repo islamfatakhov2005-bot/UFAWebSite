@@ -89,7 +89,7 @@ export default async function FranchiseDirectoryPage({ searchParams }: PageProps
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#1A2332] py-10">
+      <div className="bg-[#0B2645] py-10">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold text-white">
             Каталог франшиз

@@ -94,7 +94,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/90 via-[#1A2332]/70 to-[#1A2332]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2645]/90 via-[#0B2645]/70 to-[#0B2645]/50" />
         <div className="relative max-w-4xl mx-auto px-4">
           <Link
             href="/news"
@@ -137,7 +137,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
       {related.length > 0 && (
         <section className="py-16 bg-[#f5f7fa]">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl font-extrabold text-[#1A2332] mb-8">
+            <h2 className="text-2xl font-extrabold text-[#0B2645] mb-8">
               Другие новости
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -165,7 +165,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
                         })}
                       </time>
                     )}
-                    <h3 className="mt-2 text-base font-bold text-[#1A2332] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
+                    <h3 className="mt-2 text-base font-bold text-[#0B2645] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
                       {item.title}
                     </h3>
                   </div>

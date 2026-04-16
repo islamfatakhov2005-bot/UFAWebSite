@@ -81,7 +81,7 @@ export default function FundingPage() {
                   {i + 1}
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2">
                     {option.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">

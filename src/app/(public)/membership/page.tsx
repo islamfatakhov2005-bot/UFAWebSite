@@ -201,7 +201,7 @@ export default function MembershipPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Присоединяйтесь к нам во Франчайзинге Вместе
@@ -221,7 +221,7 @@ export default function MembershipPage() {
             </Link>
             <Link
               href="/contact"
-              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#1A2332] px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#0B2645] px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
               Узнать больше
             </Link>
@@ -246,7 +246,7 @@ export default function MembershipPage() {
                   <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6">
                     <Icon className="w-7 h-7 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                     {type.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8] mb-6 flex-1">
@@ -266,7 +266,7 @@ export default function MembershipPage() {
       </section>
 
       {/* Membership by the Numbers */}
-      <section className="py-20 bg-[#1A2332]">
+      <section className="py-20 bg-[#0B2645]">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="section-heading white-underline-center !text-white text-center mb-12">
             Членство UFA в цифрах
@@ -306,7 +306,7 @@ export default function MembershipPage() {
                     <div className="w-16 h-16 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-4">
                       <Icon className="w-8 h-8 text-[#3ECF8E]" />
                     </div>
-                    <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332]">
+                    <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645]">
                       {benefit.title}
                     </h3>
                   </div>
@@ -344,7 +344,7 @@ export default function MembershipPage() {
                 key={plan.name}
                 className={`rounded-lg p-8 ${
                   plan.featured
-                    ? "bg-[#1A2332] text-white relative"
+                    ? "bg-[#0B2645] text-white relative"
                     : "bg-white border border-gray-200"
                 }`}
               >
@@ -355,7 +355,7 @@ export default function MembershipPage() {
                 )}
                 <h3
                   className={`text-base font-semibold uppercase tracking-[0.08em] mb-2 ${
-                    plan.featured ? "text-white" : "text-[#1A2332]"
+                    plan.featured ? "text-white" : "text-[#0B2645]"
                   }`}
                 >
                   {plan.name}
@@ -370,7 +370,7 @@ export default function MembershipPage() {
                 <div className="mb-6">
                   <span
                     className={`text-3xl font-bold ${
-                      plan.featured ? "text-[#3ECF8E]" : "text-[#1A2332]"
+                      plan.featured ? "text-[#3ECF8E]" : "text-[#0B2645]"
                     }`}
                   >
                     {plan.price}
@@ -448,7 +448,7 @@ export default function MembershipPage() {
                 key={person.email}
                 className="bg-white rounded-lg p-6 shadow-sm"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
                   {person.name}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
@@ -487,7 +487,7 @@ export default function MembershipPage() {
                 href={card.href}
                 className="group bg-[#F4F4F4] rounded-lg p-8 block hover:shadow-md transition-shadow"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                   {card.title}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">

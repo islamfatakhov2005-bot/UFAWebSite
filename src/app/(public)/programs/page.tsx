@@ -108,7 +108,7 @@ export default function ProgramsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Когда мы работаем вместе — нет предела тому, чего мы достигаем
@@ -140,7 +140,7 @@ export default function ProgramsPage() {
                   <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                     {program.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8] flex-1">
@@ -157,7 +157,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1A2332]">
+      <section className="py-20 bg-[#0B2645]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="section-heading white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Присоединяйтесь к сообществу
@@ -176,7 +176,7 @@ export default function ProgramsPage() {
             </Link>
             <Link
               href="/contact"
-              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#1A2332] px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#0B2645] px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
               Задать вопрос
             </Link>

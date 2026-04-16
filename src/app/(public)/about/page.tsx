@@ -49,7 +49,7 @@ export default function AboutPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-6" style={{ fontSize: "1.5rem" }}>
             Об Ассоциации
@@ -64,13 +64,13 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
             <Link
               href="#leadership"
-              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#1A2332] px-8 py-3 rounded font-semibold text-sm uppercase tracking-[0.08em] transition-colors"
+              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#0B2645] px-8 py-3 rounded font-semibold text-sm uppercase tracking-[0.08em] transition-colors"
             >
               Руководство UFA
             </Link>
             <Link
               href="#team"
-              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#1A2332] px-8 py-3 rounded font-semibold text-sm uppercase tracking-[0.08em] transition-colors"
+              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#0B2645] px-8 py-3 rounded font-semibold text-sm uppercase tracking-[0.08em] transition-colors"
             >
               Команда UFA
             </Link>
@@ -102,7 +102,7 @@ export default function AboutPage() {
                   <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6">
                     <Icon className="w-7 h-7 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                     {pillar.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">{pillar.text}</p>

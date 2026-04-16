@@ -126,7 +126,7 @@ export default function CodeOfEthicsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/90 via-[#1A2332]/70 to-[#1A2332]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2645]/90 via-[#0B2645]/70 to-[#0B2645]/50" />
         <div className="relative max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
             Кодекс этики франчайзинга
@@ -143,7 +143,7 @@ export default function CodeOfEthicsPage() {
       {/* Introduction */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-[#1A2332] green-underline-center text-center mb-8">
+          <h2 className="text-3xl font-extrabold text-[#0B2645] green-underline-center text-center mb-8">
             Зачем нужен Кодекс этики
           </h2>
           <div className="space-y-4 text-gray-600 leading-relaxed text-lg">
@@ -172,7 +172,7 @@ export default function CodeOfEthicsPage() {
       {/* Principles */}
       <section className="py-20 bg-[#f5f7fa]">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-[#1A2332] green-underline-center text-center mb-4">
+          <h2 className="text-3xl font-extrabold text-[#0B2645] green-underline-center text-center mb-4">
             Основные принципы
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
@@ -191,13 +191,13 @@ export default function CodeOfEthicsPage() {
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex items-center justify-center relative">
                         <Icon className="w-6 h-6 text-white" />
-                        <span className="absolute -top-2 -right-2 w-6 h-6 bg-[#1A2332] text-white text-xs font-bold rounded-full flex items-center justify-center">
+                        <span className="absolute -top-2 -right-2 w-6 h-6 bg-[#0B2645] text-white text-xs font-bold rounded-full flex items-center justify-center">
                           {index + 1}
                         </span>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-[#1A2332] mb-2">
+                      <h3 className="text-lg font-bold text-[#0B2645] mb-2">
                         {principle.title}
                       </h3>
                       <p className="text-gray-600 text-sm leading-relaxed">
@@ -215,7 +215,7 @@ export default function CodeOfEthicsPage() {
       {/* Compliance */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-[#1A2332] green-underline-center text-center mb-4">
+          <h2 className="text-3xl font-extrabold text-[#0B2645] green-underline-center text-center mb-4">
             Контроль соблюдения
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
@@ -233,7 +233,7 @@ export default function CodeOfEthicsPage() {
                   <div className="w-14 h-14 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#1A2332] mb-2">
+                  <h3 className="text-lg font-bold text-[#0B2645] mb-2">
                     {item.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -270,7 +270,7 @@ export default function CodeOfEthicsPage() {
       {/* CTA */}
       <section className="py-20 bg-[#f5f7fa]">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold text-[#1A2332] mb-4">
+          <h2 className="text-3xl font-extrabold text-[#0B2645] mb-4">
             Присоединяйтесь к ответственному франчайзингу
           </h2>
           <p className="text-gray-600 text-lg mb-8 leading-relaxed">

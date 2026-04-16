@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function MembershipCTA() {
   return (
-    <section className="py-20 bg-[#1A2332]">
+    <section className="py-20 bg-[#0B2645]">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
           Присоединяйтесь
@@ -24,7 +24,7 @@ export default function MembershipCTA() {
           </Link>
           <Link
             href="/membership"
-            className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#1A2332] px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+            className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#0B2645] px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Условия членства
           </Link>

@@ -82,7 +82,7 @@ export default function ContactPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Контакты
@@ -131,7 +131,7 @@ export default function ContactPage() {
                 key={dept.name}
                 className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                   {dept.name}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-3">{dept.handles}</p>

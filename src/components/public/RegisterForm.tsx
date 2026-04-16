@@ -80,7 +80,7 @@ export default function RegisterForm() {
       errors[field] ? "border-red-400 bg-red-50" : "border-gray-200 bg-white"
     } focus:outline-none focus:ring-2 focus:ring-[#3ECF8E]/40 focus:border-[#3ECF8E] transition-colors text-sm`;
 
-  const label = "block text-xs font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2";
+  const label = "block text-xs font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2";
 
   if (status === "success") {
     return (
@@ -90,7 +90,7 @@ export default function RegisterForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-4">
+        <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-4">
           Аккаунт создан
         </h3>
         <p className="text-[#020409] text-sm leading-[1.8]">

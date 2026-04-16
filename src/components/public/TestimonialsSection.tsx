@@ -46,7 +46,7 @@ export default function TestimonialsSection() {
   return (
     <section className="py-20 bg-[#f5f7fa]">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-extrabold text-[#1A2332] green-underline-center text-center mb-12">
+        <h2 className="text-3xl font-extrabold text-[#0B2645] green-underline-center text-center mb-12">
           Истории наших участников
         </h2>
 
@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
                 unoptimized
               />
               <div className="text-left">
-                <p className="font-bold text-[#1A2332]">{t.name}</p>
+                <p className="font-bold text-[#0B2645]">{t.name}</p>
                 <p className="text-sm text-gray-500">{t.role}</p>
               </div>
             </div>

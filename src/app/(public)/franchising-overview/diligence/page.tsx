@@ -60,7 +60,7 @@ export default function DiligencePage() {
                 {String(i + 1).padStart(2, "0")}
               </div>
               <div>
-                <h2 className="text-xl font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                <h2 className="text-xl font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                   {step.title}
                 </h2>
                 <p className="text-[#020409] text-sm leading-[1.8]">

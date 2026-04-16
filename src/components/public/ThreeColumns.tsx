@@ -33,7 +33,7 @@ export default function ThreeColumns() {
           <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
             Членство UFA
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A2332] leading-[1.3]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0B2645] leading-[1.3]">
             Выберите тип членства, подходящий вам
           </h2>
         </div>
@@ -49,7 +49,7 @@ export default function ThreeColumns() {
                 <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6">
                   <Icon className="w-7 h-7 text-[#3ECF8E]" />
                 </div>
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                   {type.title}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-6">

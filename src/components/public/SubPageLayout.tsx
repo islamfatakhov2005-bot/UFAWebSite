@@ -42,7 +42,7 @@ export default function SubPageLayout({
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/75" />
+        <div className="absolute inset-0 bg-[#0B2645]/75" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl lg:text-[40px] font-bold text-white leading-[1.2] mb-4">
             {hero.title}
@@ -62,7 +62,7 @@ export default function SubPageLayout({
           <div className="flex flex-col lg:flex-row gap-12">
             <aside className="lg:w-72 flex-shrink-0">
               <div className="bg-[#F4F4F4] rounded-lg p-6 lg:sticky lg:top-24">
-                <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#1A2332] mb-4">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0B2645] mb-4">
                   {sidebarTitle}
                 </h3>
                 <nav className="space-y-1">
@@ -101,7 +101,7 @@ export default function SubPageLayout({
                   href={card.href}
                   className="group bg-white rounded-lg p-8 block hover:shadow-md transition-shadow"
                 >
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                     {card.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8] mb-4">

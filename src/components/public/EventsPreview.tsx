@@ -33,7 +33,7 @@ export default function EventsPreview() {
     <section className="py-20 bg-[#f5f7fa]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] green-underline">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B2645] green-underline">
             Календарь мероприятий UFA
           </h2>
           <Link
@@ -60,7 +60,7 @@ export default function EventsPreview() {
                 </span>
               </div>
               <div className="min-w-0">
-                <h3 className="font-bold text-[#1A2332] group-hover:text-[#3ECF8E] transition-colors line-clamp-2">
+                <h3 className="font-bold text-[#0B2645] group-hover:text-[#3ECF8E] transition-colors line-clamp-2">
                   {event.name}
                 </h3>
                 <p className="flex items-center gap-1 text-sm text-gray-500 mt-1">

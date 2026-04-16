@@ -36,7 +36,7 @@ export default function FranchisingTogether() {
           <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
             Франчайзинг вместе
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A2332] max-w-3xl mx-auto leading-[1.3]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0B2645] max-w-3xl mx-auto leading-[1.3]">
             UFA помогает людям строить собственный бизнес и поддерживать свои сообщества
           </h2>
         </div>
@@ -51,7 +51,7 @@ export default function FranchisingTogether() {
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-6">
                   <Icon className="w-8 h-8 text-[#3ECF8E]" />
                 </div>
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-4">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-4">
                   {pillar.title}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-6 flex-1">

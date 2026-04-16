@@ -74,7 +74,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             priority={index === 0}
             unoptimized={slide.image.endsWith(".svg")}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/85 via-[#1A2332]/55 to-[#1A2332]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B2645]/85 via-[#0B2645]/55 to-[#0B2645]/30" />
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
               <div className="max-w-xl">

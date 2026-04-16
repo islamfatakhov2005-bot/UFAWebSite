@@ -22,7 +22,7 @@ export default function NewsGrid({ news }: NewsGridProps) {
           <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
             Центр новостей
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A2332] leading-[1.3]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0B2645] leading-[1.3]">
             Последние новости франчайзинга
           </h2>
         </div>
@@ -49,7 +49,7 @@ export default function NewsGrid({ news }: NewsGridProps) {
                     year: "numeric",
                   })}
                 </time>
-                <h3 className="mt-3 text-lg font-bold text-[#1A2332] leading-[1.4] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
+                <h3 className="mt-3 text-lg font-bold text-[#0B2645] leading-[1.4] line-clamp-2 group-hover:text-[#3ECF8E] transition-colors">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm text-[#020409] leading-[1.7] line-clamp-2">

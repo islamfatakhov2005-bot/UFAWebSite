@@ -86,7 +86,7 @@ export default function FranchisorsMembershipPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/75" />
+        <div className="absolute inset-0 bg-[#0B2645]/75" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl lg:text-[40px] font-bold text-white leading-[1.2] mb-4">
             Членство для франчайзеров
@@ -117,7 +117,7 @@ export default function FranchisorsMembershipPage() {
                 key={cat.title}
                 className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start"
               >
-                <h3 className="md:col-span-4 text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332]">
+                <h3 className="md:col-span-4 text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645]">
                   {cat.title}
                 </h3>
                 <ul className="md:col-span-8 space-y-3">
@@ -148,7 +148,7 @@ export default function FranchisorsMembershipPage() {
           </p>
           <div className="bg-white rounded-lg overflow-hidden">
             <table className="w-full">
-              <thead className="bg-[#1A2332] text-white">
+              <thead className="bg-[#0B2645] text-white">
                 <tr>
                   <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-[0.08em]">
                     Размер сети
@@ -164,7 +164,7 @@ export default function FranchisorsMembershipPage() {
                     <td className="px-6 py-4 text-[#020409] text-sm">
                       {row.tier}
                     </td>
-                    <td className="px-6 py-4 text-right text-[#1A2332] font-bold text-sm">
+                    <td className="px-6 py-4 text-right text-[#0B2645] font-bold text-sm">
                       {row.price} сум / год
                     </td>
                   </tr>
@@ -194,7 +194,7 @@ export default function FranchisorsMembershipPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
                   {person.name}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">

@@ -184,7 +184,7 @@ export default function FranchiseQuiz() {
   const progress = done ? 100 : ((currentStep) / steps.length) * 100;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#1A2332] to-[#2A3A4F]">
+    <section className="py-20 bg-gradient-to-br from-[#0B2645] to-[#143B6B]">
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-3">
@@ -215,7 +215,7 @@ export default function FranchiseQuiz() {
               <p className="text-xs text-gray-400 mb-2">
                 Вопрос {currentStep + 1} из {steps.length}
               </p>
-              <h3 className="text-xl font-bold text-[#1A2332] mb-6">
+              <h3 className="text-xl font-bold text-[#0B2645] mb-6">
                 {steps[currentStep].question}
               </h3>
               <div className="space-y-3">
@@ -248,7 +248,7 @@ export default function FranchiseQuiz() {
               <div className="w-16 h-16 bg-[#3ECF8E]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Sparkles className="w-8 h-8 text-[#3ECF8E]" />
               </div>
-              <h3 className="text-2xl font-bold text-[#1A2332] mb-2">
+              <h3 className="text-2xl font-bold text-[#0B2645] mb-2">
                 {result!.title}
               </h3>
               <p className="text-gray-600 mb-2">{result!.description}</p>

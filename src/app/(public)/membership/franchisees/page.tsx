@@ -114,7 +114,7 @@ export default function FranchiseesMembershipPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/75" />
+        <div className="absolute inset-0 bg-[#0B2645]/75" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl lg:text-[40px] font-bold text-white leading-[1.2] mb-4">
             Членство для франчайзи
@@ -144,7 +144,7 @@ export default function FranchiseesMembershipPage() {
                 key={tier.name}
                 className={`rounded-lg p-6 flex flex-col ${
                   tier.featured
-                    ? "bg-[#1A2332] text-white relative"
+                    ? "bg-[#0B2645] text-white relative"
                     : "bg-[#F4F4F4]"
                 }`}
               >
@@ -155,7 +155,7 @@ export default function FranchiseesMembershipPage() {
                 )}
                 <h3
                   className={`text-base font-semibold uppercase tracking-[0.08em] mb-2 ${
-                    tier.featured ? "text-white" : "text-[#1A2332]"
+                    tier.featured ? "text-white" : "text-[#0B2645]"
                   }`}
                 >
                   {tier.name}
@@ -170,7 +170,7 @@ export default function FranchiseesMembershipPage() {
                 <div className="mb-6">
                   <span
                     className={`text-2xl font-bold ${
-                      tier.featured ? "text-[#3ECF8E]" : "text-[#1A2332]"
+                      tier.featured ? "text-[#3ECF8E]" : "text-[#0B2645]"
                     }`}
                   >
                     {tier.price}
@@ -222,7 +222,7 @@ export default function FranchiseesMembershipPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {benefits.map((cat) => (
               <div key={cat.title} className="bg-white rounded-lg p-8">
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-4">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-4">
                   {cat.title}
                 </h3>
                 <ul className="space-y-3">
@@ -253,7 +253,7 @@ export default function FranchiseesMembershipPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
                   {person.name}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">

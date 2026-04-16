@@ -77,7 +77,7 @@ export default function Header() {
           </form>
 
           {/* Secondary nav links */}
-          <nav className="hidden xl:flex items-center gap-5 text-sm font-medium text-[#1A2332]">
+          <nav className="hidden xl:flex items-center gap-5 text-sm font-medium text-[#0B2645]">
             {secondaryLinks.map((link) => (
               <Link
                 key={link.href}
@@ -95,13 +95,13 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-2 ml-auto">
             <Link
               href="/franchise-opportunities"
-              className="border-2 border-[#1A2332] text-[#1A2332] hover:bg-[#1A2332] hover:text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-[0.05em] whitespace-nowrap transition-colors"
+              className="border-2 border-[#0B2645] text-[#0B2645] hover:bg-[#0B2645] hover:text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-[0.05em] whitespace-nowrap transition-colors"
             >
               Найти франшизу
             </Link>
             <Link
               href="/login"
-              className="hidden lg:inline-block border-2 border-[#1A2332] text-[#1A2332] hover:bg-[#1A2332] hover:text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-[0.05em] whitespace-nowrap transition-colors"
+              className="hidden lg:inline-block border-2 border-[#0B2645] text-[#0B2645] hover:bg-[#0B2645] hover:text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-[0.05em] whitespace-nowrap transition-colors"
             >
               Членская зона
             </Link>
@@ -125,7 +125,7 @@ export default function Header() {
       </div>
 
       {/* Navy main nav bar */}
-      <nav className="hidden lg:block bg-[#1A2332]">
+      <nav className="hidden lg:block bg-[#0B2645]">
         <div className="max-w-[1400px] mx-auto px-4">
           <ul className="flex items-center justify-between h-12">
             {mainNav.map((item) => (
@@ -169,7 +169,7 @@ export default function Header() {
                   className={`block py-3 px-3 text-sm font-semibold uppercase tracking-[0.08em] rounded transition-colors ${
                     isActive(item.href, pathname)
                       ? "bg-[#3ECF8E] text-white"
-                      : "text-[#1A2332] hover:bg-[#F4F4F4]"
+                      : "text-[#0B2645] hover:bg-[#F4F4F4]"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -194,14 +194,14 @@ export default function Header() {
             <div className="space-y-2 pt-4">
               <Link
                 href="/franchise-opportunities"
-                className="block text-center border-2 border-[#1A2332] text-[#1A2332] py-3 rounded text-sm font-bold uppercase tracking-[0.08em] transition-colors"
+                className="block text-center border-2 border-[#0B2645] text-[#0B2645] py-3 rounded text-sm font-bold uppercase tracking-[0.08em] transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Найти франшизу
               </Link>
               <Link
                 href="/login"
-                className="block text-center border-2 border-[#1A2332] text-[#1A2332] py-3 rounded text-sm font-bold uppercase tracking-[0.08em] transition-colors"
+                className="block text-center border-2 border-[#0B2645] text-[#0B2645] py-3 rounded text-sm font-bold uppercase tracking-[0.08em] transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Членская зона

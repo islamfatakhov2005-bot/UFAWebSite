@@ -53,7 +53,7 @@ export default function FeaturedCarousel({ franchises }: FeaturedCarouselProps) 
   if (franchises.length === 0) return null;
 
   return (
-    <section className="bg-[#1A2332] rounded-xl p-8 mb-8">
+    <section className="bg-[#0B2645] rounded-xl p-8 mb-8">
       <div className="mb-6">
         <h2
           className="text-white text-sm font-bold uppercase tracking-[0.2em] relative pb-4
@@ -96,7 +96,7 @@ export default function FeaturedCarousel({ franchises }: FeaturedCarouselProps) 
                   />
                 </div>
               ) : (
-                <div className="w-14 h-14 rounded-full bg-[#1A2332] flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-[#0B2645] flex items-center justify-center">
                   <span className="text-white font-semibold text-base">
                     {getInitials(franchise.name)}
                   </span>

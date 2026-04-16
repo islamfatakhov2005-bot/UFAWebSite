@@ -20,7 +20,7 @@ export default function FindYourFranchise() {
         fill
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-[#1A2332]/80" />
+      <div className="absolute inset-0 bg-[#0B2645]/80" />
       <div className="relative max-w-4xl mx-auto px-4 text-center">
         <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
           Каталог франшиз UFA

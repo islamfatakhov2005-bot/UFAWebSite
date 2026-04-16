@@ -92,7 +92,7 @@ export default function CareersPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/75" />
+        <div className="absolute inset-0 bg-[#0B2645]/75" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl lg:text-[40px] font-bold text-white leading-[1.2] mb-4">
             Работайте с нами
@@ -122,7 +122,7 @@ export default function CareersPage() {
                   <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 mx-auto">
                     <Icon className="w-6 h-6 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                     {v.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">
@@ -147,7 +147,7 @@ export default function CareersPage() {
                 className="bg-white rounded-lg p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6"
               >
                 <div className="flex-1">
-                  <h3 className="text-base font-semibold text-[#1A2332] mb-2">
+                  <h3 className="text-base font-semibold text-[#0B2645] mb-2">
                     {job.title}
                   </h3>
                   <div className="flex flex-wrap gap-4 text-xs text-gray-600 uppercase tracking-[0.08em]">
@@ -168,7 +168,7 @@ export default function CareersPage() {
             ))}
           </div>
           <div className="text-center mt-12 bg-white rounded-lg p-10">
-            <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+            <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
               Не нашли подходящей позиции?
             </h3>
             <p className="text-[#020409] text-sm leading-[1.8] mb-6">

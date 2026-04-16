@@ -80,7 +80,7 @@ export default async function EventDetailPage({ params }: PageProps) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/90 via-[#1A2332]/70 to-[#1A2332]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2645]/90 via-[#0B2645]/70 to-[#0B2645]/50" />
         <div className="relative max-w-4xl mx-auto px-4">
           <Link
             href="/events"
@@ -118,7 +118,7 @@ export default async function EventDetailPage({ params }: PageProps) {
               </div>
               <div>
                 <div className="text-xs text-gray-500">Дата</div>
-                <div className="text-sm font-semibold text-[#1A2332]">
+                <div className="text-sm font-semibold text-[#0B2645]">
                   {formatDate(event.startDate)}
                   {event.endDate && ` — ${formatDate(event.endDate)}`}
                 </div>
@@ -130,7 +130,7 @@ export default async function EventDetailPage({ params }: PageProps) {
               </div>
               <div>
                 <div className="text-xs text-gray-500">Время</div>
-                <div className="text-sm font-semibold text-[#1A2332]">
+                <div className="text-sm font-semibold text-[#0B2645]">
                   {formatTime(event.startDate)}
                   {event.endDate && ` — ${formatTime(event.endDate)}`}
                 </div>
@@ -143,7 +143,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                 </div>
                 <div>
                   <div className="text-xs text-gray-500">Место</div>
-                  <div className="text-sm font-semibold text-[#1A2332]">{event.location}</div>
+                  <div className="text-sm font-semibold text-[#0B2645]">{event.location}</div>
                 </div>
               </div>
             )}
@@ -151,7 +151,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
           {/* Description */}
           <div className="bg-white border border-[#e5e7eb] rounded-xl p-8 mb-8">
-            <h2 className="text-xl font-bold text-[#1A2332] mb-4">О мероприятии</h2>
+            <h2 className="text-xl font-bold text-[#0B2645] mb-4">О мероприятии</h2>
             <div className="text-gray-600 leading-relaxed whitespace-pre-line">
               {event.description}
             </div>
@@ -160,7 +160,7 @@ export default async function EventDetailPage({ params }: PageProps) {
           {/* CTA */}
           {event.registrationUrl && isUpcoming && (
             <div className="bg-gradient-to-r from-[#3ECF8E]/10 to-[#4AADAD]/10 rounded-xl p-8 border border-[#3ECF8E]/20 text-center">
-              <h3 className="text-xl font-bold text-[#1A2332] mb-2">
+              <h3 className="text-xl font-bold text-[#0B2645] mb-2">
                 Хотите принять участие?
               </h3>
               <p className="text-gray-600 mb-6">
@@ -176,7 +176,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
           {!event.registrationUrl && isUpcoming && (
             <div className="bg-gradient-to-r from-[#3ECF8E]/10 to-[#4AADAD]/10 rounded-xl p-8 border border-[#3ECF8E]/20 text-center">
-              <h3 className="text-xl font-bold text-[#1A2332] mb-2">
+              <h3 className="text-xl font-bold text-[#0B2645] mb-2">
                 Хотите принять участие?
               </h3>
               <p className="text-gray-600 mb-6">

@@ -48,7 +48,7 @@ export default function ROICalculator() {
               <Calculator className="w-6 h-6 text-white" />
             </div>
           </div>
-          <h2 className="text-3xl font-extrabold text-[#1A2332] mb-3">
+          <h2 className="text-3xl font-extrabold text-[#0B2645] mb-3">
             Калькулятор окупаемости франшизы
           </h2>
           <p className="text-gray-600 max-w-xl mx-auto">
@@ -119,7 +119,7 @@ export default function ROICalculator() {
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white rounded-xl p-5 text-center shadow-sm">
                 <p className="text-sm text-gray-500 mb-1">Срок окупаемости</p>
-                <p className="text-2xl font-extrabold text-[#1A2332]">
+                <p className="text-2xl font-extrabold text-[#0B2645]">
                   ~{paybackMonths} мес
                 </p>
               </div>

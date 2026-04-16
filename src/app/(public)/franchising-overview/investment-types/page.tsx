@@ -51,7 +51,7 @@ export default function InvestmentTypesPage() {
             key={type.title}
             className="bg-[#F4F4F4] rounded-lg p-8 border-l-4 border-[#3ECF8E]"
           >
-            <h2 className="text-xl font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-4">
+            <h2 className="text-xl font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-4">
               {type.title}
             </h2>
             <p className="text-[#020409] text-sm leading-[1.8]">{type.text}</p>

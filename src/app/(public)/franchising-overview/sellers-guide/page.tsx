@@ -80,7 +80,7 @@ export default function SellersGuidePage() {
                   {seller.icon}
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                     {seller.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">
@@ -124,7 +124,7 @@ export default function SellersGuidePage() {
                 <div className="text-3xl font-bold text-[#3ECF8E] mb-3">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                   {step.title}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8]">

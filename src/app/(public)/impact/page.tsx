@@ -80,7 +80,7 @@ export default function ImpactPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Влияние франчайзинга
@@ -129,7 +129,7 @@ export default function ImpactPage() {
                   <div className="w-12 h-12 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                     {card.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">
@@ -208,7 +208,7 @@ export default function ImpactPage() {
               href="/franchising-overview"
               className="group bg-[#F4F4F4] rounded-lg p-8 block hover:shadow-md transition-shadow"
             >
-              <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+              <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                 Что такое франчайзинг
               </h3>
               <p className="text-[#020409] text-sm leading-[1.8] mb-4">
@@ -223,7 +223,7 @@ export default function ImpactPage() {
               href="/get-involved"
               className="group bg-[#F4F4F4] rounded-lg p-8 block hover:shadow-md transition-shadow"
             >
-              <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+              <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                 Присоединяйтесь
               </h3>
               <p className="text-[#020409] text-sm leading-[1.8] mb-4">
@@ -238,7 +238,7 @@ export default function ImpactPage() {
               href="/membership"
               className="group bg-[#F4F4F4] rounded-lg p-8 block hover:shadow-md transition-shadow"
             >
-              <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+              <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                 Членство UFA
               </h3>
               <p className="text-[#020409] text-sm leading-[1.8] mb-4">

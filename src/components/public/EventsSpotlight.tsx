@@ -19,7 +19,7 @@ export default function EventsSpotlight() {
             <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
               Главное событие года
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2332] leading-[1.25] mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0B2645] leading-[1.25] mb-6">
               Franchise Expo Tashkent 2026
             </h2>
             <div className="space-y-3 mb-6">

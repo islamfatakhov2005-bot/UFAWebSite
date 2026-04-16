@@ -43,7 +43,7 @@ export default function NewsletterForm() {
   }
 
   return (
-    <section className="py-16 bg-[#1A2332]">
+    <section className="py-16 bg-[#0B2645]">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="w-10 h-10 bg-[#3ECF8E]/20 rounded-lg flex items-center justify-center">

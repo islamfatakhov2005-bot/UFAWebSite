@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function FindFranchiseCTA() {
   return (
-    <section className="py-20 bg-[#1A2332]">
+    <section className="py-20 bg-[#0B2645]">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
           НАЙТИ ФРАНШИЗУ

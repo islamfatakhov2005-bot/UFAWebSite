@@ -89,7 +89,7 @@ function AnimatedStat({ value, label }: Stat) {
 
 export default function StatsBar({ stats }: StatsBarProps) {
   return (
-    <section className="bg-[#1A2332] py-20">
+    <section className="bg-[#0B2645] py-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">

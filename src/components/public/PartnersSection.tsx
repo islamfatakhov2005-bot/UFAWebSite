@@ -89,7 +89,7 @@ export default function PartnersSection({ partners }: PartnersSectionProps) {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-center gap-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] green-underline-center text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B2645] green-underline-center text-center">
             Компании-участники
           </h2>
         </div>

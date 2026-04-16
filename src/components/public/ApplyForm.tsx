@@ -94,7 +94,7 @@ export default function ApplyForm() {
       errors[field] ? "border-red-400 bg-red-50" : "border-gray-200 bg-white"
     } focus:outline-none focus:ring-2 focus:ring-[#3ECF8E]/40 focus:border-[#3ECF8E] transition-colors text-sm`;
 
-  const label = "block text-xs font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2";
+  const label = "block text-xs font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2";
 
   if (status === "success") {
     return (

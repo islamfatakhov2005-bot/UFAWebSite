@@ -49,7 +49,7 @@ export default function GlossaryPage() {
               key={term}
               className="bg-[#F4F4F4] rounded-lg p-6 border-l-4 border-[#3ECF8E]"
             >
-              <dt className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2">
+              <dt className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2">
                 {term}
               </dt>
               <dd className="text-[#020409] text-sm leading-[1.8]">

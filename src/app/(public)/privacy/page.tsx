@@ -82,7 +82,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <>
-      <section className="bg-[#1A2332] text-white py-16">
+      <section className="bg-[#0B2645] text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold leading-[1.2] mb-4">
             Политика конфиденциальности
@@ -99,7 +99,7 @@ export default function PrivacyPage() {
           <div className="space-y-10">
             {sections.map((section) => (
               <section key={section.title}>
-                <h2 className="text-lg font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-4">
+                <h2 className="text-lg font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-4">
                   {section.title}
                 </h2>
                 <div className="space-y-3">

@@ -75,7 +75,7 @@ export default function ProsAndConsPage() {
                 key={item.title}
                 className="bg-[#F4F4F4] rounded-lg p-6 border-l-4 border-[#3ECF8E]"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8]">
@@ -94,9 +94,9 @@ export default function ProsAndConsPage() {
             {cons.map((item) => (
               <div
                 key={item.title}
-                className="bg-[#F4F4F4] rounded-lg p-6 border-l-4 border-[#1A2332]"
+                className="bg-[#F4F4F4] rounded-lg p-6 border-l-4 border-[#0B2645]"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8]">

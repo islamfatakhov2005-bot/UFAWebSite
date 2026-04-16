@@ -92,7 +92,7 @@ export default function GettingStartedPage() {
               <div className="w-12 h-12 bg-[#3ECF8E] rounded-lg flex items-center justify-center text-white font-bold flex-shrink-0">
                 {i + 1}
               </div>
-              <h2 className="text-xl font-semibold uppercase tracking-[0.08em] text-[#1A2332]">
+              <h2 className="text-xl font-semibold uppercase tracking-[0.08em] text-[#0B2645]">
                 {step.title}
               </h2>
             </div>

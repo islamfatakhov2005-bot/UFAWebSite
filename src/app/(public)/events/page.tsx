@@ -168,7 +168,7 @@ export default function EventsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Конференции и мероприятия UFA — общайтесь, учитесь, развивайтесь
@@ -200,7 +200,7 @@ export default function EventsPage() {
                     {event.date}
                   </span>
                 </div>
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                   {event.title}
                 </h3>
                 <div className="flex items-center gap-2 mb-3 text-sm text-gray-600">
@@ -241,7 +241,7 @@ export default function EventsPage() {
                   </span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-base font-semibold text-[#1A2332] mb-1">
+                  <h3 className="text-base font-semibold text-[#0B2645] mb-1">
                     {event.title}
                   </h3>
                   <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -270,7 +270,7 @@ export default function EventsPage() {
       </section>
 
       {/* Sponsorship CTA */}
-      <section className="py-20 bg-[#1A2332]">
+      <section className="py-20 bg-[#0B2645]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="section-heading white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Станьте спонсором мероприятий UFA
@@ -301,7 +301,7 @@ export default function EventsPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
                   {person.name}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">

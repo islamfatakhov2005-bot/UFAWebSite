@@ -43,7 +43,7 @@ export default function FranchiseCard({
           />
         </div>
       ) : (
-        <div className="w-12 h-12 rounded-full bg-[#1A2332] flex items-center justify-center mb-3">
+        <div className="w-12 h-12 rounded-full bg-[#0B2645] flex items-center justify-center mb-3">
           <span className="text-white font-semibold text-sm">
             {getInitials(name)}
           </span>

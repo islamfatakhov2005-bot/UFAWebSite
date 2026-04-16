@@ -19,7 +19,7 @@ export default function LoginPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white" style={{ fontSize: "1.5rem" }}>
             Вход для участников
@@ -33,7 +33,7 @@ export default function LoginPage() {
           <div className="bg-[#F4F4F4] rounded-lg p-8 md:p-10">
             <form className="space-y-5" action="/api/auth/login" method="post">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2">
+                <label className="block text-xs font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2">
                   Email или логин
                 </label>
                 <input
@@ -47,7 +47,7 @@ export default function LoginPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-2">
+                <label className="block text-xs font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2">
                   Пароль
                 </label>
                 <input

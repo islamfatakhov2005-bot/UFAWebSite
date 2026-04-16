@@ -153,7 +153,7 @@ export default function EducationPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="absolute inset-0 bg-[#0B2645]/70" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
             Мы во Франчайзинге Вместе через Образование
@@ -185,7 +185,7 @@ export default function EducationPage() {
                   <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-6">
                     <Icon className="w-7 h-7 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
                     {program.title}
                   </h3>
                   <p className="text-[#2A9D6F] text-xs font-semibold uppercase tracking-[0.08em] mb-4">
@@ -233,7 +233,7 @@ export default function EducationPage() {
                   <div className="w-12 h-12 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                     {program.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">
@@ -260,7 +260,7 @@ export default function EducationPage() {
                   <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-4 mx-auto">
                     <Icon className="w-7 h-7 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
                     {adv.title}
                   </h3>
                   <p className="text-[#020409] text-sm leading-[1.8]">
@@ -274,7 +274,7 @@ export default function EducationPage() {
       </section>
 
       {/* Testimonial */}
-      <section className="py-20 bg-[#1A2332]">
+      <section className="py-20 bg-[#0B2645]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-white/90 text-lg md:text-xl leading-[1.8] italic mb-8">
             «Программа CFE дала мне системное понимание франчайзинга — от юридической
@@ -305,7 +305,7 @@ export default function EducationPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
                   {person.name}
                 </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
