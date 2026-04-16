@@ -1,40 +1,73 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, ArrowRight, Lightbulb, TrendingUp } from "lucide-react";
+import {
+  BookOpen,
+  Lightbulb,
+  TrendingUp,
+  FileText,
+  HelpCircle,
+  CheckCircle,
+} from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Обзор франчайзинга — UFA",
-  description: "Что такое франчайзинг? Узнайте, как работает франшиза, её преимущества и как начать.",
+  title: "Обзор франчайзинга",
+  description: "Что такое франчайзинг, как работает бизнес-модель, типы инвестиций, финансирование, плюсы и минусы — полный путеводитель от UFA.",
 };
 
 const sidebarLinks = [
-  { label: "Что такое франшиза", href: "/franchising-overview#what" },
-  { label: "Модель франчайзинга", href: "/franchising-overview#how" },
-  { label: "Начало работы", href: "/franchising-overview#start" },
-  { label: "Типы инвестиций", href: "/franchise-opportunities" },
-  { label: "Плюсы и минусы", href: "/franchising-overview#benefits" },
-  { label: "Финансирование", href: "/franchise-opportunities" },
-  { label: "Глоссарий терминов", href: "/education" },
+  { label: "Обзор франчайзинга", href: "/franchising-overview" },
+  { label: "Что такое франшиза", href: "/franchising-overview/what-is-a-franchise" },
+  { label: "Введение в бизнес-модель", href: "/franchising-overview/business-model" },
+  { label: "Начало работы", href: "/franchising-overview/getting-started" },
+  { label: "Типы инвестиций", href: "/franchising-overview/investment-types" },
+  { label: "Плюсы и минусы", href: "/franchising-overview/pros-and-cons" },
+  { label: "Финансирование", href: "/franchising-overview/funding" },
+  { label: "Вопросы перед покупкой", href: "/franchising-overview/questions" },
+  { label: "Должная осмотрительность", href: "/franchising-overview/diligence" },
+  { label: "Принятие решения", href: "/franchising-overview/decision" },
+  { label: "Глоссарий терминов", href: "/franchising-overview/glossary" },
+  { label: "Гид для продавцов", href: "/franchising-overview/sellers-guide" },
 ];
 
-const learnMoreCards = [
+const recommended = [
+  {
+    icon: FileText,
+    title: "Должная осмотрительность",
+    text: "6 шагов проверки франшизы перед покупкой — от анализа договора до разговоров с действующими франчайзи.",
+    href: "/franchising-overview/diligence",
+  },
+  {
+    icon: HelpCircle,
+    title: "15 вопросов перед покупкой",
+    text: "Вопросы, которые нужно задать себе и франчайзеру прежде, чем подписывать договор.",
+    href: "/franchising-overview/questions",
+  },
+  {
+    icon: CheckCircle,
+    title: "Принятие решения",
+    text: "Как оценить франшизу, выбрать из нескольких вариантов и принять окончательное решение.",
+    href: "/franchising-overview/decision",
+  },
+];
+
+const exploreMore = [
   {
     icon: BookOpen,
     title: "Образование",
-    description: "Программы обучения и сертификации для франчайзеров и франчайзи.",
+    text: "200+ курсов в UFA Academy, сертификация CFE и живые семинары.",
     href: "/education",
   },
   {
     icon: Lightbulb,
-    title: "Возможности",
-    description: "Найдите подходящую франшизу из нашего каталога.",
+    title: "Каталог франшиз",
+    text: "Найдите подходящую франшизу из 500+ вариантов в каталоге UFA.",
     href: "/franchise-opportunities",
   },
   {
     icon: TrendingUp,
     title: "Членство",
-    description: "Присоединяйтесь к UFA и развивайте бизнес вместе с нами.",
+    text: "Станьте частью ассоциации — от 2.5 млн сум в год.",
     href: "/membership",
   },
 ];
@@ -46,223 +79,253 @@ export default function FranchisingOverviewPage() {
       <section className="relative text-white py-24 overflow-hidden">
         <Image
           src="/images/hero-franchise.jpg"
-          alt="Франчайзинг"
+          alt="Обзор франчайзинга"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/90 via-[#1A2332]/70 to-[#1A2332]/50" />
-        <div className="relative max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-            Обзор франчайзинга: как работает франшиза?
+        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
+            Обзор франчайзинга: как работает франшиза
           </h1>
-          <div className="w-16 h-1.5 bg-[#3ECF8E] rounded-full mb-6" />
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl leading-relaxed mb-8">
-            Всё, что нужно знать о франчайзинге — от основ до практических шагов
-            по запуску собственного бизнеса.
+          <p className="text-base md:text-lg text-white/90 leading-[1.8] mt-8">
+            Всё, что нужно знать о франчайзинге — от истории и базовой
+            бизнес-модели до практических шагов по выбору и покупке франшизы в
+            Узбекистане. Материал подготовлен экспертами UFA на основе
+            международных стандартов IFA.
           </p>
-          <Link href="/franchise-opportunities" className="inline-block bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25">Найти франшизу</Link>
         </div>
       </section>
 
       {/* Content + Sidebar */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12">
-            {/* Main Content (70%) */}
-            <div className="lg:w-[70%] space-y-12">
-              <div id="what">
-                <h2 className="text-2xl font-extrabold text-[#1A2332] mb-4">
-                  Что такое франчайзинг?
-                </h2>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Франчайзинг — это бизнес-модель, при которой владелец бренда
-                  (франчайзер) предоставляет другому предпринимателю (франчайзи)
-                  право использовать свою торговую марку, бизнес-процессы и
-                  ноу-хау в обмен на вознаграждение.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Эта модель позволяет быстро масштабировать успешный бизнес,
-                  одновременно снижая риски для новых предпринимателей, которые
-                  получают проверенную систему ведения бизнеса.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-extrabold text-[#1A2332] mb-4">
-                  История франчайзинга
-                </h2>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Франчайзинг как бизнес-модель зародился в середине XIX века в
-                  США. Одним из первых франчайзеров считается компания Singer,
-                  которая начала продавать лицензии на продажу швейных машин.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  В XX веке франчайзинг получил широкое распространение благодаря
-                  таким компаниям, как McDonald&apos;s, KFC и Holiday Inn. Сегодня
-                  франчайзинг является одной из самых популярных бизнес-моделей в
-                  мире, генерируя триллионы долларов ежегодного оборота.
-                </p>
-              </div>
-
-              <div id="how">
-                <h2 className="text-2xl font-extrabold text-[#1A2332] mb-4">
-                  Как работает франшиза?
-                </h2>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Франчайзер разрабатывает успешную бизнес-модель и создаёт
-                  систему, которую можно воспроизвести. Франчайзи приобретает
-                  право на использование этой системы, выплачивая паушальный
-                  взнос и регулярные роялти.
-                </p>
-                <div className="bg-[#f5f7fa] rounded-xl p-6 space-y-3">
-                  <div className="flex items-start gap-3">
-                    <span className="w-8 h-8 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                      1
-                    </span>
-                    <p className="text-gray-700">
-                      <strong>Паушальный взнос</strong> — единовременный платёж за
-                      право использования бренда.
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="w-8 h-8 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                      2
-                    </span>
-                    <p className="text-gray-700">
-                      <strong>Роялти</strong> — регулярные отчисления от выручки
-                      (обычно 4-8%).
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="w-8 h-8 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                      3
-                    </span>
-                    <p className="text-gray-700">
-                      <strong>Поддержка</strong> — обучение, маркетинг и
-                      операционная помощь от франчайзера.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div id="benefits">
-                <h2 className="text-2xl font-extrabold text-[#1A2332] mb-4">
-                  Преимущества для франчайзи
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    "Проверенная бизнес-модель",
-                    "Узнаваемый бренд",
-                    "Обучение и поддержка",
-                    "Снижение рисков",
-                    "Маркетинговая поддержка",
-                    "Доступ к поставщикам",
-                    "Сообщество франчайзи",
-                    "Масштабируемость",
-                  ].map((benefit) => (
-                    <div key={benefit} className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-[#3ECF8E] rounded-full flex-shrink-0" />
-                      <span className="text-gray-700">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div id="start">
-                <h2 className="text-2xl font-extrabold text-[#1A2332] mb-4">
-                  Как начать?
-                </h2>
-                <div className="space-y-4">
-                  {[
-                    {
-                      step: "Исследование",
-                      desc: "Изучите рынок франшиз, определите свои интересы и бюджет.",
-                    },
-                    {
-                      step: "Выбор франшизы",
-                      desc: "Сравните варианты, изучите условия и поговорите с действующими франчайзи.",
-                    },
-                    {
-                      step: "Финансирование",
-                      desc: "Подготовьте инвестиции, рассмотрите варианты кредитования.",
-                    },
-                    {
-                      step: "Подписание договора",
-                      desc: "Внимательно изучите договор франчайзинга с юристом.",
-                    },
-                    {
-                      step: "Обучение и запуск",
-                      desc: "Пройдите обучение от франчайзера и откройте свой бизнес.",
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4">
-                      <span className="w-10 h-10 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex items-center justify-center text-white font-bold flex-shrink-0">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <h3 className="font-bold text-[#1A2332]">{item.step}</h3>
-                        <p className="text-gray-600 text-sm">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar (30%) */}
-            <div className="lg:w-[30%]">
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-24">
-                <h3 className="text-lg font-bold text-[#1A2332] mb-4">
-                  Навигация
+            {/* Sidebar left */}
+            <aside className="lg:w-72 flex-shrink-0">
+              <div className="bg-[#F4F4F4] rounded-lg p-6 sticky top-24">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-4">
+                  Раздел
                 </h3>
-                <nav className="space-y-2">
-                  {sidebarLinks.map((link) => (
+                <nav className="space-y-1">
+                  {sidebarLinks.map((link, i) => (
                     <Link
                       key={link.label}
                       href={link.href}
-                      className="block text-sm text-gray-600 hover:text-[#3ECF8E] transition-colors py-1.5 px-3 rounded-lg hover:bg-[#3ECF8E]/5"
+                      className={`block text-sm py-2 px-3 rounded transition-colors ${
+                        i === 0
+                          ? "bg-[#3ECF8E] text-white font-semibold"
+                          : "text-[#020409] hover:bg-white"
+                      }`}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
               </div>
+            </aside>
+
+            {/* Main content */}
+            <div className="flex-1 space-y-12">
+              <div>
+                <h2 className="section-heading green-underline mb-6">
+                  История франчайзинга
+                </h2>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-4 mt-6">
+                  Франчайзинг как бизнес-модель зародился в середине XIX века в
+                  США. Одним из первых франчайзеров считается компания Singer,
+                  которая начала продавать лицензии на продажу швейных машин.
+                  В XX веке модель получила широкое распространение благодаря
+                  McDonald&apos;s, KFC и Holiday Inn.
+                </p>
+                <p className="text-[#020409] text-sm leading-[1.8]">
+                  В Узбекистане франчайзинг активно развивается с начала
+                  2010-х. Сегодня в стране работают более 500 франчайзинговых
+                  брендов из 40+ стран, а также растёт количество локальных
+                  сетей, выходящих на международный рынок.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="section-heading green-underline mb-6">
+                  Как работает франшиза
+                </h2>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-6 mt-6">
+                  Франчайзер разрабатывает успешную бизнес-модель и создаёт
+                  систему, которую можно воспроизвести. Франчайзи приобретает
+                  право на использование этой системы, выплачивая единовременный
+                  паушальный взнос и регулярные роялти от выручки.
+                </p>
+                <div className="space-y-4">
+                  {[
+                    {
+                      n: "1",
+                      title: "Паушальный взнос",
+                      text: "Единовременный платёж за право использовать бренд, систему и ноу-хау.",
+                    },
+                    {
+                      n: "2",
+                      title: "Роялти",
+                      text: "Регулярные отчисления от выручки — обычно 4–8% ежемесячно.",
+                    },
+                    {
+                      n: "3",
+                      title: "Поддержка",
+                      text: "Обучение команды, маркетинговые материалы и операционная помощь от франчайзера.",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.n}
+                      className="flex items-start gap-4 bg-[#F4F4F4] rounded-lg p-5"
+                    >
+                      <div className="w-10 h-10 bg-[#3ECF8E] rounded-lg flex items-center justify-center text-white font-bold flex-shrink-0">
+                        {item.n}
+                      </div>
+                      <div>
+                        <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                          {item.title}
+                        </h3>
+                        <p className="text-[#020409] text-sm leading-[1.8]">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="section-heading green-underline mb-6">
+                  Преимущества для франчайзи
+                </h2>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6">
+                  {[
+                    "Проверенная бизнес-модель",
+                    "Узнаваемый бренд с лояльной аудиторией",
+                    "Обучение и методологическая поддержка",
+                    "Снижение предпринимательского риска",
+                    "Маркетинговая поддержка центрального офиса",
+                    "Доступ к проверенным поставщикам",
+                    "Сообщество опытных франчайзи",
+                    "Возможность масштабирования",
+                  ].map((benefit) => (
+                    <li
+                      key={benefit}
+                      className="flex items-start gap-3 text-[#020409] text-sm leading-[1.8]"
+                    >
+                      <span className="w-2 h-2 bg-[#3ECF8E] rounded-full flex-shrink-0 mt-3" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h2 className="section-heading green-underline mb-6">
+                  Как начать
+                </h2>
+                <div className="space-y-4 mt-6">
+                  {[
+                    "Исследование рынка и собственных интересов",
+                    "Выбор франшизы и анализ FDD (Franchise Disclosure Document)",
+                    "Разговоры с действующими франчайзи сети",
+                    "Финансирование — накопления, кредит, партнёры",
+                    "Подписание договора с юристом",
+                    "Обучение от франчайзера и запуск точки",
+                  ].map((step, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <span className="w-8 h-8 bg-[#3ECF8E] rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                        {i + 1}
+                      </span>
+                      <p className="text-[#020409] text-sm leading-[1.8] pt-1">
+                        {step}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="section-heading green-underline mb-6">
+                  Регулирование в Узбекистане
+                </h2>
+                <p className="text-[#020409] text-sm leading-[1.8] mt-6">
+                  Франчайзинг в Узбекистане регулируется Гражданским кодексом
+                  (гл. 54 «Коммерческая концессия») и отдельными положениями
+                  о защите товарных знаков. UFA работает над полноценным
+                  отраслевым законом, который введёт стандарты раскрытия
+                  информации (FDD) и защитит отношения сторон. Ознакомьтесь с
+                  нашей дорожной картой в разделе «Адвокация».
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Learn More Cards */}
-      <section className="py-20 bg-[#f5f7fa]">
+      {/* Recommended */}
+      <section className="py-20 bg-[#F4F4F4]">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-[#1A2332] green-underline-center text-center mb-12">
-            Узнать больше
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Рекомендуется к прочтению
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {learnMoreCards.map((card) => {
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {recommended.map((card) => {
               const Icon = card.icon;
               return (
-                <div
+                <Link
                   key={card.title}
-                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-gray-100"
+                  href={card.href}
+                  className="group bg-white rounded-lg p-6 block hover:shadow-md transition-shadow"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#1A2332] mb-2">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
                     {card.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {card.description}
+                  <p className="text-[#020409] text-sm leading-[1.8] mb-4">
+                    {card.text}
                   </p>
-                  <Link
-                    href={card.href}
-                    className="inline-flex items-center gap-2 text-[#3ECF8E] font-semibold text-sm hover:gap-3 transition-all"
-                  >
-                    Подробнее <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+                  <span className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] group-hover:underline">
+                    Читать →
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Explore More */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Узнайте больше
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {exploreMore.map((card) => {
+              const Icon = card.icon;
+              return (
+                <Link
+                  key={card.title}
+                  href={card.href}
+                  className="group bg-[#F4F4F4] rounded-lg p-8 block hover:shadow-md transition-shadow"
+                >
+                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-[#3ECF8E]" />
+                  </div>
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                    {card.title}
+                  </h3>
+                  <p className="text-[#020409] text-sm leading-[1.8] mb-4">
+                    {card.text}
+                  </p>
+                  <span className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] group-hover:underline">
+                    Подробнее →
+                  </span>
+                </Link>
               );
             })}
           </div>

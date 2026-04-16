@@ -1,92 +1,166 @@
 import Image from "next/image";
-import { Calendar, MapPin, Users, Clock } from "lucide-react";
 import Link from "next/link";
+import { Calendar, MapPin } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Мероприятия — UFA",
-  description: "Мероприятия Ассоциации Франчайзинга Узбекистана: выставки, конференции, вебинары.",
+  title: "Мероприятия",
+  description: "Конференции и мероприятия UFA — общайтесь, учитесь и развивайтесь. Ежегодная конвенция, саммит адвокации, образовательные форумы и региональные встречи.",
 };
 
-const events = [
+const eventCards = [
   {
-    id: 1,
-    title: "Franchise Expo Tashkent 2026",
-    date: "15-17 мая 2026",
-    time: "10:00 — 18:00",
+    title: "Ежегодная конвенция UFA",
+    date: "Февраль 2027",
+    location: "Ташкент",
+    description:
+      "Крупнейшее мероприятие франчайзинга в Центральной Азии. Более 1500 участников, 150+ спикеров, программа для франчайзеров, франчайзи и поставщиков.",
+    cta: "Подробнее",
+    href: "/events/annual-convention",
+  },
+  {
+    title: "Саммит адвокации",
+    date: "Март 2026",
+    location: "Ташкент",
+    description:
+      "Два дня на Олий Мажлисе и в министерствах. Встречи с законодателями, обсуждение налоговых и лицензионных вопросов отрасли.",
+    cta: "Подробнее",
+    href: "/events/advocacy-summit",
+  },
+  {
+    title: "Конференция мульти-юнит франчайзинга",
+    date: "Апрель 2026",
+    location: "Самарканд",
+    description:
+      "Для владельцев нескольких точек и региональных представителей. Масштабирование, HR, операционная эффективность и структура собственности.",
+    cta: "Подробнее",
+    href: "/events/multi-unit-conference",
+  },
+  {
+    title: "Юридический симпозиум",
+    date: "Май 2026",
+    location: "Ташкент",
+    description:
+      "Два дня для корпоративных юристов и in-house команд — договоры, FDD, споры, международная экспансия, последние решения судов.",
+    cta: "Подробнее",
+    href: "/events/legal-symposium",
+  },
+  {
+    title: "Конференция роста и маркетинга",
+    date: "Июнь 2026",
+    location: "Ташкент",
+    description:
+      "Для CMO, директоров по развитию и маркетологов. Performance-маркетинг, лидогенерация, брендинг и рекрутинг франчайзи.",
+    cta: "Подробнее",
+    href: "/events/marketing-conference",
+  },
+  {
+    title: "Конференция новых франчайзеров",
+    date: "Сентябрь 2026",
+    location: "Ташкент",
+    description:
+      "Для брендов на ранней стадии франчайзинга. Как запустить систему, выстроить поддержку и привлечь первых франчайзи.",
+    cta: "Подробнее",
+    href: "/events/emerging-franchisor",
+  },
+  {
+    title: "Конференция лидерства",
+    date: "Октябрь 2026",
+    location: "Бухара",
+    description:
+      "Для CEO, владельцев и топ-менеджмента. Стратегия, корпоративное управление, преемственность и построение культуры.",
+    cta: "Подробнее",
+    href: "/events/leadership-conference",
+  },
+  {
+    title: "Региональные сети UFA",
+    date: "Круглый год",
+    location: "10 регионов",
+    description:
+      "Региональные нетворкинговые встречи участников UFA в Ташкенте, Самарканде, Бухаре, Фергане, Андижане и других городах.",
+    cta: "Подробнее",
+    href: "/events/regional-networks",
+  },
+  {
+    title: "Вебинары",
+    date: "Еженедельно",
+    location: "Онлайн",
+    description:
+      "Бесплатные и закрытые для членов онлайн-сессии: право, финансы, маркетинг, операции. Записи доступны в архиве.",
+    cta: "Смотреть вебинары",
+    href: "/events/webinars",
+  },
+  {
+    title: "Franchise Expo Tashkent",
+    date: "Ноябрь 2026",
     location: "Tashkent City Convention Center",
-    attendees: "5000+",
     description:
-      "Крупнейшая выставка франшиз в Центральной Азии. Более 200 брендов из 25 стран, мастер-классы, нетворкинг и инвестиционные сессии.",
-    type: "Выставка",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Форум 'Франчайзинг 2026: Новые горизонты'",
-    date: "8 июня 2026",
-    time: "09:00 — 17:00",
-    location: "Hilton Tashkent City",
-    attendees: "500+",
-    description:
-      "Ежегодный форум с участием международных спикеров. Тренды, кейсы, правовое регулирование.",
-    type: "Конференция",
-    featured: false,
-  },
-  {
-    id: 3,
-    title: "Вебинар: Как выбрать франшизу",
-    date: "20 апреля 2026",
-    time: "14:00 — 16:00",
-    location: "Онлайн (Zoom)",
-    attendees: "200+",
-    description:
-      "Бесплатный вебинар от экспертов UFA. Критерии выбора франшизы, анализ рынка, юридические аспекты.",
-    type: "Вебинар",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Нетворкинг-ужин UFA Members",
-    date: "25 апреля 2026",
-    time: "19:00 — 22:00",
-    location: "The Ritz Tashkent",
-    attendees: "100",
-    description:
-      "Эксклюзивное мероприятие для участников UFA. Неформальное общение, обмен опытом и новые контакты.",
-    type: "Нетворкинг",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Мастер-класс: Масштабирование франшизы",
-    date: "10 мая 2026",
-    time: "10:00 — 13:00",
-    location: "UFA Hub, Ташкент",
-    attendees: "50",
-    description:
-      "Практический мастер-класс о стратегиях масштабирования. Для действующих франчайзеров.",
-    type: "Мастер-класс",
-    featured: false,
+      "Главная франчайзинговая выставка страны. 150+ брендов, 3000+ посетителей, демо-стенды, инвестиционные сессии и деловые встречи.",
+    cta: "Подробнее",
+    href: "/events/expo",
   },
 ];
 
-const typeColors: Record<string, string> = {
-  "Выставка": "bg-purple-100 text-purple-700",
-  "Конференция": "bg-blue-100 text-blue-700",
-  "Вебинар": "bg-green-100 text-green-700",
-  "Нетворкинг": "bg-orange-100 text-orange-700",
-  "Мастер-класс": "bg-pink-100 text-pink-700",
-};
+const upcomingEvents = [
+  {
+    date: "20 апреля 2026",
+    title: "Вебинар: Как выбрать франшизу",
+    location: "Онлайн",
+  },
+  {
+    date: "15 мая 2026",
+    title: "Региональная встреча UFA — Самарканд",
+    location: "Samarkand Regency",
+  },
+  {
+    date: "8 июня 2026",
+    title: "Конференция мульти-юнит франчайзинга",
+    location: "Hilton Samarkand",
+  },
+  {
+    date: "22 июня 2026",
+    title: "Мастер-класс: Масштабирование франшизы",
+    location: "UFA Hub, Ташкент",
+  },
+  {
+    date: "15 июля 2026",
+    title: "Юридический симпозиум",
+    location: "InterContinental Tashkent",
+  },
+];
+
+const eventTeam = [
+  {
+    name: "Мадина Турсунова",
+    role: "Директор по мероприятиям",
+    email: "events@ufa.uz",
+    phone: "+998 71 234 56 75",
+  },
+  {
+    name: "Бехзод Рахимов",
+    role: "Менеджер спонсорства",
+    email: "sales@ufa.uz",
+    phone: "+998 71 234 56 76",
+  },
+  {
+    name: "Нодира Абдуллаева",
+    role: "Координатор регистрации",
+    email: "registration@ufa.uz",
+    phone: "+998 71 234 56 83",
+  },
+  {
+    name: "Шерзод Каримов",
+    role: "Менеджер выставок",
+    email: "expo@ufa.uz",
+    phone: "+998 71 234 56 84",
+  },
+];
 
 export default function EventsPage() {
-  const featured = events.find((e) => e.featured);
-  const upcoming = events.filter((e) => !e.featured);
-
   return (
     <>
       {/* Hero */}
-      <section className="relative text-white py-20 overflow-hidden">
+      <section className="relative text-white py-24 overflow-hidden">
         <Image
           src="/images/hero-events.jpg"
           alt="Мероприятия UFA"
@@ -94,103 +168,158 @@ export default function EventsPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/90 via-[#1A2332]/70 to-[#1A2332]/50" />
-        <div className="relative max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Мероприятия</h1>
-          <div className="w-16 h-1.5 bg-[#3ECF8E] rounded-full mb-4" />
-          <p className="text-lg text-white/80 max-w-2xl mb-8">
-            Конференции, выставки, вебинары и нетворкинг-мероприятия от UFA.
+        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
+            Конференции и мероприятия UFA — общайтесь, учитесь, развивайтесь
+          </h1>
+          <p className="text-base md:text-lg text-white/90 leading-[1.8] mt-8">
+            Мероприятия UFA объединяют франчайзеров, франчайзи и поставщиков со
+            всей страны и из-за рубежа. От интимных региональных встреч до
+            крупнейшей в Центральной Азии ежегодной конвенции — найдите формат,
+            который поможет вашему бизнесу расти.
           </p>
-          <Link href="#featured" className="inline-block bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25">Ближайшее событие ↓</Link>
         </div>
       </section>
 
-      {/* Featured event */}
-      {featured && (
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl font-extrabold text-[#1A2332] green-underline mb-8">
-              Главное мероприятие
-            </h2>
-            <div className="bg-gradient-to-br from-[#3ECF8E]/10 to-[#4AADAD]/10 rounded-xl p-8 md:p-12 border border-[#3ECF8E]/20">
-              <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 ${typeColors[featured.type] || "bg-gray-100 text-gray-700"}`}>
-                {featured.type}
-              </span>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-[#1A2332] mb-4">
-                {featured.title}
-              </h3>
-              <p className="text-gray-600 text-lg mb-6 max-w-3xl leading-relaxed">
-                {featured.description}
-              </p>
-              <div className="flex flex-wrap gap-6 mb-8">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Calendar className="w-5 h-5 text-[#3ECF8E]" />
-                  <span>{featured.date}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Clock className="w-5 h-5 text-[#3ECF8E]" />
-                  <span>{featured.time}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <MapPin className="w-5 h-5 text-[#3ECF8E]" />
-                  <span>{featured.location}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Users className="w-5 h-5 text-[#3ECF8E]" />
-                  <span>{featured.attendees} участников</span>
-                </div>
-              </div>
-              <Link
-                href="/contact"
-                className="inline-block bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] text-white px-8 py-3.5 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-[#3ECF8E]/25"
+      {/* 10 Event cards */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Наши мероприятия
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {eventCards.map((event) => (
+              <div
+                key={event.title}
+                className="bg-[#F4F4F4] rounded-lg p-6 flex flex-col"
               >
-                Зарегистрироваться
-              </Link>
-            </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Calendar className="w-4 h-4 text-[#3ECF8E]" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#2A9D6F]">
+                    {event.date}
+                  </span>
+                </div>
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  {event.title}
+                </h3>
+                <div className="flex items-center gap-2 mb-3 text-sm text-gray-600">
+                  <MapPin className="w-4 h-4" />
+                  <span>{event.location}</span>
+                </div>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-6 flex-1">
+                  {event.description}
+                </p>
+                <Link
+                  href={event.href}
+                  className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] hover:underline"
+                >
+                  {event.cta} →
+                </Link>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* Upcoming events */}
-      <section className="py-16 bg-[#f5f7fa]">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-extrabold text-[#1A2332] green-underline mb-8">
-            Предстоящие мероприятия
+      <section className="py-20 bg-[#F4F4F4]">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Ближайшие события
           </h2>
-          <div className="space-y-6">
-            {upcoming.map((event) => (
+          <div className="space-y-4">
+            {upcomingEvents.map((event) => (
               <div
-                key={event.id}
-                className="bg-white rounded-xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100"
+                key={event.title}
+                className="bg-white rounded-lg p-6 shadow-sm flex flex-col md:flex-row md:items-center gap-4 md:gap-8"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex flex-col items-center justify-center text-white">
-                    <span className="text-2xl font-extrabold leading-none">
-                      {event.date.match(/\d+/)?.[0]}
-                    </span>
-                    <span className="text-xs font-medium mt-0.5">
-                      {event.date.match(/[а-яё]+/i)?.[0]?.slice(0, 3)}
-                    </span>
+                <div className="flex items-center gap-2 md:w-48 flex-shrink-0">
+                  <Calendar className="w-4 h-4 text-[#3ECF8E]" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#2A9D6F]">
+                    {event.date}
+                  </span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base font-semibold text-[#1A2332] mb-1">
+                    {event.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <MapPin className="w-4 h-4" />
+                    <span>{event.location}</span>
                   </div>
-                  <div className="flex-1">
-                    <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-2 ${typeColors[event.type] || "bg-gray-100 text-gray-700"}`}>
-                      {event.type}
-                    </span>
-                    <h3 className="text-xl font-bold text-[#1A2332] mb-2">{event.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{event.description}</p>
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
-                      <span className="flex items-center gap-1.5">
-                        <Clock className="w-4 h-4" /> {event.time}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <MapPin className="w-4 h-4" /> {event.location}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <Users className="w-4 h-4" /> {event.attendees}
-                      </span>
-                    </div>
-                    <Link href="/contact" className="text-[#2A9D6F] font-semibold">Подробнее →</Link>
-                  </div>
+                </div>
+                <Link
+                  href="/contact"
+                  className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] hover:underline"
+                >
+                  Регистрация →
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/events/calendar"
+              className="inline-block border-2 border-[#3ECF8E] text-[#2A9D6F] hover:bg-[#3ECF8E] hover:text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+            >
+              Полный календарь
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsorship CTA */}
+      <section className="py-20 bg-[#1A2332]">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="section-heading white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
+            Станьте спонсором мероприятий UFA
+          </h2>
+          <p className="text-white/90 text-base leading-[1.8] mb-8 mt-8">
+            Спонсорство мероприятий UFA — это прямой доступ к лицам, принимающим
+            решения в отрасли: франчайзерам, региональным партнёрам, владельцам
+            сетей. Пакеты подбираются индивидуально под задачи вашего бренда.
+          </p>
+          <Link
+            href="mailto:sales@ufa.uz"
+            className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+          >
+            Запросить пакет спонсорства
+          </Link>
+        </div>
+      </section>
+
+      {/* Team contacts */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Команда мероприятий
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {eventTeam.map((person) => (
+              <div
+                key={person.email}
+                className="bg-[#F4F4F4] rounded-lg p-6"
+              >
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                  {person.name}
+                </h3>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-4">
+                  {person.role}
+                </p>
+                <div className="space-y-1 text-sm">
+                  <a
+                    href={`mailto:${person.email}`}
+                    className="block text-[#3ECF8E] hover:underline"
+                  >
+                    {person.email}
+                  </a>
+                  <a
+                    href={`tel:${person.phone.replace(/\s/g, "")}`}
+                    className="block text-gray-600 hover:text-[#3ECF8E] transition-colors"
+                  >
+                    {person.phone}
+                  </a>
                 </div>
               </div>
             ))}

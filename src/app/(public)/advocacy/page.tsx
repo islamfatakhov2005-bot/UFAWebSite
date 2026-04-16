@@ -1,58 +1,163 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Scale, Network, ShieldCheck, Users, FileText, TrendingUp } from "lucide-react";
+import {
+  Scale,
+  Coins,
+  Briefcase,
+  FileCheck,
+  Users,
+  Megaphone,
+  Map,
+  HeartHandshake,
+  Shield,
+} from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Поддержка и защита интересов — UFA",
-  description:
-    "Законодательная работа, сеть действий и ответственный франчайзинг. Защита интересов индустрии.",
+  title: "Адвокация",
+  description: "Адвокация помогает франчайзинговому бизнесу расти. UFA защищает интересы отрасли в парламенте, министерствах и СМИ.",
 };
 
-const pillars = [
+const policyAreas = [
   {
-    icon: Scale,
-    title: "Законодательная работа",
-    description:
-      "UFA активно участвует в разработке и совершенствовании законодательства о франчайзинге в Узбекистане. Мы работаем с Олий Мажлисом, министерствами и регуляторами для создания прозрачной правовой среды, защищающей интересы всех участников рынка.",
-    highlights: [
-      "Разработка закона о франчайзинге",
-      "Защита прав интеллектуальной собственности",
-      "Упрощение регистрации франшиз",
-      "Налоговые льготы для франчайзинга",
-    ],
+    icon: Coins,
+    title: "Налоговая политика",
+    text: "Упрощённые режимы налогообложения для франчайзи, льготы для новых точек, стабильность налоговой среды.",
   },
   {
-    icon: Network,
-    title: "Сеть действий франчайзинга",
-    description:
-      "Объединяем франчайзеров и франчайзи для коллективного решения отраслевых вопросов. Наша сеть позволяет быстро реагировать на вызовы рынка и координировать усилия сообщества.",
-    highlights: [
-      "Региональные рабочие группы",
-      "Оперативное информирование",
-      "Коллективные обращения",
-      "Мониторинг регуляторных изменений",
-    ],
+    icon: Briefcase,
+    title: "Трудовое право",
+    text: "Защита модели «независимый франчайзи», гибкие трудовые отношения, обучение персонала.",
   },
   {
-    icon: ShieldCheck,
-    title: "Ответственный франчайзинг",
-    description:
-      "Продвигаем этические стандарты и лучшие практики ведения франчайзингового бизнеса. Кодекс этики UFA обеспечивает прозрачность и справедливость в отношениях между франчайзерами и франчайзи.",
-    highlights: [
-      "Кодекс этики UFA",
-      "Стандарты раскрытия информации",
-      "Медиация и разрешение споров",
-      "Сертификация ответственных франчайзеров",
-    ],
+    icon: FileCheck,
+    title: "Лицензирование и регистрация",
+    text: "Упрощение регистрации франшиз, стандарты раскрытия информации, защита интеллектуальной собственности.",
+  },
+  {
+    icon: Shield,
+    title: "Защита отношений франчайзинга",
+    text: "Законодательство, защищающее баланс интересов франчайзера и франчайзи, разрешение споров.",
   },
 ];
 
-const stats = [
-  { value: "12", label: "Законодательных инициатив" },
-  { value: "50+", label: "Встреч с регуляторами" },
-  { value: "300+", label: "Участников сети действий" },
-  { value: "95%", label: "Успешных медиаций" },
+const quickLinks = [
+  "Сеть действий франчайзинга",
+  "FranPAC — отраслевой фонд",
+  "Ответственный франчайзинг",
+  "Закон о франчайзинге Узбекистана",
+  "Налоговые вопросы",
+  "Справедливый франчайзинг",
+  "Юридический центр UFA",
+  "Карта франчайзинга по регионам",
+];
+
+const advocacyNews = [
+  {
+    date: "Апрель 2026",
+    title: "UFA представила законопроект о защите франчайзи в Олий Мажлисе",
+    summary:
+      "Пакет поправок расширяет обязательства по раскрытию информации и вводит механизм медиации споров.",
+  },
+  {
+    date: "Март 2026",
+    title: "Встреча с Министерством экономики по льготному налогообложению",
+    summary:
+      "Обсуждены предложения UFA по упрощённому режиму для франчайзинговых точек в регионах.",
+  },
+  {
+    date: "Март 2026",
+    title: "Исследование: вклад франчайзинга в ВВП Узбекистана вырос до 3.2%",
+    summary:
+      "Совместный отчёт UFA и Центра экономических исследований показывает устойчивый рост отрасли.",
+  },
+  {
+    date: "Февраль 2026",
+    title: "Подписан меморандум с Торгово-промышленной палатой",
+    summary:
+      "Соглашение о совместной защите интересов малого и среднего бизнеса во франчайзинге.",
+  },
+  {
+    date: "Февраль 2026",
+    title: "UFA присоединилась к World Franchise Council",
+    summary:
+      "Международное признание ассоциации как голоса узбекского франчайзингового сообщества.",
+  },
+  {
+    date: "Январь 2026",
+    title: "Опубликован годовой отчёт об адвокационной работе",
+    summary:
+      "12 законодательных инициатив, 50+ встреч с регуляторами, 300+ участников сети действий.",
+  },
+];
+
+const priorities = [
+  {
+    title: "Закон о франчайзинге",
+    text: "Полноценный отраслевой закон, регулирующий отношения франчайзинга, раскрытие информации и защиту сторон.",
+  },
+  {
+    title: "Налоговые льготы",
+    text: "Специальный режим для новых франчайзинговых точек в первые 2 года работы.",
+  },
+  {
+    title: "Упрощённая регистрация",
+    text: "Онлайн-регистрация франчайзинговых договоров через единый портал.",
+  },
+  {
+    title: "Защита IP",
+    text: "Усиленная защита товарных знаков и ноу-хау в рамках франчайзинговых сетей.",
+  },
+  {
+    title: "Международная экспансия",
+    text: "Поддержка узбекских брендов при выходе на рынки СНГ и дальнего зарубежья.",
+  },
+];
+
+const getInvolved = [
+  {
+    icon: Map,
+    title: "Влияние франчайзинга",
+    text: "Отчёт о вкладе отрасли в экономику страны.",
+    href: "/impact",
+  },
+  {
+    icon: Map,
+    title: "Франчайзинг по регионам",
+    text: "Интерактивная карта с данными по 14 регионам.",
+    href: "/franchising-by-region",
+  },
+  {
+    icon: Users,
+    title: "Сеть действий",
+    text: "Присоединитесь к 5000+ адвокатов отрасли.",
+    href: "/advocacy/action-network",
+  },
+  {
+    icon: Megaphone,
+    title: "Саммит адвокации",
+    text: "Ежегодная встреча с законодателями.",
+    href: "/events/advocacy-summit",
+  },
+  {
+    icon: HeartHandshake,
+    title: "FranPAC",
+    text: "Отраслевой фонд поддержки законодательных инициатив.",
+    href: "/advocacy/franpac",
+  },
+];
+
+const advocacyTeam = [
+  { name: "Бобур Насриддинов", role: "Директор по адвокации", email: "gr@ufa.uz", phone: "+998 71 234 56 78" },
+  { name: "Лола Рахимова", role: "Директор юридического центра", email: "legal@ufa.uz", phone: "+998 71 234 56 87" },
+  { name: "Шавкат Ибрагимов", role: "Менеджер связей с парламентом", email: "parliament@ufa.uz", phone: "+998 71 234 56 88" },
+  { name: "Гульчехра Ахмедова", role: "Менеджер связей с регуляторами", email: "regulators@ufa.uz", phone: "+998 71 234 56 89" },
+  { name: "Темур Юсупов", role: "Аналитик политики", email: "policy@ufa.uz", phone: "+998 71 234 56 90" },
+  { name: "Азиза Хамидова", role: "Координатор сети действий", email: "network@ufa.uz", phone: "+998 71 234 56 91" },
+  { name: "Фарход Мирзоев", role: "Директор FranPAC", email: "franpac@ufa.uz", phone: "+998 71 234 56 92" },
+  { name: "Нигора Таджиева", role: "Менеджер по коммуникациям", email: "comms@ufa.uz", phone: "+998 71 234 56 93" },
+  { name: "Руслан Каримов", role: "Координатор региональных программ", email: "regions@ufa.uz", phone: "+998 71 234 56 94" },
+  { name: "Севара Джураева", role: "Юрист отдела адвокации", email: "advocacy-legal@ufa.uz", phone: "+998 71 234 56 95" },
 ];
 
 export default function AdvocacyPage() {
@@ -62,123 +167,54 @@ export default function AdvocacyPage() {
       <section className="relative text-white py-24 overflow-hidden">
         <Image
           src="/images/hero-advocacy.jpg"
-          alt="Поддержка бизнеса"
+          alt="Адвокация UFA"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2332]/90 via-[#1A2332]/70 to-[#1A2332]/50" />
-        <div className="relative max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-            Поддержка и защита интересов
+        <div className="absolute inset-0 bg-[#1A2332]/70" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <h1 className="section-heading text-white white-underline-center !text-white mb-8" style={{ fontSize: "1.5rem" }}>
+            Адвокация помогает франчайзинговому бизнесу расти
           </h1>
-          <div className="w-16 h-1.5 bg-[#3ECF8E] rounded-full mb-6" />
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl leading-relaxed mb-8">
-            UFA защищает интересы франчайзингового сообщества через
-            законодательную работу, развитие этических стандартов и создание
-            справедливой бизнес-среды.
+          <p className="text-base md:text-lg text-white/90 leading-[1.8] mt-8">
+            UFA — голос франчайзинговой индустрии Узбекистана. Мы работаем с
+            Олий Мажлисом, министерствами и регуляторами, чтобы формировать
+            законодательство, которое защищает отношения франчайзинга и создаёт
+            среду для роста. Узнайте о нашей дорожной карте развития отрасли.
           </p>
-          <Link href="/membership" className="inline-block bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] hover:from-[#35B67A] hover:to-[#3E9999] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-[#3ECF8E]/25">Присоединиться</Link>
+          <Link
+            href="/advocacy/roadmap"
+            className="inline-block mt-8 bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+          >
+            Дорожная карта роста
+          </Link>
         </div>
       </section>
 
-      {/* 3 Pillars */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 space-y-16">
-          {pillars.map((pillar, i) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={pillar.title}
-                className={`flex flex-col lg:flex-row gap-8 items-start ${
-                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="lg:w-1/2">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h2 className="text-2xl font-extrabold text-[#1A2332]">
-                      {pillar.title}
-                    </h2>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
-                <div className="lg:w-1/2">
-                  <div className="bg-[#f5f7fa] rounded-xl p-6 space-y-3">
-                    {pillar.highlights.map((item) => (
-                      <div key={item} className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-[#3ECF8E] rounded-full flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-16 bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD]">
+      {/* 4 Policy Areas */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl font-extrabold text-white mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-white/80 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Initiatives */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-[#1A2332] green-underline-center text-center mb-12">
-            Наши инициативы
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Приоритетные направления
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: FileText,
-                title: "Аналитические отчёты",
-                desc: "Ежеквартальные отчёты о состоянии рынка франчайзинга и регуляторных изменениях.",
-              },
-              {
-                icon: Users,
-                title: "Рабочие группы",
-                desc: "Тематические рабочие группы по ключевым вопросам индустрии.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Мониторинг рынка",
-                desc: "Постоянный мониторинг регуляторной среды и бизнес-климата.",
-              },
-            ].map((item) => {
-              const Icon = item.icon;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {policyAreas.map((area) => {
+              const Icon = area.icon;
               return (
                 <div
-                  key={item.title}
-                  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100"
+                  key={area.title}
+                  className="bg-[#F4F4F4] rounded-lg p-6"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#3ECF8E] to-[#4AADAD] rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-[#3ECF8E]" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#1A2332] mb-2">
-                    {item.title}
+                  <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                    {area.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                    {item.desc}
+                  <p className="text-[#020409] text-sm leading-[1.8]">
+                    {area.text}
                   </p>
-                  <span className="text-[#2A9D6F] font-semibold text-sm">Узнать больше →</span>
                 </div>
               );
             })}
@@ -186,22 +222,153 @@ export default function AdvocacyPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-[#f5f7fa]">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold text-[#1A2332] mb-4">
-            Присоединиться к сети
+      {/* Quick Links */}
+      <section className="py-20 bg-[#F4F4F4]">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Быстрые ссылки
           </h2>
-          <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-            Станьте частью сети действий франчайзинга UFA и вместе защищайте
-            интересы индустрии. Ваш голос имеет значение.
-          </p>
-          <Link
-            href="/membership"
-            className="inline-block bg-gradient-to-r from-[#3ECF8E] to-[#4AADAD] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:shadow-lg hover:shadow-[#3ECF8E]/25"
-          >
-            Присоединиться к сети
-          </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {quickLinks.map((link) => (
+              <Link
+                key={link}
+                href="#"
+                className="flex items-center gap-3 bg-white rounded-lg p-4 hover:shadow-md transition-shadow"
+              >
+                <Scale className="w-5 h-5 text-[#3ECF8E] flex-shrink-0" />
+                <span className="text-[#020409] text-sm font-semibold">
+                  {link}
+                </span>
+                <span className="ml-auto text-[#2A9D6F]">→</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advocacy News */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Новости адвокации
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {advocacyNews.map((news) => (
+              <article
+                key={news.title}
+                className="bg-[#F4F4F4] rounded-lg p-6 flex flex-col"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#2A9D6F] mb-3">
+                  {news.date}
+                </span>
+                <h3 className="text-base font-semibold text-[#1A2332] mb-3 leading-[1.5]">
+                  {news.title}
+                </h3>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-6 flex-1">
+                  {news.summary}
+                </p>
+                <Link
+                  href="/news"
+                  className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] hover:underline"
+                >
+                  Читать →
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Priorities */}
+      <section className="py-20 bg-[#F4F4F4]">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Законодательные приоритеты 2026
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {priorities.map((priority) => (
+              <div
+                key={priority.title}
+                className="bg-white rounded-lg p-6 border-t-4 border-[#3ECF8E]"
+              >
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3">
+                  {priority.title}
+                </h3>
+                <p className="text-[#020409] text-sm leading-[1.8]">
+                  {priority.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Get Involved */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Включайтесь в работу
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {getInvolved.map((card) => {
+              const Icon = card.icon;
+              return (
+                <Link
+                  key={card.title}
+                  href={card.href}
+                  className="group bg-[#F4F4F4] rounded-lg p-6 block hover:shadow-md transition-shadow"
+                >
+                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-[#3ECF8E]" />
+                  </div>
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                    {card.title}
+                  </h3>
+                  <p className="text-[#020409] text-sm leading-[1.8]">
+                    {card.text}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="py-20 bg-[#F4F4F4]">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-heading green-underline-center text-center mb-12">
+            Команда адвокации
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {advocacyTeam.map((person) => (
+              <div
+                key={person.email}
+                className="bg-white rounded-lg p-6"
+              >
+                <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#1A2332] mb-1">
+                  {person.name}
+                </h3>
+                <p className="text-[#020409] text-sm leading-[1.8] mb-4">
+                  {person.role}
+                </p>
+                <div className="space-y-1 text-sm">
+                  <a
+                    href={`mailto:${person.email}`}
+                    className="block text-[#3ECF8E] hover:underline break-all"
+                  >
+                    {person.email}
+                  </a>
+                  <a
+                    href={`tel:${person.phone.replace(/\s/g, "")}`}
+                    className="block text-gray-600 hover:text-[#3ECF8E] transition-colors"
+                  >
+                    {person.phone}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>

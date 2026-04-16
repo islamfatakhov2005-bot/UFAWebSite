@@ -19,9 +19,10 @@ const megaMenuData: Record<string, { title: string; links: { label: string; href
   ],
   "Новости и исследования": [
     {
-      title: "Новости",
+      title: "Материалы",
       links: [
-        { label: "Последние новости", href: "/news" },
+        { label: "Центр новостей", href: "/news" },
+        { label: "Влияние франчайзинга", href: "/impact" },
       ],
     },
   ],
@@ -29,7 +30,7 @@ const megaMenuData: Record<string, { title: string; links: { label: string; href
     {
       title: "Календарь",
       links: [
-        { label: "Предстоящие мероприятия", href: "/events" },
+        { label: "Все мероприятия", href: "/events" },
       ],
     },
   ],
@@ -41,11 +42,11 @@ const megaMenuData: Record<string, { title: string; links: { label: string; href
       ],
     },
   ],
-  "Поддержка и развитие": [
+  "Адвокация": [
     {
       title: "Ресурсы",
       links: [
-        { label: "Поддержка и защита интересов", href: "/advocacy" },
+        { label: "Защита интересов отрасли", href: "/advocacy" },
         { label: "Кодекс этики", href: "/code-of-ethics" },
       ],
     },
@@ -54,7 +55,9 @@ const megaMenuData: Record<string, { title: string; links: { label: string; href
     {
       title: "Программы",
       links: [
-        { label: "Программы и сообщество", href: "/programs" },
+        { label: "Все программы", href: "/programs" },
+        { label: "Фонд UFA", href: "/foundation" },
+        { label: "Присоединяйтесь", href: "/get-involved" },
       ],
     },
   ],
