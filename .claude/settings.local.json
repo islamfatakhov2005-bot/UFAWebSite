@@ -18,7 +18,10 @@
       "Bash(curl -s -o /dev/null -w \"careers %{http_code}\\\\n\" https://ufa.gmlb.ru/careers)",
       "Bash(curl -s -o /dev/null -w \"media-kit %{http_code}\\\\n\" https://ufa.gmlb.ru/media-kit)",
       "Bash(curl -s -o /dev/null -w '%{http_code}' https://ufa.gmlb.ru/__TRACKED_VAR__)",
-      "Bash(find src/components/public src/app/\\\\\\(public\\\\\\) -name \"*.tsx\" -type f -exec sed -i 's/#1A2332/#0B2645/g; s/#2A3A4F/#143B6B/g' {} +)"
+      "Bash(find src/components/public src/app/\\\\\\(public\\\\\\) -name \"*.tsx\" -type f -exec sed -i 's/#1A2332/#0B2645/g; s/#2A3A4F/#143B6B/g' {} +)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://ufa.gmlb.ru/\")",
+      "Bash(curl -s \"https://ufa.gmlb.ru/\")",
+      "Bash(python scripts/check_env.py)"
     ]
   }
 }

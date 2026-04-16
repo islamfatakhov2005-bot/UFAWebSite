@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Check } from "lucide-react";
 
 interface ApplyData {
   firstName: string;
@@ -70,6 +71,7 @@ export default function ApplyForm() {
           company: form.company,
           subject: "membership",
           message: `Должность: ${form.title}\nСайт: ${form.website || "—"}\nТип членства: ${form.membershipType}`,
+          formType: "membership_apply",
         }),
       });
       if (!res.ok) throw new Error();
@@ -89,35 +91,14 @@ export default function ApplyForm() {
     }
   };
 
-  const input = (field: keyof ApplyData) =>
-    `w-full px-4 py-3 rounded border ${
-      errors[field] ? "border-red-400 bg-red-50" : "border-gray-200 bg-white"
-    } focus:outline-none focus:ring-2 focus:ring-[#3ECF8E]/40 focus:border-[#3ECF8E] transition-colors text-sm`;
-
-  const label = "block text-xs font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2";
-
   if (status === "success") {
     return (
       <div className="text-center py-12">
-        <div className="w-16 h-16 bg-[#3ECF8E] rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg
-            className="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={3}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
+        <div className="w-14 h-14 bg-[#3ECF8E] flex items-center justify-center mx-auto mb-6 rounded-[3px]">
+          <Check className="w-7 h-7 text-white" strokeWidth={3} />
         </div>
-        <h3 className="section-heading green-underline-center mb-8">
-          Заявка принята
-        </h3>
-        <p className="text-[#020409] text-sm leading-[1.8] mt-8">
+        <h3 className="text-lg font-bold text-[#0B2645] mb-3">Заявка принята</h3>
+        <p className="text-sm text-[#4A5568] leading-[1.7] max-w-sm mx-auto">
           Спасибо! Менеджер команды членства UFA свяжется с вами в течение
           рабочего дня, чтобы подобрать оптимальный тариф и ответить на вопросы.
         </p>
@@ -126,85 +107,85 @@ export default function ApplyForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {status === "error" && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded p-4 text-sm">
-          Не удалось отправить заявку. Попробуйте позже или позвоните: +998 71 234 56 79
+        <div className="bg-red-50 border border-red-300 text-red-700 p-4 text-sm rounded-[3px]">
+          Не удалось отправить заявку. Попробуйте позже или позвоните:{" "}
+          <a href="tel:+998712345679" className="font-bold underline">
+            +998 71 234 56 79
+          </a>
         </div>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className={label}>
-            Имя <span className="text-[#3ECF8E]">*</span>
+          <label className="label" htmlFor="ap-first">
+            Имя<span className="required">*</span>
           </label>
           <input
+            id="ap-first"
             type="text"
             value={form.firstName}
             onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-            className={input("firstName")}
+            className={`input ${errors.firstName ? "is-invalid" : ""}`}
             placeholder="Дилшод"
           />
-          {errors.firstName && (
-            <p className="mt-1 text-xs text-red-500">{errors.firstName}</p>
-          )}
+          {errors.firstName && <p className="mt-1.5 text-xs text-red-600">{errors.firstName}</p>}
         </div>
         <div>
-          <label className={label}>
-            Фамилия <span className="text-[#3ECF8E]">*</span>
+          <label className="label" htmlFor="ap-last">
+            Фамилия<span className="required">*</span>
           </label>
           <input
+            id="ap-last"
             type="text"
             value={form.lastName}
             onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-            className={input("lastName")}
+            className={`input ${errors.lastName ? "is-invalid" : ""}`}
             placeholder="Каримов"
           />
-          {errors.lastName && (
-            <p className="mt-1 text-xs text-red-500">{errors.lastName}</p>
-          )}
+          {errors.lastName && <p className="mt-1.5 text-xs text-red-600">{errors.lastName}</p>}
         </div>
       </div>
 
       <div>
-        <label className={label}>
-          Должность <span className="text-[#3ECF8E]">*</span>
+        <label className="label" htmlFor="ap-title">
+          Должность<span className="required">*</span>
         </label>
         <input
+          id="ap-title"
           type="text"
           value={form.title}
           onChange={(e) => setForm({ ...form, title: e.target.value })}
-          className={input("title")}
+          className={`input ${errors.title ? "is-invalid" : ""}`}
           placeholder="Генеральный директор"
         />
-        {errors.title && (
-          <p className="mt-1 text-xs text-red-500">{errors.title}</p>
-        )}
+        {errors.title && <p className="mt-1.5 text-xs text-red-600">{errors.title}</p>}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className={label}>
-            Компания <span className="text-[#3ECF8E]">*</span>
+          <label className="label" htmlFor="ap-company">
+            Компания<span className="required">*</span>
           </label>
           <input
+            id="ap-company"
             type="text"
             value={form.company}
             onChange={(e) => setForm({ ...form, company: e.target.value })}
-            className={input("company")}
+            className={`input ${errors.company ? "is-invalid" : ""}`}
             placeholder="ООО «Ваша компания»"
           />
-          {errors.company && (
-            <p className="mt-1 text-xs text-red-500">{errors.company}</p>
-          )}
+          {errors.company && <p className="mt-1.5 text-xs text-red-600">{errors.company}</p>}
         </div>
         <div>
-          <label className={label}>Сайт компании</label>
+          <label className="label" htmlFor="ap-website">Сайт компании</label>
           <input
+            id="ap-website"
             type="url"
             value={form.website}
             onChange={(e) => setForm({ ...form, website: e.target.value })}
-            className={input("website")}
+            className="input"
             placeholder="https://company.uz"
           />
         </div>
@@ -212,45 +193,44 @@ export default function ApplyForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className={label}>
-            Телефон <span className="text-[#3ECF8E]">*</span>
+          <label className="label" htmlFor="ap-phone">
+            Телефон<span className="required">*</span>
           </label>
           <input
+            id="ap-phone"
             type="tel"
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            className={input("phone")}
+            className={`input ${errors.phone ? "is-invalid" : ""}`}
             placeholder="+998 90 123 45 67"
           />
-          {errors.phone && (
-            <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
-          )}
+          {errors.phone && <p className="mt-1.5 text-xs text-red-600">{errors.phone}</p>}
         </div>
         <div>
-          <label className={label}>
-            Email <span className="text-[#3ECF8E]">*</span>
+          <label className="label" htmlFor="ap-email">
+            Email<span className="required">*</span>
           </label>
           <input
+            id="ap-email"
             type="email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className={input("email")}
+            className={`input ${errors.email ? "is-invalid" : ""}`}
             placeholder="name@company.uz"
           />
-          {errors.email && (
-            <p className="mt-1 text-xs text-red-500">{errors.email}</p>
-          )}
+          {errors.email && <p className="mt-1.5 text-xs text-red-600">{errors.email}</p>}
         </div>
       </div>
 
       <div>
-        <label className={label}>
-          Тип членства <span className="text-[#3ECF8E]">*</span>
+        <label className="label" htmlFor="ap-type">
+          Тип членства<span className="required">*</span>
         </label>
         <select
+          id="ap-type"
           value={form.membershipType}
           onChange={(e) => setForm({ ...form, membershipType: e.target.value })}
-          className={input("membershipType")}
+          className={`input ${errors.membershipType ? "is-invalid" : ""}`}
         >
           {membershipTypes.map((t) => (
             <option key={t.value} value={t.value}>
@@ -259,14 +239,14 @@ export default function ApplyForm() {
           ))}
         </select>
         {errors.membershipType && (
-          <p className="mt-1 text-xs text-red-500">{errors.membershipType}</p>
+          <p className="mt-1.5 text-xs text-red-600">{errors.membershipType}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-[#3ECF8E] hover:bg-[#35B67A] disabled:opacity-50 text-white py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+        className="btn btn-primary w-full py-3.5 disabled:opacity-50"
       >
         {status === "loading" ? "Отправляем…" : "Отправить заявку"}
       </button>

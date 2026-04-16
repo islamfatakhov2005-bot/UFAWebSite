@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUp } from "lucide-react";
 
-/* Inline SVG social icons since lucide-react no longer ships brand icons */
+/* Inline SVG social icons */
 function TelegramIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -12,7 +11,6 @@ function TelegramIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -20,7 +18,6 @@ function InstagramIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -28,7 +25,6 @@ function FacebookIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
 function LinkedInIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -36,7 +32,6 @@ function LinkedInIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
 function YouTubeIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -45,98 +40,114 @@ function YouTubeIcon({ className }: { className?: string }) {
   );
 }
 
-const navGroups = [
+const footerNav = [
   {
-    title: "О нас",
+    title: "О UFA",
     links: [
-      { label: "О UFA", href: "/about" },
+      { label: "Об ассоциации", href: "/about" },
+      { label: "Фонд UFA", href: "/foundation" },
+      { label: "Карьера", href: "/careers" },
       { label: "Контакты", href: "/contact" },
-      { label: "Кодекс этики", href: "/code-of-ethics" },
+      { label: "Медиа-кит", href: "/media-kit" },
     ],
   },
   {
-    title: "Франчайзинг",
+    title: "Что такое франчайзинг",
     links: [
-      { label: "Каталог франшиз", href: "/franchise-opportunities" },
       { label: "Обзор франчайзинга", href: "/franchising-overview" },
-      { label: "Мероприятия", href: "/events" },
-      { label: "Новости", href: "/news" },
+      { label: "Начало работы", href: "/franchising-overview/getting-started" },
+      { label: "Финансирование", href: "/franchising-overview/funding" },
+      { label: "Каталог франшиз", href: "/franchise-opportunities" },
     ],
   },
   {
     title: "Ресурсы",
     links: [
+      { label: "Новости", href: "/news" },
+      { label: "Мероприятия", href: "/events" },
       { label: "Образование", href: "/education" },
       { label: "Программы", href: "/programs" },
-      { label: "Членство", href: "/membership" },
-      { label: "Поддержка", href: "/advocacy" },
+      { label: "Влияние отрасли", href: "/impact" },
+    ],
+  },
+  {
+    title: "Вступление",
+    links: [
+      { label: "Обзор членства", href: "/membership" },
+      { label: "Для франчайзеров", href: "/membership/franchisors" },
+      { label: "Для франчайзи", href: "/membership/franchisees" },
+      { label: "Для поставщиков", href: "/membership/suppliers" },
+      { label: "Подать заявку", href: "/membership/apply" },
     ],
   },
 ];
 
-const socialLinks = [
-  { icon: TelegramIcon, label: "Telegram", href: "https://t.me/ufa_uz" },
-  { icon: InstagramIcon, label: "Instagram", href: "https://instagram.com/ufa_uz" },
-  { icon: FacebookIcon, label: "Facebook", href: "https://facebook.com/ufa.uz" },
-  { icon: LinkedInIcon, label: "LinkedIn", href: "https://linkedin.com/company/ufa-uz" },
-  { icon: YouTubeIcon, label: "YouTube", href: "https://youtube.com/@ufa_uz" },
+const socials = [
+  { Icon: TelegramIcon, label: "Telegram", href: "https://t.me/ufa_uz" },
+  { Icon: InstagramIcon, label: "Instagram", href: "https://instagram.com/ufa_uz" },
+  { Icon: FacebookIcon, label: "Facebook", href: "https://facebook.com/ufa.uz" },
+  { Icon: LinkedInIcon, label: "LinkedIn", href: "https://linkedin.com/company/ufa-uz" },
+  { Icon: YouTubeIcon, label: "YouTube", href: "https://youtube.com/@ufa_uz" },
 ];
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className="bg-[#0B2645] text-white">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Logo & description */}
+      <div className="max-w-[1200px] mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           <div className="lg:col-span-2">
             <Image
               src="/logos/logo.png"
               alt="UFA"
               width={140}
               height={42}
-              className="h-10 w-auto object-contain brightness-200 mb-4"
+              className="h-10 w-auto object-contain brightness-200 mb-5"
             />
-            <p className="text-gray-400 leading-relaxed text-sm max-w-sm">
-              Ассоциация Франчайзинга Узбекистана (UFA) — ведущая организация по
-              развитию и поддержке франчайзинга в Узбекистане. Мы объединяем
-              франчайзеров, франчайзи и экспертов для создания сильной
-              франчайзинговой экосистемы.
+            <p className="text-[13px] text-white/70 leading-[1.7] max-w-sm mb-6">
+              Ассоциация Франчайзинга Узбекистана — ведущая организация по
+              развитию франчайзинга в стране. 1200+ участников, 500+ брендов,
+              14 регионов.
             </p>
-            <div className="flex gap-3 mt-6">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/10 hover:bg-[#3ECF8E] rounded-full flex items-center justify-center transition-colors duration-300"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                );
-              })}
+            <div className="space-y-1.5 text-[13px] text-white/80">
+              <p>г. Ташкент, ул. Амира Темура, 107Б</p>
+              <p>
+                <a href="tel:+998712345678" className="hover:text-[#3ECF8E]">
+                  +998 71 234 56 78
+                </a>
+              </p>
+              <p>
+                <a href="mailto:info@ufa.uz" className="hover:text-[#3ECF8E]">
+                  info@ufa.uz
+                </a>
+              </p>
+            </div>
+            <div className="flex gap-2 mt-6">
+              {socials.map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 flex items-center justify-center bg-white/10 hover:bg-[#3ECF8E] transition-colors"
+                  aria-label={label}
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Nav groups */}
-          {navGroups.map((group) => (
+          {footerNav.map((group) => (
             <div key={group.title}>
-              <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white">
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-white mb-5">
                 {group.title}
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {group.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-[#3ECF8E] text-sm transition-colors"
+                      className="text-[13px] text-white/70 hover:text-[#3ECF8E] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -148,56 +159,21 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* CTA + Contact info bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <h3 className="text-lg font-bold text-white mb-1">Готовы присоединиться?</h3>
-              <p className="text-gray-400 text-sm">500+ компаний уже стали частью UFA</p>
-            </div>
-            <Link
-              href="/membership"
-              className="inline-flex bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3 rounded font-semibold transition-colors"
-            >
-              Вступить в UFA
-            </Link>
-          </div>
-          <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 text-gray-400 text-sm">
-            <span>+998 71 234 56 78</span>
-            <span className="hidden sm:inline">|</span>
-            <span>info@ufa.uz</span>
-            <span className="hidden sm:inline">|</span>
-            <span>г. Ташкент, ул. Амира Темура, 107Б</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
-            &copy; 2026 Uzbekistan Franchising Association. Все права защищены.
+        <div className="max-w-[1200px] mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[12px] text-white/50">
+            © 2026 Uzbekistan Franchising Association. Все права защищены.
           </p>
-          <div className="flex items-center gap-6 text-sm text-gray-500">
-            <Link href="/terms" className="hover:text-white transition-colors">
+          <div className="flex items-center gap-6 text-[12px]">
+            <Link href="/terms" className="text-white/50 hover:text-white transition-colors">
               Условия использования
             </Link>
-            <Link href="/privacy" className="hover:text-white transition-colors">
+            <Link href="/privacy" className="text-white/50 hover:text-white transition-colors">
               Политика конфиденциальности
             </Link>
           </div>
         </div>
       </div>
-
-      {/* Scroll to top */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-[#3ECF8E] hover:bg-[#35B67A] text-white rounded-full shadow-lg flex items-center justify-center transition-colors"
-        aria-label="Наверх"
-      >
-        <ArrowUp className="w-5 h-5" />
-      </button>
     </footer>
   );
 }

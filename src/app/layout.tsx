@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
+const sans = Open_Sans({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -79,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`h-full antialiased ${montserrat.variable}`}>
+    <html lang="ru" className={`h-full antialiased ${sans.variable}`}>
       <head>
         <script
           type="application/ld+json"

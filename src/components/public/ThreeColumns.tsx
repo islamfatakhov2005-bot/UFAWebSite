@@ -7,55 +7,53 @@ const types = [
     title: "Франчайзеры",
     description:
       "Для брендов, которые продают франшизы и развивают сеть. Лиды, исследования, маркетинг, юридическая поддержка.",
-    href: "/membership",
+    href: "/membership/franchisors",
   },
   {
     icon: Store,
     title: "Франчайзи",
     description:
       "Для владельцев одной или нескольких точек. Обучение, нетворкинг, аналитика и голос в отраслевой повестке.",
-    href: "/membership",
+    href: "/membership/franchisees",
   },
   {
     icon: Package,
     title: "Поставщики",
     description:
       "Для компаний, обслуживающих отрасль: юристы, IT, маркетинг, финансы. Прямой выход на лиц, принимающих решения.",
-    href: "/membership",
+    href: "/membership/suppliers",
   },
 ];
 
 export default function ThreeColumns() {
   return (
-    <section className="py-20 bg-[#F4F4F4]">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
-            Членство UFA
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0B2645] leading-[1.3]">
+    <section className="py-20 bg-[#F5F6F8]">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="text-center mb-14">
+          <span className="eyebrow text-[#3ECF8E] mb-3">Членство UFA</span>
+          <h2 className="text-[28px] md:text-[36px] font-extrabold text-[#0B2645] leading-[1.15] tracking-[-0.01em] mt-2">
             Выберите тип членства, подходящий вам
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {types.map((type) => {
             const Icon = type.icon;
             return (
               <Link
                 key={type.title}
                 href={type.href}
-                className="group bg-white rounded-lg p-8 block hover:shadow-md transition-shadow"
+                className="card card-hover p-8 block"
               >
-                <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6">
+                <div className="w-14 h-14 bg-[#F5F6F8] rounded-[3px] flex items-center justify-center mb-6">
                   <Icon className="w-7 h-7 text-[#3ECF8E]" />
                 </div>
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3 group-hover:text-[#3ECF8E] transition-colors">
+                <h3 className="text-xl font-bold text-[#0B2645] mb-3 leading-[1.25]">
                   {type.title}
                 </h3>
-                <p className="text-[#020409] text-sm leading-[1.8] mb-6">
+                <p className="text-[15px] text-[#4A5568] leading-[1.65] mb-6">
                   {type.description}
                 </p>
-                <span className="text-[#2A9D6F] text-sm font-semibold uppercase tracking-[0.08em] group-hover:underline">
+                <span className="text-[#2A9D6F] text-[13px] font-bold uppercase tracking-[0.06em] hover:underline">
                   Подробнее →
                 </span>
               </Link>

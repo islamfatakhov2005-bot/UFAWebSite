@@ -32,7 +32,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
 
   useEffect(() => {
     if (paused) return;
-    const interval = setInterval(next, 5000);
+    const interval = setInterval(next, 7000);
     return () => clearInterval(interval);
   }, [next, paused]);
 
@@ -40,17 +40,11 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
 
   return (
     <section
-      className="relative w-full h-[420px] md:h-[520px] lg:h-[600px] overflow-hidden"
+      className="relative w-full h-[440px] md:h-[520px] lg:h-[580px] overflow-hidden"
       aria-roledescription="carousel"
       aria-label="Баннер-карусель"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) {
-          setPaused(false);
-        }
-      }}
     >
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         Слайд {current + 1} из {slides.length}: {slides[current]?.title}
@@ -74,23 +68,20 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             priority={index === 0}
             unoptimized={slide.image.endsWith(".svg")}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B2645]/85 via-[#0B2645]/55 to-[#0B2645]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B2645]/85 via-[#0B2645]/55 to-[#0B2645]/25" />
           <div className="absolute inset-0 flex items-center">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+            <div className="max-w-[1200px] mx-auto px-6 w-full">
               <div className="max-w-xl">
-                <span className="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#3ECF8E] mb-4">
+                <span className="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-[#3ECF8E] mb-5">
                   Ассоциация Франчайзинга Узбекистана
                 </span>
-                <h1 className="text-3xl md:text-4xl lg:text-[44px] font-bold text-white leading-[1.15] mb-5">
+                <h1 className="text-[28px] md:text-4xl lg:text-[42px] font-extrabold text-white leading-[1.12] mb-5 tracking-[-0.01em]">
                   {slide.title}
                 </h1>
-                <p className="text-base md:text-lg text-white/85 leading-[1.7] mb-8">
+                <p className="text-base md:text-[17px] text-white/85 leading-[1.6] mb-8 max-w-lg">
                   {slide.subtitle}
                 </p>
-                <Link
-                  href={slide.buttonUrl}
-                  className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3.5 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
-                >
+                <Link href={slide.buttonUrl} className="btn btn-primary">
                   {slide.buttonText}
                 </Link>
               </div>
@@ -99,32 +90,30 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
         </div>
       ))}
 
-      {/* Arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-full p-3 transition-colors"
+        className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/10 hover:bg-white/25 border border-white/30 text-white transition-colors flex items-center justify-center"
         aria-label="Предыдущий слайд"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-5 h-5" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-full p-3 transition-colors"
+        className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/10 hover:bg-white/25 border border-white/30 text-white transition-colors flex items-center justify-center"
         aria-label="Следующий слайд"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-5 h-5" />
       </button>
 
-      {/* Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
+            className={`h-[3px] transition-all duration-300 ${
               index === current
-                ? "bg-[#3ECF8E] w-8"
-                : "bg-white/50 hover:bg-white/75 w-4"
+                ? "bg-[#3ECF8E] w-10"
+                : "bg-white/50 hover:bg-white/75 w-6"
             }`}
             aria-label={`Слайд ${index + 1}`}
           />

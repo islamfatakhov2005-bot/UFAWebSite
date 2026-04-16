@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Check, X } from "lucide-react";
 
 interface RegisterData {
   email: string;
@@ -9,6 +10,20 @@ interface RegisterData {
   companyName: string;
   username: string;
   password: string;
+}
+
+interface PasswordChecks {
+  length: boolean;
+  upper: boolean;
+  digit: boolean;
+}
+
+function checkPassword(pwd: string): PasswordChecks {
+  return {
+    length: pwd.length >= 8,
+    upper: /[A-Z]/.test(pwd),
+    digit: /\d/.test(pwd),
+  };
 }
 
 function validate(data: RegisterData): Partial<Record<keyof RegisterData, string>> {
@@ -25,11 +40,16 @@ function validate(data: RegisterData): Partial<Record<keyof RegisterData, string
     errors.username = "Введите логин";
   } else if (data.username.length < 4) {
     errors.username = "Минимум 4 символа";
+  } else if (!/^[a-zA-Z0-9_.]+$/.test(data.username)) {
+    errors.username = "Только латиница, цифры, _ и .";
   }
   if (!data.password) {
     errors.password = "Введите пароль";
-  } else if (data.password.length < 8) {
-    errors.password = "Минимум 8 символов";
+  } else {
+    const checks = checkPassword(data.password);
+    if (!checks.length || !checks.upper || !checks.digit) {
+      errors.password = "Пароль не соответствует требованиям";
+    }
   }
   return errors;
 }
@@ -45,6 +65,9 @@ export default function RegisterForm() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof RegisterData, string>>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [showPwdHint, setShowPwdHint] = useState(false);
+
+  const pwdChecks = checkPassword(form.password);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,6 +89,7 @@ export default function RegisterForm() {
           company: form.companyName,
           subject: "registration",
           message: `Логин: ${form.username}`,
+          formType: "register",
         }),
       });
       if (!res.ok) throw new Error();
@@ -75,27 +99,18 @@ export default function RegisterForm() {
     }
   };
 
-  const input = (field: keyof RegisterData) =>
-    `w-full px-4 py-3 rounded border ${
-      errors[field] ? "border-red-400 bg-red-50" : "border-gray-200 bg-white"
-    } focus:outline-none focus:ring-2 focus:ring-[#3ECF8E]/40 focus:border-[#3ECF8E] transition-colors text-sm`;
-
-  const label = "block text-xs font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-2";
-
   if (status === "success") {
     return (
-      <div className="text-center py-8">
-        <div className="w-16 h-16 bg-[#3ECF8E] rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-          </svg>
+      <div className="py-8 text-center">
+        <div className="w-14 h-14 bg-[#3ECF8E] flex items-center justify-center mx-auto mb-6 rounded-[3px]">
+          <Check className="w-7 h-7 text-white" strokeWidth={3} />
         </div>
-        <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-4">
+        <h3 className="text-lg font-bold text-[#0B2645] mb-3">
           Аккаунт создан
         </h3>
-        <p className="text-[#020409] text-sm leading-[1.8]">
-          Проверьте email — мы отправили ссылку для подтверждения аккаунта и
-          первые шаги работы с порталом UFA.
+        <p className="text-sm text-[#4A5568] leading-[1.7] max-w-sm mx-auto">
+          На ваш email отправлена ссылка подтверждения. После её активации вы
+          получите доступ к порталу и базовым сервисам UFA.
         </p>
       </div>
     );
@@ -104,116 +119,138 @@ export default function RegisterForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {status === "error" && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded p-4 text-sm">
-          Не удалось создать аккаунт. Попробуйте позже.
+        <div className="bg-red-50 border border-red-300 text-red-700 p-4 text-sm rounded-[3px]">
+          Не удалось создать аккаунт. Попробуйте позже или напишите на{" "}
+          <a href="mailto:support@ufa.uz" className="underline font-bold">
+            support@ufa.uz
+          </a>
+          .
         </div>
       )}
 
       <div>
-        <label className={label}>
-          Email <span className="text-[#3ECF8E]">*</span>
+        <label className="label" htmlFor="reg-email">
+          Email<span className="required">*</span>
         </label>
         <input
+          id="reg-email"
           type="email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className={input("email")}
+          className={`input ${errors.email ? "is-invalid" : ""}`}
           placeholder="name@company.uz"
           autoComplete="email"
         />
-        {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+        {errors.email && <p className="mt-1.5 text-xs text-red-600">{errors.email}</p>}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className={label}>
-            Имя <span className="text-[#3ECF8E]">*</span>
+          <label className="label" htmlFor="reg-first">
+            Имя<span className="required">*</span>
           </label>
           <input
+            id="reg-first"
             type="text"
             value={form.firstName}
             onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-            className={input("firstName")}
+            className={`input ${errors.firstName ? "is-invalid" : ""}`}
             placeholder="Дилшод"
             autoComplete="given-name"
           />
-          {errors.firstName && (
-            <p className="mt-1 text-xs text-red-500">{errors.firstName}</p>
-          )}
+          {errors.firstName && <p className="mt-1.5 text-xs text-red-600">{errors.firstName}</p>}
         </div>
         <div>
-          <label className={label}>
-            Фамилия <span className="text-[#3ECF8E]">*</span>
+          <label className="label" htmlFor="reg-last">
+            Фамилия<span className="required">*</span>
           </label>
           <input
+            id="reg-last"
             type="text"
             value={form.lastName}
             onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-            className={input("lastName")}
+            className={`input ${errors.lastName ? "is-invalid" : ""}`}
             placeholder="Каримов"
             autoComplete="family-name"
           />
-          {errors.lastName && (
-            <p className="mt-1 text-xs text-red-500">{errors.lastName}</p>
-          )}
+          {errors.lastName && <p className="mt-1.5 text-xs text-red-600">{errors.lastName}</p>}
         </div>
       </div>
 
       <div>
-        <label className={label}>
-          Компания <span className="text-[#3ECF8E]">*</span>
+        <label className="label" htmlFor="reg-company">
+          Название компании<span className="required">*</span>
         </label>
         <input
+          id="reg-company"
           type="text"
           value={form.companyName}
           onChange={(e) => setForm({ ...form, companyName: e.target.value })}
-          className={input("companyName")}
+          className={`input ${errors.companyName ? "is-invalid" : ""}`}
           placeholder="ООО «Ваша компания»"
           autoComplete="organization"
         />
-        {errors.companyName && (
-          <p className="mt-1 text-xs text-red-500">{errors.companyName}</p>
-        )}
+        {errors.companyName && <p className="mt-1.5 text-xs text-red-600">{errors.companyName}</p>}
       </div>
 
       <div>
-        <label className={label}>
-          Логин <span className="text-[#3ECF8E]">*</span>
+        <label className="label" htmlFor="reg-username">
+          Логин (username)<span className="required">*</span>
         </label>
         <input
+          id="reg-username"
           type="text"
           value={form.username}
           onChange={(e) => setForm({ ...form, username: e.target.value })}
-          className={input("username")}
-          placeholder="dilshod_karimov"
+          className={`input ${errors.username ? "is-invalid" : ""}`}
+          placeholder="dilshod.karimov"
           autoComplete="username"
         />
-        {errors.username && (
-          <p className="mt-1 text-xs text-red-500">{errors.username}</p>
-        )}
+        <p className="mt-1.5 text-xs text-[#4A5568]">
+          4+ символов, латиница, цифры, точка и подчёркивание.
+        </p>
+        {errors.username && <p className="mt-1.5 text-xs text-red-600">{errors.username}</p>}
       </div>
 
       <div>
-        <label className={label}>
-          Пароль <span className="text-[#3ECF8E]">*</span>
+        <label className="label" htmlFor="reg-password">
+          Пароль<span className="required">*</span>
         </label>
         <input
+          id="reg-password"
           type="password"
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
-          className={input("password")}
+          onFocus={() => setShowPwdHint(true)}
+          className={`input ${errors.password ? "is-invalid" : ""}`}
           placeholder="Минимум 8 символов"
           autoComplete="new-password"
         />
-        {errors.password && (
-          <p className="mt-1 text-xs text-red-500">{errors.password}</p>
+        {(showPwdHint || form.password) && (
+          <ul className="mt-3 space-y-1.5 text-xs">
+            {[
+              { ok: pwdChecks.length, text: "Минимум 8 символов" },
+              { ok: pwdChecks.upper, text: "Одна заглавная буква (латиница)" },
+              { ok: pwdChecks.digit, text: "Одна цифра" },
+            ].map((item) => (
+              <li key={item.text} className="flex items-center gap-2">
+                {item.ok ? (
+                  <Check className="w-3.5 h-3.5 text-[#3ECF8E]" strokeWidth={3} />
+                ) : (
+                  <X className="w-3.5 h-3.5 text-[#D5DCE5]" strokeWidth={3} />
+                )}
+                <span className={item.ok ? "text-[#0B2645]" : "text-[#4A5568]"}>{item.text}</span>
+              </li>
+            ))}
+          </ul>
         )}
+        {errors.password && <p className="mt-1.5 text-xs text-red-600">{errors.password}</p>}
       </div>
 
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-[#3ECF8E] hover:bg-[#35B67A] disabled:opacity-50 text-white py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
+        className="btn btn-primary w-full py-3.5 mt-2 disabled:opacity-50"
       >
         {status === "loading" ? "Создаём аккаунт…" : "Создать аккаунт"}
       </button>

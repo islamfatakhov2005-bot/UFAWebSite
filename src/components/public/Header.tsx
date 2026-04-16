@@ -45,11 +45,10 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      {/* Main row: logo + search + secondary links + CTAs */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-[1400px] mx-auto px-4 h-20 flex items-center gap-6">
-          {/* Logo */}
+    <header className="sticky top-0 z-50 bg-white border-b border-[#D5DCE5]">
+      {/* Top utility row */}
+      <div className="bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 h-[88px] flex items-center gap-6">
           <Link href="/" className="flex-shrink-0">
             <Image
               src="/logos/logo.png"
@@ -61,28 +60,26 @@ export default function Header() {
             />
           </Link>
 
-          {/* Search — desktop */}
           <form
             onSubmit={handleSearch}
-            className="hidden lg:flex flex-1 max-w-md relative"
+            className="hidden lg:flex flex-1 max-w-sm relative"
           >
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4A5568] pointer-events-none" />
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Поиск..."
-              className="w-full pl-12 pr-4 py-2.5 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-[#3ECF8E] focus:ring-1 focus:ring-[#3ECF8E]"
+              placeholder="Search..."
+              className="w-full pl-10 pr-4 py-2 border border-[#D5DCE5] rounded-[3px] bg-white text-sm text-[#0B2645] focus:outline-none focus:border-[#0B2645] focus:ring-1 focus:ring-[#0B2645]/20"
             />
           </form>
 
-          {/* Secondary nav links */}
-          <nav className="hidden xl:flex items-center gap-5 text-sm font-medium text-[#0B2645]">
+          <nav className="hidden xl:flex items-center gap-5 text-[13px] font-semibold text-[#0B2645]">
             {secondaryLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`uppercase tracking-[0.04em] whitespace-nowrap hover:text-[#3ECF8E] transition-colors ${
+                className={`uppercase tracking-[0.05em] whitespace-nowrap hover:text-[#3ECF8E] transition-colors ${
                   isActive(link.href, pathname) ? "text-[#3ECF8E]" : ""
                 }`}
               >
@@ -91,29 +88,18 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTAs */}
           <div className="hidden md:flex items-center gap-2 ml-auto">
-            <Link
-              href="/franchise-opportunities"
-              className="border-2 border-[#0B2645] text-[#0B2645] hover:bg-[#0B2645] hover:text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-[0.05em] whitespace-nowrap transition-colors"
-            >
+            <Link href="/franchise-opportunities" className="btn btn-outline-navy">
               Найти франшизу
             </Link>
-            <Link
-              href="/login"
-              className="hidden lg:inline-block border-2 border-[#0B2645] text-[#0B2645] hover:bg-[#0B2645] hover:text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-[0.05em] whitespace-nowrap transition-colors"
-            >
+            <Link href="/login" className="hidden lg:inline-flex btn btn-outline-navy">
               Членская зона
             </Link>
-            <Link
-              href="/membership/apply"
-              className="bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-5 py-2.5 rounded text-xs font-bold uppercase tracking-[0.05em] whitespace-nowrap transition-colors"
-            >
+            <Link href="/membership/apply" className="btn btn-primary">
               Вступить
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="lg:hidden ml-auto p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -124,18 +110,18 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Navy main nav bar */}
+      {/* Navy main nav */}
       <nav className="hidden lg:block bg-[#0B2645]">
-        <div className="max-w-[1400px] mx-auto px-4">
-          <ul className="flex items-center justify-between h-12">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <ul className="flex items-center h-12">
             {mainNav.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="flex-1">
                 <Link
                   href={item.href}
-                  className={`block px-3 py-3 text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors whitespace-nowrap ${
+                  className={`flex items-center justify-center h-12 px-3 text-[12px] font-bold uppercase tracking-[0.06em] transition-colors text-center border-b-2 ${
                     isActive(item.href, pathname)
-                      ? "text-[#3ECF8E]"
-                      : "text-white/90 hover:text-[#3ECF8E]"
+                      ? "text-[#3ECF8E] border-[#3ECF8E]"
+                      : "text-white hover:text-[#3ECF8E] border-transparent hover:border-[#3ECF8E]"
                   }`}
                 >
                   {item.label}
@@ -148,16 +134,16 @@ export default function Header() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-20 z-40 bg-white overflow-y-auto">
-          <div className="p-4 space-y-4">
+        <div className="lg:hidden fixed inset-0 top-[88px] z-40 bg-white overflow-y-auto">
+          <div className="p-4 space-y-5">
             <form onSubmit={handleSearch} className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4A5568]" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Поиск..."
-                className="w-full pl-12 pr-4 py-3 rounded border border-gray-300 bg-white text-sm focus:outline-none focus:border-[#3ECF8E]"
+                placeholder="Search..."
+                className="w-full pl-10 pr-4 py-2.5 border border-[#D5DCE5] rounded-[3px] bg-white text-sm focus:outline-none focus:border-[#0B2645]"
               />
             </form>
 
@@ -166,10 +152,10 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block py-3 px-3 text-sm font-semibold uppercase tracking-[0.08em] rounded transition-colors ${
+                  className={`block py-3 px-3 text-sm font-bold uppercase tracking-[0.06em] rounded-[3px] transition-colors ${
                     isActive(item.href, pathname)
-                      ? "bg-[#3ECF8E] text-white"
-                      : "text-[#0B2645] hover:bg-[#F4F4F4]"
+                      ? "bg-[#0B2645] text-white"
+                      : "text-[#0B2645] hover:bg-[#F5F6F8]"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -178,12 +164,12 @@ export default function Header() {
               ))}
             </div>
 
-            <div className="border-t border-gray-100 pt-4 space-y-1">
+            <div className="border-t border-[#D5DCE5] pt-4 space-y-1">
               {secondaryLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block py-3 px-3 text-sm text-[#020409] hover:bg-[#F4F4F4] rounded transition-colors"
+                  className="block py-3 px-3 text-sm text-[#0B2645] hover:bg-[#F5F6F8] rounded-[3px] transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -191,24 +177,24 @@ export default function Header() {
               ))}
             </div>
 
-            <div className="space-y-2 pt-4">
+            <div className="grid grid-cols-1 gap-2 pt-4">
               <Link
                 href="/franchise-opportunities"
-                className="block text-center border-2 border-[#0B2645] text-[#0B2645] py-3 rounded text-sm font-bold uppercase tracking-[0.08em] transition-colors"
+                className="btn btn-outline-navy w-full"
                 onClick={() => setMobileOpen(false)}
               >
                 Найти франшизу
               </Link>
               <Link
                 href="/login"
-                className="block text-center border-2 border-[#0B2645] text-[#0B2645] py-3 rounded text-sm font-bold uppercase tracking-[0.08em] transition-colors"
+                className="btn btn-outline-navy w-full"
                 onClick={() => setMobileOpen(false)}
               >
                 Членская зона
               </Link>
               <Link
                 href="/membership/apply"
-                className="block text-center bg-[#3ECF8E] text-white py-3 rounded text-sm font-bold uppercase tracking-[0.08em] transition-colors"
+                className="btn btn-primary w-full"
                 onClick={() => setMobileOpen(false)}
               >
                 Вступить в UFA

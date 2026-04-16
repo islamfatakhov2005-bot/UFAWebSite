@@ -1,17 +1,30 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand */
   --color-primary: #3ECF8E;
   --color-primary-dark: #35B67A;
   --color-primary-text: #2A9D6F;
+
+  /* Navy */
   --color-navy: #0B2645;
   --color-navy-dark: #07192E;
   --color-navy-light: #143B6B;
   --color-dark: #0B2645;
   --color-dark-secondary: #143B6B;
+
+  /* Neutrals */
   --color-light: #F5F6F8;
   --color-border: #D5DCE5;
-  --font-sans: 'Montserrat', system-ui, sans-serif;
+  --color-text: #0B2645;
+  --color-text-muted: #4A5568;
+
+  --font-sans: 'Open Sans', system-ui, sans-serif;
+
+  /* Radii — IFA uses minimal rounding */
+  --radius-sm: 2px;
+  --radius: 3px;
+  --radius-md: 4px;
 }
 
 html {
@@ -22,7 +35,8 @@ body {
   font-family: var(--font-sans);
   color: #0B2645;
   background: #ffffff;
-  line-height: 1.7;
+  line-height: 1.6;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,51 +58,87 @@ body {
 ::-webkit-scrollbar {
   width: 10px;
 }
+::-webkit-scrollbar-track { background: #F5F6F8; }
+::-webkit-scrollbar-thumb { background: #0B2645; }
+::-webkit-scrollbar-thumb:hover { background: #143B6B; }
 
-::-webkit-scrollbar-track {
-  background: #F5F6F8;
-}
+/* Typography — corporate tight-packed, IFA feel */
+h1, h2, h3, h4, h5, h6 { color: #0B2645; letter-spacing: -0.01em; }
+h1 { font-weight: 800; line-height: 1.15; }
+h2 { font-weight: 700; line-height: 1.2; }
+h3 { font-weight: 700; line-height: 1.25; }
 
-::-webkit-scrollbar-thumb {
-  background: #0B2645;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #143B6B;
-}
-
-/* Corporate-style heading: tight, bold, no automatic underline */
+/* Corporate section heading — no auto-uppercase, no auto-underline */
 .section-heading {
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   font-weight: 700;
   color: #0B2645;
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
-
 @media (min-width: 768px) {
-  .section-heading {
-    font-size: 2rem;
-  }
+  .section-heading { font-size: 2rem; }
 }
-
 @media (min-width: 1024px) {
-  .section-heading {
-    font-size: 2.25rem;
-  }
+  .section-heading { font-size: 2.25rem; }
 }
 
-/* Small eyebrow label above major headings */
+/* Small uppercase eyebrow */
 .eyebrow {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #0B2645;
 }
 
-/* Legacy underlines kept for backward compat, but thinner, subtler */
+/* IFA-style buttons — sharp, uppercase, tight */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: background-color 150ms, color 150ms, border-color 150ms;
+  line-height: 1;
+  border: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: #3ECF8E;
+  color: #fff;
+  border-color: #3ECF8E;
+}
+.btn-primary:hover { background: #35B67A; border-color: #35B67A; }
+
+.btn-outline-navy {
+  background: transparent;
+  color: #0B2645;
+  border-color: #0B2645;
+}
+.btn-outline-navy:hover { background: #0B2645; color: #fff; }
+
+.btn-outline-white {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+.btn-outline-white:hover { background: #fff; color: #0B2645; }
+
+.btn-outline-green {
+  background: transparent;
+  color: #2A9D6F;
+  border-color: #3ECF8E;
+}
+.btn-outline-green:hover { background: #3ECF8E; color: #fff; }
+
+/* Legacy — thin underline, centered */
 .green-underline::after,
 .green-underline-center::after,
 .white-underline-center::after {
@@ -99,9 +149,49 @@ body {
   background: #3ECF8E;
   margin-top: 16px;
 }
-
 .green-underline-center::after,
 .white-underline-center::after {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Corporate card — sharp corners, light shadow on hover only */
+.card {
+  background: #fff;
+  border: 1px solid #D5DCE5;
+  border-radius: 3px;
+  transition: box-shadow 150ms, transform 150ms;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 24px rgba(11, 38, 69, 0.08);
+}
+
+/* Form inputs — IFA style */
+.input {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #D5DCE5;
+  border-radius: 3px;
+  background: #fff;
+  font-size: 0.875rem;
+  color: #0B2645;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+.input:focus {
+  outline: none;
+  border-color: #0B2645;
+  box-shadow: 0 0 0 2px rgba(11, 38, 69, 0.12);
+}
+.input.is-invalid { border-color: #D82020; background: #FEF5F5; }
+
+.label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0B2645;
+  margin-bottom: 6px;
+}
+.required { color: #D82020; margin-left: 2px; }
