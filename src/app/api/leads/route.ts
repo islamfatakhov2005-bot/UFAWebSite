@@ -3,6 +3,9 @@ import { sendLeadToCrm } from "@/lib/crm";
 import prisma from "@/lib/db";
 import { requireAdmin } from "@/lib/auth";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
+import { insertLead, listLeads } from "@/lib/sqlite-leads";
+
+export const runtime = "nodejs";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -70,14 +73,22 @@ export async function POST(request: NextRequest) {
       formType: formType ? String(formType).trim() : "contact",
     };
 
-    // Persist to database
+    // Primary: always save to local SQLite — doesn't depend on Postgres auth
+    try {
+      insertLead({ ...leadData, raw: body });
+    } catch (sqliteError) {
+      console.error("[Lead] SQLite save failed:", sqliteError);
+    }
+
+    // Best-effort CRM send
     let sentToCrm = false;
     try {
       sentToCrm = await sendLeadToCrm(leadData);
     } catch {
-      // CRM send failed, but we still save locally
+      /* CRM send failed */
     }
 
+    // Best-effort Postgres (legacy — may fail if auth not configured)
     try {
       await prisma.websiteLead.create({
         data: {
@@ -91,9 +102,8 @@ export async function POST(request: NextRequest) {
           sentToCrm,
         },
       });
-    } catch (dbError) {
-      console.error("[Lead] DB save failed:", dbError);
-      // Still return success to user — the lead data was received
+    } catch {
+      /* Postgres write failed — SQLite already has the lead */
     }
 
     return NextResponse.json(
@@ -116,12 +126,9 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // SQLite is authoritative; Postgres is supplementary
   try {
-    const leads = await prisma.websiteLead.findMany({
-      orderBy: { createdAt: "desc" },
-      take: 50,
-    });
-    return NextResponse.json(leads);
+    return NextResponse.json(listLeads(100));
   } catch {
     return NextResponse.json(
       { error: "Ошибка загрузки заявок" },
