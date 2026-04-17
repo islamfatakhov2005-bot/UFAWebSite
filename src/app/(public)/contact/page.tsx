@@ -10,61 +10,61 @@ export const metadata: Metadata = {
 const departments = [
   {
     name: "Бухгалтерия",
-    email: "accounting@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Платежи, счета, подтверждение занятости",
   },
   {
     
-    email: "advertising@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Рекламные запросы, биллинг, продукты",
   },
   {
     name: "Программа CFE",
-    email: "cfe@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Регистрация, проверка кредитов, график мероприятий",
   },
   {
     
-    email: "foundation@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Стипендии, программы разнообразия, инициативы",
   },
   {
     name: "Мероприятия и конференции",
-    email: "events@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Регистрация, запросы спикеров, кредиты",
   },
   {
     name: "Спонсорство и выставки",
-    email: "sales@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Возможности спонсорства и участия в выставках",
   },
   {
     name: "Международное развитие",
-    email: "international@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Международное право и торговые вопросы",
   },
   {
     name: "Связи с государством",
-    email: "gr@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Адвокация и политическое взаимодействие",
   },
   {
     name: "Членство",
-    email: "membership@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Вступление, биллинг, преимущества членства",
   },
   {
     name: "Пресса и СМИ",
-    email: "press@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
     handles: "Запросы СМИ и пресс-пропуска",
   },

@@ -90,17 +90,17 @@ const benefits = [
 const team = [
   {
     role: "Директор по взаимодействию",
-    email: "involve@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Координатор волонтёрской программы",
-    email: "volunteers@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Менеджер комитетов",
-    email: "committees@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
 ];
@@ -209,7 +209,7 @@ export default function GetInvolvedPage() {
             консультация бесплатна.
           </p>
           <Link
-            href="mailto:involve@uzfranchise.uz"
+            href="mailto:info@uzfranchise.uz"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Написать

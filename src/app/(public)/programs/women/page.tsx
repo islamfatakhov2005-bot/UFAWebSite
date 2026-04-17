@@ -81,7 +81,7 @@ export default function WomenPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { role: "Координатор программы", email: "women@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор программы", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

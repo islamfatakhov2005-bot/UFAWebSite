@@ -73,7 +73,7 @@ export default function ForBeginnersPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { role: "Координатор региональных программ Фонда", email: "regions-foundation@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор региональных программ Фонда", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

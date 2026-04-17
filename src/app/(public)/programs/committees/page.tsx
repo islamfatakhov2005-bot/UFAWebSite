@@ -56,7 +56,7 @@ export default function CommitteesPage() {
         },
       ]}
       contacts={[
-        { role: "Менеджер комитетов", email: "committees@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Менеджер комитетов", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

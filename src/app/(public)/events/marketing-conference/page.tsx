@@ -49,8 +49,8 @@ export default function MarketingConferencePage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { role: "PR и коммуникации", email: "press@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Директор по мероприятиям", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "PR и коммуникации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по мероприятиям", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

@@ -44,7 +44,7 @@ export default function LawCenterPage() {
         {
           title: "Как получить помощь",
           items: [
-            "Члены UFA: пишите на legal@uzfranchise.uz с темой обращения",
+            "Члены UFA: пишите на info@uzfranchise.uz с темой обращения",
             "Срочные вопросы: горячая линия +998 99 200 8272 в рабочее время",
             "Подача amicus-просьбы: специальная форма в членском портале",
             "Экспертиза крупных законопроектов: по согласованию с командой",
@@ -66,8 +66,8 @@ export default function LawCenterPage() {
         },
       ]}
       contacts={[
-        { role: "Директор юридического центра", email: "legal@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Юрист отдела адвокации", email: "advocacy-legal@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор юридического центра", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Юрист отдела адвокации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

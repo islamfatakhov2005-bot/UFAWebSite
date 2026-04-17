@@ -70,9 +70,9 @@ const pricing = [
 ];
 
 const team = [
-  { role: "Менеджер для франчайзеров", email: "franchisors@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Директор по членству", email: "a.karimova@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Специалист по работе с участниками", email: "d.ismailova@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер для франчайзеров", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Директор по членству", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Специалист по работе с участниками", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function FranchisorsMembershipPage() {

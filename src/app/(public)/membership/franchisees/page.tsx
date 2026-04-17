@@ -98,9 +98,9 @@ const benefits = [
 ];
 
 const team = [
-  { role: "Менеджер для франчайзи", email: "franchisees@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Координатор программ", email: "s.azizov@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Специалист поддержки", email: "support@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер для франчайзи", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор программ", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Специалист поддержки", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function FranchiseesMembershipPage() {

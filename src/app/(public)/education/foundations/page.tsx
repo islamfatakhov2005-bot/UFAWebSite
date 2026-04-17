@@ -51,7 +51,7 @@ export default function FoundationsPage() {
         buttonHref: "/register",
       }}
       contacts={[
-        { role: "Директор по образованию", email: "education@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по образованию", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

@@ -56,10 +56,10 @@ export default function YouthCouncilPage() {
         title: "Стать кандидатом 2027",
         text: "Следующие выборы — март 2027. Предварительные заявки принимаем уже сейчас.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:youth@uzfranchise.uz",
+        buttonHref: "mailto:info@uzfranchise.uz",
       }}
       contacts={[
-        { role: "Координатор комитетов", email: "committees@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор комитетов", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

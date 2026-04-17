@@ -49,10 +49,10 @@ export default function OpenForOpportunityPage() {
         title: "Стать участником-брендом",
         text: "Представьте свою сеть потенциальным франчайзи в регионе. Стоимость участия: 3–5 млн сум в зависимости от формата.",
         buttonText: "Запросить участие",
-        buttonHref: "mailto:events@uzfranchise.uz",
+        buttonHref: "mailto:info@uzfranchise.uz",
       }}
       contacts={[
-        { role: "Координатор региональных программ", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор региональных программ", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

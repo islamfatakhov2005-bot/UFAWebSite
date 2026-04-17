@@ -45,10 +45,10 @@ export default function LeadershipConferencePage() {
         title: "Приглашение только",
         text: "Участие по приглашению. Если вас заинтересовала программа — напишите нам.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:leadership@uzfranchise.uz",
+        buttonHref: "mailto:info@uzfranchise.uz",
       }}
       contacts={[
-        { role: "Координатор", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

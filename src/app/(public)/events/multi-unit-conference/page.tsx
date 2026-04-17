@@ -62,7 +62,7 @@ export default function MultiUnitConferencePage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { role: "Директор по мероприятиям", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по мероприятиям", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

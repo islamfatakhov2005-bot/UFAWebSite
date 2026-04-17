@@ -59,7 +59,7 @@ export default function AcademyPage() {
         {
           title: "Корпоративные тарифы",
           text: "Доступ для всей команды компании с единым дашбордом прогресса.",
-          href: "mailto:academy@uzfranchise.uz",
+          href: "mailto:info@uzfranchise.uz",
           cta: "Запросить",
         },
       ]}
@@ -70,7 +70,7 @@ export default function AcademyPage() {
         buttonHref: "/login",
       }}
       contacts={[
-        { role: "Координатор UFA Academy", email: "academy@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор UFA Academy", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

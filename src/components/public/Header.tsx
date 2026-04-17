@@ -63,7 +63,7 @@ export default function Header() {
 
           <form
             onSubmit={handleSearch}
-            className="hidden lg:flex flex-1 max-w-sm relative"
+            className="hidden xl:flex flex-1 max-w-[200px] relative"
           >
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4A5568] pointer-events-none" />
             <input
@@ -75,12 +75,12 @@ export default function Header() {
             />
           </form>
 
-          <nav className="hidden xl:flex items-center gap-5 text-[13px] font-semibold text-[#0B2645]">
+          <nav className="hidden 2xl:flex items-center gap-4 text-[12px] font-semibold text-[#0B2645]">
             {secondaryLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`uppercase tracking-[0.05em] whitespace-nowrap hover:text-[#3ECF8E] transition-colors ${
+                className={`uppercase tracking-[0.04em] whitespace-nowrap hover:text-[#3ECF8E] transition-colors ${
                   isActive(link.href, pathname) ? "text-[#3ECF8E]" : ""
                 }`}
               >
@@ -91,10 +91,10 @@ export default function Header() {
 
           <div className="hidden md:flex items-center gap-2 ml-auto">
             <LanguageSwitcher />
-            <Link href="/franchise-opportunities" className="btn btn-outline-navy">
+            <Link href="/franchise-opportunities" className="hidden lg:inline-flex btn btn-outline-navy">
               Найти франшизу
             </Link>
-            <Link href="/login" className="hidden lg:inline-flex btn btn-outline-navy">
+            <Link href="/login" className="hidden 2xl:inline-flex btn btn-outline-navy">
               Членская зона
             </Link>
             <Link href="/membership/apply" className="btn btn-primary">

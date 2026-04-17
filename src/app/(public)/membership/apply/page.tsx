@@ -71,10 +71,10 @@ export default function ApplyPage() {
               +998 99 200 8272
             </a>
             <a
-              href="mailto:membership@uzfranchise.uz"
+              href="mailto:info@uzfranchise.uz"
               className="inline-block border-2 border-[#3ECF8E] text-[#2A9D6F] hover:bg-[#3ECF8E] hover:text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
-              membership@uzfranchise.uz
+              info@uzfranchise.uz
             </a>
           </div>
         </div>

@@ -94,7 +94,7 @@ export default function RoadmapPage() {
         buttonHref: "/advocacy/action-network",
       }}
       contacts={[
-        { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по адвокации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

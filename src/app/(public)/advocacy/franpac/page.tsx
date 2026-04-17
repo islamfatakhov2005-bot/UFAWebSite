@@ -69,11 +69,11 @@ export default function FranPacPage() {
         title: "Поддержать FranPAC",
         text: "Взнос оформляется через бухгалтерию UFA, предоставляем счёт и все документы.",
         buttonText: "Оформить взнос",
-        buttonHref: "mailto:franpac@uzfranchise.uz",
+        buttonHref: "mailto:info@uzfranchise.uz",
       }}
       contacts={[
-        { role: "Директор FranPAC", email: "franpac@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор FranPAC", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по адвокации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

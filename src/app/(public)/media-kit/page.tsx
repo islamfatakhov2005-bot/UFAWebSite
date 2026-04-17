@@ -51,13 +51,13 @@ const facts = [
 const contacts = [
   {
     role: "Руководитель PR и коммуникаций",
-    email: "press@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     
     role: "Менеджер по СМИ",
-    email: "media@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
 ];

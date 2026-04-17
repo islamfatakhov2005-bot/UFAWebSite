@@ -46,7 +46,7 @@ export default function ExpoPage() {
         {
           title: "Спонсорские пакеты",
           text: "От бронзового стенда до титульного спонсора — индивидуальные условия.",
-          href: "mailto:sales@uzfranchise.uz",
+          href: "mailto:info@uzfranchise.uz",
           cta: "Запросить брошюру",
         },
         {
@@ -66,12 +66,12 @@ export default function ExpoPage() {
         title: "Забронировать стенд",
         text: "Ранние тарифы действуют до 28 февраля 2026. После — стандартная сетка цен.",
         buttonText: "Забронировать",
-        buttonHref: "mailto:expo@uzfranchise.uz",
+        buttonHref: "mailto:info@uzfranchise.uz",
       }}
       contacts={[
-        { role: "Менеджер выставок", email: "expo@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Спонсорство", email: "sales@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Регистрация", email: "registration@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Менеджер выставок", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Спонсорство", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Регистрация", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

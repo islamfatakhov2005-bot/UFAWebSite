@@ -76,11 +76,11 @@ export default function CfePage() {
         title: "Записаться на программу CFE",
         text: "Стоимость для членов UFA: 18 000 000 сум. Для не-членов: 28 000 000 сум. Оплата возможна в рассрочку.",
         buttonText: "Записаться",
-        buttonHref: "mailto:cfe@uzfranchise.uz",
+        buttonHref: "mailto:info@uzfranchise.uz",
       }}
       contacts={[
-        { role: "Менеджер программы CFE", email: "cfe@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Директор по образованию", email: "education@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Менеджер программы CFE", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по образованию", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

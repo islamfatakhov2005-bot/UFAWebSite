@@ -51,12 +51,12 @@ export default function RegionalNetworksPage() {
         {
           title: "Организовать встречу",
           text: "Предложите тему или спикера для своего города.",
-          href: "mailto:regions@uzfranchise.uz",
+          href: "mailto:info@uzfranchise.uz",
           cta: "Написать",
         },
       ]}
       contacts={[
-        { role: "Координатор региональных программ", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор региональных программ", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

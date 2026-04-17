@@ -132,22 +132,22 @@ const upcomingEvents = [
 const eventTeam = [
   {
     role: "Директор по мероприятиям",
-    email: "events@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Менеджер спонсорства",
-    email: "sales@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Координатор регистрации",
-    email: "registration@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Менеджер выставок",
-    email: "expo@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
 ];
@@ -277,7 +277,7 @@ export default function EventsPage() {
             сетей. Пакеты подбираются индивидуально под задачи вашего бренда.
           </p>
           <Link
-            href="mailto:sales@uzfranchise.uz"
+            href="mailto:info@uzfranchise.uz"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Запросить пакет спонсорства

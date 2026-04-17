@@ -69,8 +69,8 @@ export default function LegalSymposiumPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { role: "Директор юр. центра", email: "legal@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Координатор мероприятия", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор юр. центра", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор мероприятия", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

@@ -62,7 +62,7 @@ export default function DiversityPage() {
         },
       ]}
       contacts={[
-        { role: "Директор программ Фонда", email: "programs@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор программ Фонда", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

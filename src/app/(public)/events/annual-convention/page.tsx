@@ -69,9 +69,9 @@ export default function AnnualConventionPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { role: "Директор конвенции", email: "convention@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Менеджер выставки", email: "expo@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Спонсорство", email: "sales@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор конвенции", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Менеджер выставки", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Спонсорство", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

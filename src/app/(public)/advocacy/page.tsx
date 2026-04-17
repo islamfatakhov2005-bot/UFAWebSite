@@ -148,16 +148,16 @@ const getInvolved = [
 ];
 
 const advocacyTeam = [
-  { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Директор юридического центра", email: "legal@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Менеджер связей с парламентом", email: "parliament@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Менеджер связей с регуляторами", email: "regulators@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Аналитик политики", email: "policy@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Координатор сети действий", email: "network@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Директор FranPAC", email: "franpac@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Менеджер по коммуникациям", email: "comms@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Координатор региональных программ", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Юрист отдела адвокации", email: "advocacy-legal@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Директор по адвокации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Директор юридического центра", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер связей с парламентом", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер связей с регуляторами", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Аналитик политики", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор сети действий", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Директор FranPAC", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер по коммуникациям", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор региональных программ", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Юрист отдела адвокации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function AdvocacyPage() {

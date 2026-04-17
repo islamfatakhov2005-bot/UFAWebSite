@@ -51,27 +51,27 @@ const programs = [
 const foundationTeam = [
   {
     role: "Исполнительный директор Фонда",
-    email: "foundation@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Директор программ",
-    email: "programs@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Менеджер стипендий",
-    email: "scholarships@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Координатор региональных программ",
-    email: "regions-foundation@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Менеджер по сбору средств",
-    email: "fundraising@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
 ];

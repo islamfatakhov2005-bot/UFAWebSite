@@ -68,9 +68,9 @@ export default function ActionNetworkPage() {
         buttonHref: "/register",
       }}
       contacts={[
-        { role: "Координатор сети действий", email: "network@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Связи с парламентом", email: "parliament@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор сети действий", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по адвокации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Связи с парламентом", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

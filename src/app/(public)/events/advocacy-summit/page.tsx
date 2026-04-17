@@ -59,11 +59,11 @@ export default function AdvocacySummitPage() {
         title: "Подать заявку на участие",
         text: "Количество мест ограничено. Приоритет — членам UFA с длительной историей участия в отрасли.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:gr@uzfranchise.uz",
+        buttonHref: "mailto:info@uzfranchise.uz",
       }}
       contacts={[
-        { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
-        { role: "Связи с парламентом", email: "parliament@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по адвокации", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Связи с парламентом", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

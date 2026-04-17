@@ -123,17 +123,17 @@ const advantages = [
 const educationTeam = [
   {
     role: "Директор по образованию",
-    email: "education@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Менеджер программы CFE",
-    email: "cfe@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
   {
     role: "Координатор UFA Academy",
-    email: "academy@uzfranchise.uz",
+    email: "info@uzfranchise.uz",
     phone: "+998 99 200 8272",
   },
 ];

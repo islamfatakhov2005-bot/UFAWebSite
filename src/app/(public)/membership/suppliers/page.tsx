@@ -64,9 +64,9 @@ const categories = [
 ];
 
 const team = [
-  { role: "Менеджер для поставщиков", email: "suppliers@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Координатор Preferred Vendors", email: "vendors@uzfranchise.uz", phone: "+998 99 200 8272" },
-  { role: "Менеджер спонсорства", email: "sponsorship@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер для поставщиков", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор Preferred Vendors", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер спонсорства", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function SuppliersMembershipPage() {

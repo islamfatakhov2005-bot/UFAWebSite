@@ -65,7 +65,7 @@ export default function RegionalNetworksProgramPage() {
         buttonHref: "/events/calendar",
       }}
       contacts={[
-        { role: "Координатор региональных программ UFA", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор региональных программ UFA", email: "info@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );
