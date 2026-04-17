@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, Menu, X } from "lucide-react";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 const mainNav: { label: string; href: string }[] = [
   { label: "Что такое франчайзинг?", href: "/franchising-overview" },
@@ -90,11 +89,10 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-2 ml-auto">
-            <LanguageSwitcher />
             <Link href="/franchise-opportunities" className="hidden lg:inline-flex btn btn-outline-navy">
               Найти франшизу
             </Link>
-            <Link href="/login" className="hidden 2xl:inline-flex btn btn-outline-navy">
+            <Link href="/login" className="hidden xl:inline-flex btn btn-outline-navy">
               Членская зона
             </Link>
             <Link href="/membership/apply" className="btn btn-primary">
@@ -179,11 +177,7 @@ export default function Header() {
               ))}
             </div>
 
-            <div className="pt-4 flex items-center justify-center">
-              <LanguageSwitcher />
-            </div>
-
-            <div className="grid grid-cols-1 gap-2 pt-2">
+            <div className="grid grid-cols-1 gap-2 pt-4">
               <Link
                 href="/franchise-opportunities"
                 className="btn btn-outline-navy w-full"

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import RegisterForm from "@/components/public/RegisterForm";
-import LanguageSwitcher from "@/components/public/LanguageSwitcher";
 
 export const metadata: Metadata = {
   title: "Создать аккаунт",
@@ -48,16 +47,13 @@ export default function RegisterPage() {
               Создайте аккаунт UFA
             </h1>
           </div>
-          <div className="flex items-center gap-5 flex-wrap">
-            <LanguageSwitcher variant="dark" />
-            <Link
-              href="/login"
-              className="text-sm text-white/80 hover:text-[#3ECF8E] transition-colors"
-            >
-              Уже есть аккаунт?{" "}
-              <span className="font-bold underline underline-offset-4">Войти</span>
-            </Link>
-          </div>
+          <Link
+            href="/login"
+            className="text-sm text-white/80 hover:text-[#3ECF8E] transition-colors"
+          >
+            Уже есть аккаунт?{" "}
+            <span className="font-bold underline underline-offset-4">Войти</span>
+          </Link>
         </div>
       </section>
 
