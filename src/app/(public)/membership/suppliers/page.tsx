@@ -92,7 +92,7 @@ export default function SuppliersMembershipPage() {
             B2B-аудитория страны.
           </p>
           <Link
-            href="/membership/apply"
+            href="/registration"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Подать заявку
@@ -167,7 +167,7 @@ export default function SuppliersMembershipPage() {
               спонсорства обсуждаются индивидуально.
             </p>
             <Link
-              href="/membership/apply"
+              href="/registration"
               className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
               Подать заявку

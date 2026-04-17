@@ -123,7 +123,7 @@ export default function RegisterPage() {
                     Регистрация даёт базовый доступ. Для всех преимуществ
                     оформите членство — франчайзер, франчайзи или поставщик.
                   </p>
-                  <Link href="/membership/apply" className="btn btn-outline-white text-xs">
+                  <Link href="/registration" className="btn btn-outline-white text-xs">
                     Подать заявку на членство
                   </Link>
                 </div>

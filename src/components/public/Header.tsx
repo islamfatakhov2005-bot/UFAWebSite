@@ -95,7 +95,7 @@ export default function Header() {
             <Link href="/login" className="hidden xl:inline-flex btn btn-outline-navy">
               Членская зона
             </Link>
-            <Link href="/membership/apply" className="btn btn-primary">
+            <Link href="/registration" className="btn btn-primary">
               Вступить
             </Link>
           </div>
@@ -193,7 +193,7 @@ export default function Header() {
                 Членская зона
               </Link>
               <Link
-                href="/membership/apply"
+                href="/registration"
                 className="btn btn-primary w-full"
                 onClick={() => setMobileOpen(false)}
               >

@@ -125,7 +125,7 @@ export default function FranchiseesMembershipPage() {
             юридическая поддержка и возможность влиять на будущее отрасли.
           </p>
           <Link
-            href="/membership/apply"
+            href="/registration"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Подать заявку
@@ -192,7 +192,7 @@ export default function FranchiseesMembershipPage() {
                   ))}
                 </ul>
                 <Link
-                  href="/membership/apply"
+                  href="/registration"
                   className={`block text-center py-3 rounded font-bold text-xs uppercase tracking-[0.08em] transition-colors ${
                     tier.featured
                       ? "bg-[#3ECF8E] text-white hover:bg-[#35B67A]"

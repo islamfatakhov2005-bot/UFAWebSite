@@ -14,7 +14,7 @@ export default function MembershipCTA() {
           бесплатна.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/membership/apply" className="btn btn-primary">
+          <Link href="/registration" className="btn btn-primary">
             Подать заявку
           </Link>
           <Link href="/membership" className="btn btn-outline-white">

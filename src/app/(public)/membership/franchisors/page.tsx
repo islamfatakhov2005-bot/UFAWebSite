@@ -98,7 +98,7 @@ export default function FranchisorsMembershipPage() {
             отрасли и голос в политической повестке.
           </p>
           <Link
-            href="/membership/apply"
+            href="/registration"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Подать заявку
@@ -174,7 +174,7 @@ export default function FranchisorsMembershipPage() {
           </div>
           <div className="text-center mt-10">
             <Link
-              href="/membership/apply"
+              href="/registration"
               className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
               Подать заявку

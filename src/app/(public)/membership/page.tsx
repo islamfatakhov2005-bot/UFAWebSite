@@ -211,7 +211,7 @@ export default function MembershipPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
             <Link
-              href="/membership/apply"
+              href="/registration"
               className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
               Подать заявку
@@ -391,7 +391,7 @@ export default function MembershipPage() {
                   ))}
                 </ul>
                 <Link
-                  href="/membership/apply"
+                  href="/registration"
                   className={`block text-center py-3 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors ${
                     plan.featured
                       ? "bg-[#3ECF8E] text-white hover:bg-[#35B67A]"
@@ -418,7 +418,7 @@ export default function MembershipPage() {
             ответить на все вопросы.
           </p>
           <Link
-            href="/membership/apply"
+            href="/registration"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Подать заявку

@@ -40,7 +40,7 @@ const footerNav = [
       { label: "Для франчайзеров", href: "/membership/franchisors" },
       { label: "Для франчайзи", href: "/membership/franchisees" },
       { label: "Для поставщиков", href: "/membership/suppliers" },
-      { label: "Подать заявку", href: "/membership/apply" },
+      { label: "Подать заявку", href: "/registration" },
     ],
   },
 ];
