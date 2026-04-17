@@ -25,7 +25,7 @@ interface SettingsForm {
 const defaultSettings: SettingsForm = {
   siteName: "Uzbekistan Franchising Association",
   siteDescription: "Развиваем франчайзинг в Узбекистане",
-  contactEmail: "info@ufa.uz",
+  contactEmail: "info@uzfranchise.uz",
   contactPhone: "+998 71 123 45 67",
   address: "Ташкент, Узбекистан",
   telegramUrl: "https://t.me/ufa_uz",
@@ -173,7 +173,7 @@ export default function AdminSettingsPage() {
                   type="email"
                   value={form.contactEmail}
                   onChange={(e) => updateField("contactEmail", e.target.value)}
-                  placeholder="info@ufa.uz"
+                  placeholder="info@uzfranchise.uz"
                 />
               </div>
               <div className="space-y-2">

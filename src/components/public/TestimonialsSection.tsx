@@ -6,28 +6,24 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Азиз Каримов",
     role: "Основатель, Apex Pizza",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face&q=80",
     text: "Благодаря UFA мы нашли надёжных партнёров и масштабировали нашу франшизу с 3 до 12 точек за 18 месяцев. Экспертная поддержка ассоциации была бесценна.",
     metric: "С 3 до 12 точек за 18 месяцев",
   },
   {
-    name: "Малика Рахимова",
     role: "CEO, EduFranch",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face&q=80",
     text: "Членство в UFA открыло доступ к международным контактам и лучшим практикам. Наша образовательная франшиза теперь работает в 5 городах Узбекистана.",
     metric: "5 городов за 2 года",
   },
   {
-    name: "Дмитрий Ли",
     role: "Директор по развитию, FoodMaster",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face&q=80",
     text: "Юридическая поддержка UFA помогла нам правильно структурировать франчайзинговый договор. Это сэкономило нам месяцы работы и миллионы сумов.",
     metric: "Экономия 40+ млн сум на юридических услугах",
   },
   {
-    name: "Нодира Усманова",
     role: "Франчайзи, Beauty Lab",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face&q=80",
     text: "Как начинающий предприниматель, я не знала с чего начать. Менторская программа UFA связала меня с опытным наставником, и через 6 месяцев я открыла свою первую точку.",
@@ -65,15 +61,14 @@ export default function TestimonialsSection() {
             <div className="flex items-center justify-center gap-4">
               <Image
                 src={t.image}
-                alt={t.name}
+                alt={t.role}
                 width={56}
                 height={56}
                 className="w-14 h-14 rounded-full object-cover"
                 unoptimized
               />
               <div className="text-left">
-                <p className="font-bold text-[#0B2645]">{t.name}</p>
-                <p className="text-sm text-gray-500">{t.role}</p>
+                <p className="text-sm font-bold text-[#0B2645]">{t.role}</p>
               </div>
             </div>
           </div>

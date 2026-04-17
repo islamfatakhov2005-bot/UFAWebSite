@@ -56,10 +56,10 @@ export default function YouthCouncilPage() {
         title: "Стать кандидатом 2027",
         text: "Следующие выборы — март 2027. Предварительные заявки принимаем уже сейчас.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:youth@ufa.uz",
+        buttonHref: "mailto:youth@uzfranchise.uz",
       }}
       contacts={[
-        { name: "Севинч Аминова", role: "Координатор комитетов", email: "committees@ufa.uz", phone: "+998 71 234 57 02" },
+        { role: "Координатор комитетов", email: "committees@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

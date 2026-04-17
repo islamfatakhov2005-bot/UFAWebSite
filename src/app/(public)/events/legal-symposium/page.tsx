@@ -69,8 +69,8 @@ export default function LegalSymposiumPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { name: "Лола Рахимова", role: "Директор юр. центра", email: "legal@ufa.uz", phone: "+998 71 234 56 87" },
-        { name: "Мадина Турсунова", role: "Координатор мероприятия", email: "events@ufa.uz", phone: "+998 71 234 56 75" },
+        { role: "Директор юр. центра", email: "legal@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Координатор мероприятия", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

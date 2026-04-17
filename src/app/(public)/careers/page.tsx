@@ -159,7 +159,7 @@ export default function CareersPage() {
                   </div>
                 </div>
                 <Link
-                  href="mailto:careers@ufa.uz"
+                  href="mailto:careers@uzfranchise.uz"
                   className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-8 py-3 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors whitespace-nowrap text-center"
                 >
                   Откликнуться
@@ -176,10 +176,10 @@ export default function CareersPage() {
               рассматриваем сильных кандидатов вне открытых вакансий.
             </p>
             <Link
-              href="mailto:careers@ufa.uz"
+              href="mailto:careers@uzfranchise.uz"
               className="inline-block border-2 border-[#3ECF8E] text-[#2A9D6F] hover:bg-[#3ECF8E] hover:text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
-              careers@ufa.uz
+              careers@uzfranchise.uz
             </Link>
           </div>
         </div>

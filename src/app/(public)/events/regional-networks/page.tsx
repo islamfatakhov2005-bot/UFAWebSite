@@ -51,12 +51,12 @@ export default function RegionalNetworksPage() {
         {
           title: "Организовать встречу",
           text: "Предложите тему или спикера для своего города.",
-          href: "mailto:regions@ufa.uz",
+          href: "mailto:regions@uzfranchise.uz",
           cta: "Написать",
         },
       ]}
       contacts={[
-        { name: "Руслан Каримов", role: "Координатор региональных программ", email: "regions@ufa.uz", phone: "+998 71 234 56 94" },
+        { role: "Координатор региональных программ", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

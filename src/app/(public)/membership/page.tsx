@@ -152,22 +152,19 @@ const plans = [
 
 const team = [
   {
-    name: "Азиза Каримова",
-    role: "Директор по членству",
-    email: "a.karimova@ufa.uz",
-    phone: "+998 71 234 56 79",
+    role: "Членство",
+    email: "info@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Рустам Ахмедов",
-    role: "Менеджер по привлечению членов",
-    email: "r.ahmedov@ufa.uz",
-    phone: "+998 71 234 56 81",
+    role: "Привлечение членов",
+    email: "info@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Дилноза Исмаилова",
-    role: "Специалист по работе с участниками",
-    email: "d.ismailova@ufa.uz",
-    phone: "+998 71 234 56 82",
+    role: "Работа с участниками",
+    email: "info@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
 ];
 
@@ -353,13 +350,6 @@ export default function MembershipPage() {
                     Рекомендуемый
                   </div>
                 )}
-                <h3
-                  className={`text-base font-semibold uppercase tracking-[0.08em] mb-2 ${
-                    plan.featured ? "text-white" : "text-[#0B2645]"
-                  }`}
-                >
-                  {plan.name}
-                </h3>
                 <p
                   className={`text-sm leading-[1.8] mb-6 ${
                     plan.featured ? "text-white/80" : "text-[#020409]"
@@ -448,12 +438,9 @@ export default function MembershipPage() {
                 key={person.email}
                 className="bg-white rounded-lg p-6 shadow-sm"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
-                <p className="text-[#020409] text-sm leading-[1.8] mb-4">
+                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-4">
                   {person.role}
-                </p>
+                </h3>
                 <div className="space-y-1 text-sm">
                   <a
                     href={`mailto:${person.email}`}

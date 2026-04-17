@@ -78,10 +78,10 @@ export default function InternationalPage() {
         title: "Заявка в программу",
         text: "Первичная консультация бесплатна для членов UFA. Мы оценим готовность и предложим трек.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:international@ufa.uz",
+        buttonHref: "mailto:international@uzfranchise.uz",
       }}
       contacts={[
-        { name: "Гульчехра Ахмедова", role: "Связи с регуляторами", email: "international@ufa.uz", phone: "+998 71 234 56 89" },
+        { role: "Связи с регуляторами", email: "international@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

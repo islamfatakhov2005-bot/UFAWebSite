@@ -52,7 +52,7 @@ export default function WebinarsPage() {
         {
           title: "Стать спикером",
           text: "Предложите свою тему команде UFA. Мы помогаем с подготовкой.",
-          href: "mailto:webinars@ufa.uz",
+          href: "mailto:webinars@uzfranchise.uz",
           cta: "Написать",
         },
         {
@@ -63,8 +63,8 @@ export default function WebinarsPage() {
         },
       ]}
       contacts={[
-        { name: "Камол Муминов", role: "Координатор вебинаров", email: "webinars@ufa.uz", phone: "+998 71 234 56 86" },
-        { name: "Алишер Тулаганов", role: "Директор по образованию", email: "education@ufa.uz", phone: "+998 71 234 56 85" },
+        { role: "Координатор вебинаров", email: "webinars@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по образованию", email: "education@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

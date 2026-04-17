@@ -15,7 +15,7 @@ export interface EventResource {
 }
 
 export interface EventContact {
-  name: string;
+  name?: string;
   role: string;
   email: string;
   phone: string;
@@ -192,10 +192,9 @@ export default function EventPageLayout({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {contacts.map((p) => (
                 <div key={p.email} className="card p-6">
-                  <h3 className="text-base font-bold text-[#0B2645] mb-1">
-                    {p.name}
+                  <h3 className="text-base font-bold text-[#0B2645] mb-3">
+                    {p.role}
                   </h3>
-                  <p className="text-sm text-[#4A5568] mb-3">{p.role}</p>
                   <div className="space-y-1 text-[13px]">
                     <a
                       href={`mailto:${p.email}`}

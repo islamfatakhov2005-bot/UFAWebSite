@@ -50,34 +50,29 @@ const programs = [
 
 const foundationTeam = [
   {
-    name: "Дилшод Рустамов",
     role: "Исполнительный директор Фонда",
-    email: "foundation@ufa.uz",
-    phone: "+998 71 234 56 74",
+    email: "foundation@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Мадина Абдуллаева",
     role: "Директор программ",
-    email: "programs@ufa.uz",
-    phone: "+998 71 234 56 96",
+    email: "programs@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Санжар Азизов",
     role: "Менеджер стипендий",
-    email: "scholarships@ufa.uz",
-    phone: "+998 71 234 56 97",
+    email: "scholarships@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Гузаль Хасанова",
     role: "Координатор региональных программ",
-    email: "regions-foundation@ufa.uz",
-    phone: "+998 71 234 56 98",
+    email: "regions-foundation@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Амир Саидов",
     role: "Менеджер по сбору средств",
-    email: "fundraising@ufa.uz",
-    phone: "+998 71 234 56 99",
+    email: "fundraising@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
 ];
 
@@ -186,9 +181,6 @@ export default function FoundationPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

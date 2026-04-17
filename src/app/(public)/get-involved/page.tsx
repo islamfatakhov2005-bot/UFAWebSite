@@ -89,22 +89,19 @@ const benefits = [
 
 const team = [
   {
-    name: "Феруза Махмудова",
     role: "Директор по взаимодействию",
-    email: "involve@ufa.uz",
-    phone: "+998 71 234 57 00",
+    email: "involve@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Хуршид Абдураимов",
     role: "Координатор волонтёрской программы",
-    email: "volunteers@ufa.uz",
-    phone: "+998 71 234 57 01",
+    email: "volunteers@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Севинч Аминова",
     role: "Менеджер комитетов",
-    email: "committees@ufa.uz",
-    phone: "+998 71 234 57 02",
+    email: "committees@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
 ];
 
@@ -212,7 +209,7 @@ export default function GetInvolvedPage() {
             консультация бесплатна.
           </p>
           <Link
-            href="mailto:involve@ufa.uz"
+            href="mailto:involve@uzfranchise.uz"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Написать
@@ -232,9 +229,6 @@ export default function GetInvolvedPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

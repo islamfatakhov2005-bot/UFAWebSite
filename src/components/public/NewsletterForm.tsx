@@ -17,7 +17,7 @@ export default function NewsletterForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: "Newsletter",
+          
           email,
           subject: "newsletter",
           message: "Подписка на рассылку",

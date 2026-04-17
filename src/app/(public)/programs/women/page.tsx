@@ -81,7 +81,7 @@ export default function WomenPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { name: "Севинч Аминова", role: "Координатор программы", email: "women@ufa.uz", phone: "+998 71 234 57 02" },
+        { role: "Координатор программы", email: "women@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

@@ -79,11 +79,11 @@ export default function AscensionPage() {
         title: "Подать заявку на Ascension 2026",
         text: "Отбор жёсткий — 10 мест из 30+ заявок. Подготовьте финансовую отчётность, презентацию и видео-питч.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:ascension@ufa.uz",
+        buttonHref: "mailto:ascension@uzfranchise.uz",
       }}
       contacts={[
-        { name: "Дилшод Рустамов", role: "Директор Фонда UFA", email: "foundation@ufa.uz", phone: "+998 71 234 56 74" },
-        { name: "Мадина Абдуллаева", role: "Директор программ", email: "programs@ufa.uz", phone: "+998 71 234 56 96" },
+        { role: "Директор Фонда UFA", email: "foundation@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор программ", email: "programs@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

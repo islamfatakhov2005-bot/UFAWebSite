@@ -56,7 +56,7 @@ export default function CommitteesPage() {
         },
       ]}
       contacts={[
-        { name: "Севинч Аминова", role: "Менеджер комитетов", email: "committees@ufa.uz", phone: "+998 71 234 57 02" },
+        { role: "Менеджер комитетов", email: "committees@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

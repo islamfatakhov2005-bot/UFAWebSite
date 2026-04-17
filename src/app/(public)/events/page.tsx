@@ -131,28 +131,24 @@ const upcomingEvents = [
 
 const eventTeam = [
   {
-    name: "Мадина Турсунова",
     role: "Директор по мероприятиям",
-    email: "events@ufa.uz",
-    phone: "+998 71 234 56 75",
+    email: "events@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Бехзод Рахимов",
     role: "Менеджер спонсорства",
-    email: "sales@ufa.uz",
-    phone: "+998 71 234 56 76",
+    email: "sales@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Нодира Абдуллаева",
     role: "Координатор регистрации",
-    email: "registration@ufa.uz",
-    phone: "+998 71 234 56 83",
+    email: "registration@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Шерзод Каримов",
     role: "Менеджер выставок",
-    email: "expo@ufa.uz",
-    phone: "+998 71 234 56 84",
+    email: "expo@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
 ];
 
@@ -281,7 +277,7 @@ export default function EventsPage() {
             сетей. Пакеты подбираются индивидуально под задачи вашего бренда.
           </p>
           <Link
-            href="mailto:sales@ufa.uz"
+            href="mailto:sales@uzfranchise.uz"
             className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
           >
             Запросить пакет спонсорства
@@ -301,9 +297,6 @@ export default function EventsPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

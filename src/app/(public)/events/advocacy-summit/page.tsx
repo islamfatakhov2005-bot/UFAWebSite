@@ -59,11 +59,11 @@ export default function AdvocacySummitPage() {
         title: "Подать заявку на участие",
         text: "Количество мест ограничено. Приоритет — членам UFA с длительной историей участия в отрасли.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:gr@ufa.uz",
+        buttonHref: "mailto:gr@uzfranchise.uz",
       }}
       contacts={[
-        { name: "Бобур Насриддинов", role: "Директор по адвокации", email: "gr@ufa.uz", phone: "+998 71 234 56 78" },
-        { name: "Шавкат Ибрагимов", role: "Связи с парламентом", email: "parliament@ufa.uz", phone: "+998 71 234 56 88" },
+        { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Связи с парламентом", email: "parliament@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

@@ -63,7 +63,7 @@ export default function EmergingFranchisorPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { name: "Мадина Турсунова", role: "Директор по мероприятиям", email: "events@ufa.uz", phone: "+998 71 234 56 75" },
+        { role: "Директор по мероприятиям", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

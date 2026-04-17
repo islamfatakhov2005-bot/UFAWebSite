@@ -61,8 +61,6 @@ export default async function FranchiseDetailPage({ params }: PageProps) {
           {/* Left Column */}
           <div className="lg:w-[65%]">
             <Badge variant="secondary" className="mb-3">{franchise.category}</Badge>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#333333] mb-5">{franchise.name}</h1>
-
             {/* Stats row */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
               {franchise.startupCost && (

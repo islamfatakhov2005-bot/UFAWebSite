@@ -148,16 +148,16 @@ const getInvolved = [
 ];
 
 const advocacyTeam = [
-  { name: "Бобур Насриддинов", role: "Директор по адвокации", email: "gr@ufa.uz", phone: "+998 71 234 56 78" },
-  { name: "Лола Рахимова", role: "Директор юридического центра", email: "legal@ufa.uz", phone: "+998 71 234 56 87" },
-  { name: "Шавкат Ибрагимов", role: "Менеджер связей с парламентом", email: "parliament@ufa.uz", phone: "+998 71 234 56 88" },
-  { name: "Гульчехра Ахмедова", role: "Менеджер связей с регуляторами", email: "regulators@ufa.uz", phone: "+998 71 234 56 89" },
-  { name: "Темур Юсупов", role: "Аналитик политики", email: "policy@ufa.uz", phone: "+998 71 234 56 90" },
-  { name: "Азиза Хамидова", role: "Координатор сети действий", email: "network@ufa.uz", phone: "+998 71 234 56 91" },
-  { name: "Фарход Мирзоев", role: "Директор FranPAC", email: "franpac@ufa.uz", phone: "+998 71 234 56 92" },
-  { name: "Нигора Таджиева", role: "Менеджер по коммуникациям", email: "comms@ufa.uz", phone: "+998 71 234 56 93" },
-  { name: "Руслан Каримов", role: "Координатор региональных программ", email: "regions@ufa.uz", phone: "+998 71 234 56 94" },
-  { name: "Севара Джураева", role: "Юрист отдела адвокации", email: "advocacy-legal@ufa.uz", phone: "+998 71 234 56 95" },
+  { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Директор юридического центра", email: "legal@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер связей с парламентом", email: "parliament@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер связей с регуляторами", email: "regulators@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Аналитик политики", email: "policy@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор сети действий", email: "network@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Директор FranPAC", email: "franpac@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер по коммуникациям", email: "comms@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор региональных программ", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Юрист отдела адвокации", email: "advocacy-legal@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function AdvocacyPage() {
@@ -346,9 +346,6 @@ export default function AdvocacyPage() {
                 key={person.email}
                 className="bg-white rounded-lg p-6"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

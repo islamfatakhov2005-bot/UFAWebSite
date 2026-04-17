@@ -65,16 +65,16 @@ export default function ApplyPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="tel:+998712345679"
+              href="tel:+998992008272"
               className="inline-block bg-[#3ECF8E] hover:bg-[#35B67A] text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
-              +998 71 234 56 79
+              +998 99 200 8272
             </a>
             <a
-              href="mailto:membership@ufa.uz"
+              href="mailto:membership@uzfranchise.uz"
               className="inline-block border-2 border-[#3ECF8E] text-[#2A9D6F] hover:bg-[#3ECF8E] hover:text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-[0.08em] transition-colors"
             >
-              membership@ufa.uz
+              membership@uzfranchise.uz
             </a>
           </div>
         </div>

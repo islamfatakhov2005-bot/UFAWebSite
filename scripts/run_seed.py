@@ -9,7 +9,7 @@ HOST = "85.198.69.235"
 USER = "root"
 PASSWORD = "kJ(4kfNy8C@M"
 
-CMD = "docker exec ufa-website node prisma/seed-franchises.mjs 2>&1"
+CMD = "docker exec ufa-website sh -c 'node prisma/seed-franchises.mjs' 2>&1"
 
 c = paramiko.SSHClient()
 c.set_missing_host_key_policy(paramiko.AutoAddPolicy())

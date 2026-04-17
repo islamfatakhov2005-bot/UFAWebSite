@@ -133,7 +133,14 @@ export default function ContactForm() {
       )}
       {status === "error" && (
         <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 text-sm">
-          Не удалось отправить сообщение. Попробуйте позже или позвоните нам: +998 71 234 56 78
+          Не удалось отправить сообщение. Попробуйте позже или напишите нам:{" "}
+          <a href="mailto:info@uzfranchise.uz" className="underline font-bold">
+            info@uzfranchise.uz
+          </a>
+          {" "}/{" "}
+          <a href="tel:+998992008272" className="underline font-bold">
+            +998 99 200 8272
+          </a>
         </div>
       )}
 

@@ -2,24 +2,24 @@ import EventPageLayout from "@/components/public/EventPageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Franchise Expo Tashkent",
-  description: "Главная франчайзинговая выставка Центральной Азии — 150+ брендов, 3000+ посетителей, три дня демо-стендов и инвестиционных сессий.",
+  title: "Franchise Expo 2026",
+  description: "Главная франчайзинговая выставка Центральной Азии — 150+ брендов, 3000+ посетителей, два дня демо-стендов и инвестиционных сессий в Hyatt Regency Tashkent.",
 };
 
 export default function ExpoPage() {
   return (
     <EventPageLayout
       hero={{
-        title: "Franchise Expo Tashkent",
+        title: "Franchise Expo 2026",
         subtitle: "Крупнейшая франчайзинговая выставка Центральной Азии. 150+ брендов из 25 стран, 3000+ посетителей, инвестиционные сессии.",
         image: "/images/hero-events.jpg",
       }}
       meta={{
-        date: "15–17 мая 2026",
-        location: "Tashkent City Convention Center",
+        date: "18–19 апреля 2026",
+        location: "Hyatt Regency Tashkent",
         audience: "Франчайзеры, инвесторы, регуляторы",
       }}
-      intro="Franchise Expo Tashkent — главное событие для поиска или представления франшизы в Узбекистане. Три дня, четыре зала, демо-стенды брендов, инвестиционные сессии с лидами на месте, деловые переговоры с регуляторами."
+      intro="Franchise Expo 2026 — главное событие для поиска или представления франшизы в Узбекистане. Два дня в Hyatt Regency Tashkent, демо-стенды брендов, инвестиционные сессии с лидами на месте, деловые переговоры с регуляторами."
       sections={[
         {
           title: "Для посетителей",
@@ -46,7 +46,7 @@ export default function ExpoPage() {
         {
           title: "Спонсорские пакеты",
           text: "От бронзового стенда до титульного спонсора — индивидуальные условия.",
-          href: "mailto:sales@ufa.uz",
+          href: "mailto:sales@uzfranchise.uz",
           cta: "Запросить брошюру",
         },
         {
@@ -66,12 +66,12 @@ export default function ExpoPage() {
         title: "Забронировать стенд",
         text: "Ранние тарифы действуют до 28 февраля 2026. После — стандартная сетка цен.",
         buttonText: "Забронировать",
-        buttonHref: "mailto:expo@ufa.uz",
+        buttonHref: "mailto:expo@uzfranchise.uz",
       }}
       contacts={[
-        { name: "Шерзод Каримов", role: "Менеджер выставок", email: "expo@ufa.uz", phone: "+998 71 234 56 84" },
-        { name: "Бехзод Рахимов", role: "Спонсорство", email: "sales@ufa.uz", phone: "+998 71 234 56 76" },
-        { name: "Нодира Абдуллаева", role: "Регистрация", email: "registration@ufa.uz", phone: "+998 71 234 56 83" },
+        { role: "Менеджер выставок", email: "expo@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Спонсорство", email: "sales@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Регистрация", email: "registration@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

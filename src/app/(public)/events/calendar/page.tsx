@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const events = [
   { date: "20 апр 2026", type: "Вебинар", title: "Как выбрать франшизу", location: "Онлайн", href: "/events/webinars" },
   { date: "15 мая 2026", type: "Региональная встреча", title: "Самарканд — владельцы F&B сетей", location: "Samarkand Regency", href: "/events/regional-networks" },
-  { date: "15–17 мая 2026", type: "Выставка", title: "Franchise Expo Tashkent 2026", location: "Tashkent City Convention Center", href: "/events/expo" },
+  { date: "18–19 апреля 2026", type: "Выставка", title: "Franchise Expo 2026", location: "Hyatt Regency Tashkent", href: "/events/expo" },
   { date: "8 июня 2026", type: "Конференция", title: "Мульти-юнит франчайзинг", location: "Hilton Samarkand", href: "/events/multi-unit-conference" },
   { date: "22 июня 2026", type: "Мастер-класс", title: "Масштабирование франшизы", location: "UFA Hub, Ташкент", href: "/events" },
   { date: "15 июля 2026", type: "Конференция", title: "Юридический симпозиум", location: "InterContinental Tashkent", href: "/events/legal-symposium" },
@@ -20,7 +20,7 @@ const events = [
   { date: "20–22 сентября 2026", type: "Конференция", title: "Маркетинг и рост", location: "Hotel Uzbekistan", href: "/events/marketing-conference" },
   { date: "14 октября 2026", type: "Конференция", title: "Лидерство и преемственность", location: "Бухара", href: "/events/leadership-conference" },
   { date: "5–6 ноября 2026", type: "Саммит", title: "Advocacy Summit", location: "Олий Мажлис, Ташкент", href: "/events/advocacy-summit" },
-  { date: "20 ноября 2026", type: "Выставка", title: "Franchise Expo Tashkent — Autumn", location: "Tashkent City Convention Center", href: "/events/expo" },
+  { date: "20 ноября 2026", type: "Выставка", title: "Franchise Expo — Autumn", location: "Hyatt Regency Tashkent", href: "/events/expo" },
   { date: "16–18 февраля 2027", type: "Конвенция", title: "Ежегодная конвенция UFA 2027", location: "Hilton Tashkent City", href: "/events/annual-convention" },
 ];
 

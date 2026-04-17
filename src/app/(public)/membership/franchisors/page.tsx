@@ -70,9 +70,9 @@ const pricing = [
 ];
 
 const team = [
-  { name: "Рустам Ахмедов", role: "Менеджер для франчайзеров", email: "franchisors@ufa.uz", phone: "+998 71 234 56 81" },
-  { name: "Азиза Каримова", role: "Директор по членству", email: "a.karimova@ufa.uz", phone: "+998 71 234 56 79" },
-  { name: "Дилноза Исмаилова", role: "Специалист по работе с участниками", email: "d.ismailova@ufa.uz", phone: "+998 71 234 56 82" },
+  { role: "Менеджер для франчайзеров", email: "franchisors@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Директор по членству", email: "a.karimova@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Специалист по работе с участниками", email: "d.ismailova@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function FranchisorsMembershipPage() {
@@ -194,9 +194,6 @@ export default function FranchisorsMembershipPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

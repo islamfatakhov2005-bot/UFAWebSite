@@ -10,62 +10,62 @@ export const metadata: Metadata = {
 const departments = [
   {
     name: "Бухгалтерия",
-    email: "accounting@ufa.uz",
-    phone: "+998 71 234 56 71",
+    email: "accounting@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Платежи, счета, подтверждение занятости",
   },
   {
-    name: "Реклама",
-    email: "advertising@ufa.uz",
-    phone: "+998 71 234 56 72",
+    
+    email: "advertising@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Рекламные запросы, биллинг, продукты",
   },
   {
     name: "Программа CFE",
-    email: "cfe@ufa.uz",
-    phone: "+998 71 234 56 73",
+    email: "cfe@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Регистрация, проверка кредитов, график мероприятий",
   },
   {
-    name: "Фонд UFA",
-    email: "foundation@ufa.uz",
-    phone: "+998 71 234 56 74",
+    
+    email: "foundation@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Стипендии, программы разнообразия, инициативы",
   },
   {
     name: "Мероприятия и конференции",
-    email: "events@ufa.uz",
-    phone: "+998 71 234 56 75",
+    email: "events@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Регистрация, запросы спикеров, кредиты",
   },
   {
     name: "Спонсорство и выставки",
-    email: "sales@ufa.uz",
-    phone: "+998 71 234 56 76",
+    email: "sales@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Возможности спонсорства и участия в выставках",
   },
   {
     name: "Международное развитие",
-    email: "international@ufa.uz",
-    phone: "+998 71 234 56 77",
+    email: "international@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Международное право и торговые вопросы",
   },
   {
     name: "Связи с государством",
-    email: "gr@ufa.uz",
-    phone: "+998 71 234 56 78",
+    email: "gr@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Адвокация и политическое взаимодействие",
   },
   {
     name: "Членство",
-    email: "membership@ufa.uz",
-    phone: "+998 71 234 56 79",
+    email: "membership@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Вступление, биллинг, преимущества членства",
   },
   {
     name: "Пресса и СМИ",
-    email: "press@ufa.uz",
-    phone: "+998 71 234 56 80",
+    email: "press@uzfranchise.uz",
+    phone: "+998 99 200 8272",
     handles: "Запросы СМИ и пресс-пропуска",
   },
 ];
@@ -105,14 +105,14 @@ export default function ContactPage() {
             </p>
             <p>
               Телефон:{" "}
-              <a href="tel:+998712345678" className="text-[#3ECF8E] hover:underline">
-                +998 71 234 56 78
+              <a href="tel:+998992008272" className="text-[#3ECF8E] hover:underline">
+                +998 99 200 8272
               </a>
             </p>
             <p>
               Email:{" "}
-              <a href="mailto:info@ufa.uz" className="text-[#3ECF8E] hover:underline">
-                info@ufa.uz
+              <a href="mailto:info@uzfranchise.uz" className="text-[#3ECF8E] hover:underline">
+                info@uzfranchise.uz
               </a>
             </p>
           </div>
@@ -131,9 +131,6 @@ export default function ContactPage() {
                 key={dept.name}
                 className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-3">
-                  {dept.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-3">{dept.handles}</p>
                 <div className="space-y-1 text-sm">
                   <a
@@ -154,12 +151,12 @@ export default function ContactPage() {
           </div>
           <p className="text-center text-sm text-gray-500 mt-8">
             Для всех остальных вопросов пишите на{" "}
-            <a href="mailto:info@ufa.uz" className="text-[#3ECF8E] hover:underline">
-              info@ufa.uz
+            <a href="mailto:info@uzfranchise.uz" className="text-[#3ECF8E] hover:underline">
+              info@uzfranchise.uz
             </a>{" "}
             или звоните по номеру{" "}
-            <a href="tel:+998712345678" className="text-[#3ECF8E] hover:underline">
-              +998 71 234 56 78
+            <a href="tel:+998992008272" className="text-[#3ECF8E] hover:underline">
+              +998 99 200 8272
             </a>
           </p>
         </div>

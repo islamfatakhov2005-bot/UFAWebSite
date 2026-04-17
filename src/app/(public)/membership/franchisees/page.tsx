@@ -20,7 +20,7 @@ const tiers = [
     ],
   },
   {
-    name: "Single-unit",
+    
     price: "2 500 000",
     description: "Для владельцев одной точки",
     features: [
@@ -98,9 +98,9 @@ const benefits = [
 ];
 
 const team = [
-  { name: "Нодира Абдуллаева", role: "Менеджер для франчайзи", email: "franchisees@ufa.uz", phone: "+998 71 234 57 10" },
-  { name: "Санжар Азизов", role: "Координатор программ", email: "s.azizov@ufa.uz", phone: "+998 71 234 57 11" },
-  { name: "Феруза Махмудова", role: "Специалист поддержки", email: "support@ufa.uz", phone: "+998 71 234 57 12" },
+  { role: "Менеджер для франчайзи", email: "franchisees@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор программ", email: "s.azizov@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Специалист поддержки", email: "support@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function FranchiseesMembershipPage() {
@@ -153,13 +153,6 @@ export default function FranchiseesMembershipPage() {
                     Популярный
                   </div>
                 )}
-                <h3
-                  className={`text-base font-semibold uppercase tracking-[0.08em] mb-2 ${
-                    tier.featured ? "text-white" : "text-[#0B2645]"
-                  }`}
-                >
-                  {tier.name}
-                </h3>
                 <p
                   className={`text-xs leading-[1.7] mb-4 ${
                     tier.featured ? "text-white/70" : "text-gray-500"
@@ -253,9 +246,6 @@ export default function FranchiseesMembershipPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

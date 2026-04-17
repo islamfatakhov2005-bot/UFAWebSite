@@ -65,7 +65,7 @@ export default function RegionalNetworksProgramPage() {
         buttonHref: "/events/calendar",
       }}
       contacts={[
-        { name: "Руслан Каримов", role: "Координатор региональных программ UFA", email: "regions@ufa.uz", phone: "+998 71 234 56 94" },
+        { role: "Координатор региональных программ UFA", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

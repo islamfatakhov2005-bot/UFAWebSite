@@ -73,7 +73,7 @@ export default function ForBeginnersPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { name: "Гузаль Хасанова", role: "Координатор региональных программ Фонда", email: "regions-foundation@ufa.uz", phone: "+998 71 234 56 98" },
+        { role: "Координатор региональных программ Фонда", email: "regions-foundation@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

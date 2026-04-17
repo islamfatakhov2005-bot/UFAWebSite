@@ -4,11 +4,11 @@ import { MapPin } from "lucide-react";
 const upcomingEvents = [
   {
     id: 1,
-    month: "МАЙ",
-    day: "15",
-    name: "Franchise Expo Tashkent 2026",
-    location: "Ташкент, Узбекистан",
-    href: "/events",
+    month: "АПР",
+    day: "18",
+    name: "Franchise Expo 2026",
+    location: "Hyatt Regency Tashkent",
+    href: "/events/expo",
   },
   {
     id: 2,
@@ -60,9 +60,6 @@ export default function EventsPreview() {
                 </span>
               </div>
               <div className="min-w-0">
-                <h3 className="font-bold text-[#0B2645] group-hover:text-[#3ECF8E] transition-colors line-clamp-2">
-                  {event.name}
-                </h3>
                 <p className="flex items-center gap-1 text-sm text-gray-500 mt-1">
                   <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
                   {event.location}

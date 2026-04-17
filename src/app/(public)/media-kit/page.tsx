@@ -50,16 +50,15 @@ const facts = [
 
 const contacts = [
   {
-    name: "Нигора Таджиева",
     role: "Руководитель PR и коммуникаций",
-    email: "press@ufa.uz",
-    phone: "+998 71 234 56 80",
+    email: "press@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Азиза Хамидова",
+    
     role: "Менеджер по СМИ",
-    email: "media@ufa.uz",
-    phone: "+998 71 234 57 15",
+    email: "media@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
 ];
 
@@ -155,9 +154,6 @@ export default function MediaKitPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-8"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

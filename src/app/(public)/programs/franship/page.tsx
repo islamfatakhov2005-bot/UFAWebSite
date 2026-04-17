@@ -58,7 +58,7 @@ export default function FranshipPage() {
         {
           title: "Стать ментором",
           text: "Для франчайзеров с 10+ лет опыта. Подготовка менторов — 2 дня.",
-          href: "mailto:franship@ufa.uz",
+          href: "mailto:franship@uzfranchise.uz",
           cta: "Написать",
         },
         {
@@ -75,7 +75,7 @@ export default function FranshipPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { name: "Санжар Азизов", role: "Координатор FranShip", email: "franship@ufa.uz", phone: "+998 71 234 57 11" },
+        { role: "Координатор FranShip", email: "franship@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

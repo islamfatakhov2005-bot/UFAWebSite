@@ -64,9 +64,9 @@ const categories = [
 ];
 
 const team = [
-  { name: "Бехзод Рахимов", role: "Менеджер для поставщиков", email: "suppliers@ufa.uz", phone: "+998 71 234 56 76" },
-  { name: "Хуршид Абдураимов", role: "Координатор Preferred Vendors", email: "vendors@ufa.uz", phone: "+998 71 234 57 13" },
-  { name: "Мадина Турсунова", role: "Менеджер спонсорства", email: "sponsorship@ufa.uz", phone: "+998 71 234 57 14" },
+  { role: "Менеджер для поставщиков", email: "suppliers@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Координатор Preferred Vendors", email: "vendors@uzfranchise.uz", phone: "+998 99 200 8272" },
+  { role: "Менеджер спонсорства", email: "sponsorship@uzfranchise.uz", phone: "+998 99 200 8272" },
 ];
 
 export default function SuppliersMembershipPage() {
@@ -187,9 +187,6 @@ export default function SuppliersMembershipPage() {
                 key={person.email}
                 className="bg-white rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

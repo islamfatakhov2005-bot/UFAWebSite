@@ -21,7 +21,11 @@
       "Bash(find src/components/public src/app/\\\\\\(public\\\\\\) -name \"*.tsx\" -type f -exec sed -i 's/#1A2332/#0B2645/g; s/#2A3A4F/#143B6B/g' {} +)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://ufa.gmlb.ru/\")",
       "Bash(curl -s \"https://ufa.gmlb.ru/\")",
-      "Bash(python scripts/check_env.py)"
+      "Bash(python scripts/check_env.py)",
+      "Bash(xargs sed *)",
+      "Bash(python scripts/db_diag.py)",
+      "Bash(python scripts/fix_db_pwd.py)",
+      "Bash(python scripts/fix_db_pwd4.py)"
     ]
   }
 }

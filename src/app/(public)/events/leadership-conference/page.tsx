@@ -45,10 +45,10 @@ export default function LeadershipConferencePage() {
         title: "Приглашение только",
         text: "Участие по приглашению. Если вас заинтересовала программа — напишите нам.",
         buttonText: "Подать заявку",
-        buttonHref: "mailto:leadership@ufa.uz",
+        buttonHref: "mailto:leadership@uzfranchise.uz",
       }}
       contacts={[
-        { name: "Мадина Турсунова", role: "Координатор", email: "events@ufa.uz", phone: "+998 71 234 56 75" },
+        { role: "Координатор", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

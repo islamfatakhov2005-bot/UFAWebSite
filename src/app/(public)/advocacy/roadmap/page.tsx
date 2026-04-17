@@ -94,7 +94,7 @@ export default function RoadmapPage() {
         buttonHref: "/advocacy/action-network",
       }}
       contacts={[
-        { name: "Бобур Насриддинов", role: "Директор по адвокации", email: "gr@ufa.uz", phone: "+998 71 234 56 78" },
+        { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

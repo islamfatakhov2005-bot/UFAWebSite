@@ -62,15 +62,8 @@ const jsonLd = {
     addressLocality: "Ташкент",
     addressCountry: "UZ",
   },
-  telephone: "+998712345678",
-  email: "info@ufa.uz",
-  sameAs: [
-    "https://t.me/ufa_uz",
-    "https://instagram.com/ufa_uz",
-    "https://facebook.com/ufa.uz",
-    "https://linkedin.com/company/ufa-uz",
-    "https://youtube.com/@ufa_uz",
-  ],
+  telephone: "+998992008272",
+  email: "info@uzfranchise.uz",
 };
 
 export default function RootLayout({

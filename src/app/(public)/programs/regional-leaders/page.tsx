@@ -52,7 +52,7 @@ export default function RegionalLeadersPage() {
         },
       ]}
       contacts={[
-        { name: "Руслан Каримов", role: "Координатор региональных программ", email: "regions@ufa.uz", phone: "+998 71 234 56 94" },
+        { role: "Координатор региональных программ", email: "regions@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

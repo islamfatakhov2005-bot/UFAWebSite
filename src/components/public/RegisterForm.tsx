@@ -121,8 +121,12 @@ export default function RegisterForm() {
       {status === "error" && (
         <div className="bg-red-50 border border-red-300 text-red-700 p-4 text-sm rounded-[3px]">
           Не удалось создать аккаунт. Попробуйте позже или напишите на{" "}
-          <a href="mailto:support@ufa.uz" className="underline font-bold">
-            support@ufa.uz
+          <a href="mailto:info@uzfranchise.uz" className="underline font-bold">
+            info@uzfranchise.uz
+          </a>
+          {" "}/{" "}
+          <a href="tel:+998992008272" className="underline font-bold">
+            +998 99 200 8272
           </a>
           .
         </div>
@@ -155,7 +159,7 @@ export default function RegisterForm() {
             value={form.firstName}
             onChange={(e) => setForm({ ...form, firstName: e.target.value })}
             className={`input ${errors.firstName ? "is-invalid" : ""}`}
-            placeholder="Дилшод"
+            placeholder="Ваше имя"
             autoComplete="given-name"
           />
           {errors.firstName && <p className="mt-1.5 text-xs text-red-600">{errors.firstName}</p>}
@@ -170,7 +174,7 @@ export default function RegisterForm() {
             value={form.lastName}
             onChange={(e) => setForm({ ...form, lastName: e.target.value })}
             className={`input ${errors.lastName ? "is-invalid" : ""}`}
-            placeholder="Каримов"
+            placeholder="Ваша фамилия"
             autoComplete="family-name"
           />
           {errors.lastName && <p className="mt-1.5 text-xs text-red-600">{errors.lastName}</p>}

@@ -17,7 +17,7 @@ interface ApplyData {
 const membershipTypes = [
   { value: "", label: "Выберите тип членства" },
   { value: "franchisor", label: "Франчайзер (владелец бренда)" },
-  { value: "franchisee", label: "Франчайзи (владелец точки)" },
+  { value: "franchisee", label: "Франчайзи (покупатель франшизы)" },
   { value: "supplier", label: "Поставщик услуг" },
 ];
 
@@ -111,8 +111,8 @@ export default function ApplyForm() {
       {status === "error" && (
         <div className="bg-red-50 border border-red-300 text-red-700 p-4 text-sm rounded-[3px]">
           Не удалось отправить заявку. Попробуйте позже или позвоните:{" "}
-          <a href="tel:+998712345679" className="font-bold underline">
-            +998 71 234 56 79
+          <a href="tel:+998992008272" className="font-bold underline">
+            +998 99 200 8272
           </a>
         </div>
       )}
@@ -128,7 +128,7 @@ export default function ApplyForm() {
             value={form.firstName}
             onChange={(e) => setForm({ ...form, firstName: e.target.value })}
             className={`input ${errors.firstName ? "is-invalid" : ""}`}
-            placeholder="Дилшод"
+            placeholder="Ваше имя"
           />
           {errors.firstName && <p className="mt-1.5 text-xs text-red-600">{errors.firstName}</p>}
         </div>
@@ -142,7 +142,7 @@ export default function ApplyForm() {
             value={form.lastName}
             onChange={(e) => setForm({ ...form, lastName: e.target.value })}
             className={`input ${errors.lastName ? "is-invalid" : ""}`}
-            placeholder="Каримов"
+            placeholder="Ваша фамилия"
           />
           {errors.lastName && <p className="mt-1.5 text-xs text-red-600">{errors.lastName}</p>}
         </div>

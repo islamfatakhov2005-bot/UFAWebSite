@@ -62,7 +62,7 @@ export default function DiversityPage() {
         },
       ]}
       contacts={[
-        { name: "Мадина Абдуллаева", role: "Директор программ Фонда", email: "programs@ufa.uz", phone: "+998 71 234 56 96" },
+        { role: "Директор программ Фонда", email: "programs@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

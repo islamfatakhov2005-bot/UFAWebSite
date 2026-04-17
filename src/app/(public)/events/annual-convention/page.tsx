@@ -69,9 +69,9 @@ export default function AnnualConventionPage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { name: "Мадина Турсунова", role: "Директор конвенции", email: "convention@ufa.uz", phone: "+998 71 234 56 75" },
-        { name: "Шерзод Каримов", role: "Менеджер выставки", email: "expo@ufa.uz", phone: "+998 71 234 56 84" },
-        { name: "Бехзод Рахимов", role: "Спонсорство", email: "sales@ufa.uz", phone: "+998 71 234 56 76" },
+        { role: "Директор конвенции", email: "convention@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Менеджер выставки", email: "expo@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Спонсорство", email: "sales@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

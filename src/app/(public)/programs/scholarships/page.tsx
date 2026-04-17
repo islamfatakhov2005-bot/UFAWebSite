@@ -49,7 +49,7 @@ export default function ScholarshipsPage() {
             "Скачайте пакет документов стипендии в разделе «Фонд»",
             "Подготовьте мотивационное письмо и видео",
             "Получите подписанные рекомендации",
-            "Отправьте пакет на scholarships@ufa.uz до закрытия конкурса",
+            "Отправьте пакет на scholarships@uzfranchise.uz до закрытия конкурса",
             "Комиссия рассматривает заявки в течение 30 дней",
           ],
         },
@@ -69,7 +69,7 @@ export default function ScholarshipsPage() {
         },
       ]}
       contacts={[
-        { name: "Санжар Азизов", role: "Менеджер стипендий", email: "scholarships@ufa.uz", phone: "+998 71 234 56 97" },
+        { role: "Менеджер стипендий", email: "scholarships@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

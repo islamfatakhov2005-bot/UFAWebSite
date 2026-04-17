@@ -68,9 +68,9 @@ export default function ActionNetworkPage() {
         buttonHref: "/register",
       }}
       contacts={[
-        { name: "Азиза Хамидова", role: "Координатор сети действий", email: "network@ufa.uz", phone: "+998 71 234 56 91" },
-        { name: "Бобур Насриддинов", role: "Директор по адвокации", email: "gr@ufa.uz", phone: "+998 71 234 56 78" },
-        { name: "Шавкат Ибрагимов", role: "Связи с парламентом", email: "parliament@ufa.uz", phone: "+998 71 234 56 88" },
+        { role: "Координатор сети действий", email: "network@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по адвокации", email: "gr@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Связи с парламентом", email: "parliament@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

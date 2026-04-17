@@ -122,22 +122,19 @@ const advantages = [
 
 const educationTeam = [
   {
-    name: "Алишер Тулаганов",
     role: "Директор по образованию",
-    email: "education@ufa.uz",
-    phone: "+998 71 234 56 85",
+    email: "education@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Зульфия Ходжаева",
     role: "Менеджер программы CFE",
-    email: "cfe@ufa.uz",
-    phone: "+998 71 234 56 73",
+    email: "cfe@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
   {
-    name: "Камол Муминов",
     role: "Координатор UFA Academy",
-    email: "academy@ufa.uz",
-    phone: "+998 71 234 56 86",
+    email: "academy@uzfranchise.uz",
+    phone: "+998 99 200 8272",
   },
 ];
 
@@ -305,9 +302,6 @@ export default function EducationPage() {
                 key={person.email}
                 className="bg-[#F4F4F4] rounded-lg p-6"
               >
-                <h3 className="text-base font-semibold uppercase tracking-[0.08em] text-[#0B2645] mb-1">
-                  {person.name}
-                </h3>
                 <p className="text-[#020409] text-sm leading-[1.8] mb-4">
                   {person.role}
                 </p>

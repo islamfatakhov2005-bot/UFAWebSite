@@ -49,8 +49,8 @@ export default function MarketingConferencePage() {
         buttonHref: "/contact",
       }}
       contacts={[
-        { name: "Нигора Таджиева", role: "PR и коммуникации", email: "press@ufa.uz", phone: "+998 71 234 56 80" },
-        { name: "Мадина Турсунова", role: "Директор по мероприятиям", email: "events@ufa.uz", phone: "+998 71 234 56 75" },
+        { role: "PR и коммуникации", email: "press@uzfranchise.uz", phone: "+998 99 200 8272" },
+        { role: "Директор по мероприятиям", email: "events@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );

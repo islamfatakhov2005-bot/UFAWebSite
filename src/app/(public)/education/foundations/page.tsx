@@ -51,7 +51,7 @@ export default function FoundationsPage() {
         buttonHref: "/register",
       }}
       contacts={[
-        { name: "Алишер Тулаганов", role: "Директор по образованию", email: "education@ufa.uz", phone: "+998 71 234 56 85" },
+        { role: "Директор по образованию", email: "education@uzfranchise.uz", phone: "+998 99 200 8272" },
       ]}
     />
   );
