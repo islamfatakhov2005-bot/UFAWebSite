@@ -1,7 +1,10 @@
 // Run with: docker exec ufa-website node prisma/seed-franchises.mjs
 import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
-const prisma = new PrismaClient();
+const connectionString = process.env.DATABASE_URL || "postgresql://ufa:ufa_password@postgres:5432/ufa";
+const adapter = new PrismaPg(connectionString);
+const prisma = new PrismaClient({ adapter });
 
 const franchises = [
   { name: "ЯQH Eeeng", slug: "yaqh-eeeng", logo: "/complogo/1.png", category: "Еда и рестораны", description: "Современная сеть street-food заведений с авторским подходом к подаче и ярким узнаваемым брендом.", headquarters: "Ташкент", startupCost: "$50K", totalInvestment: "$50K–$100K", franchisingSince: "2022", isFeatured: true },
