@@ -5,6 +5,47 @@ import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/db";
+import { ALL_FRANCHISES, type FranchiseItem } from "@/lib/franchises-data";
+
+type FranchiseView = {
+  name: string;
+  slug: string;
+  logo: string | null;
+  category: string;
+  isActive: boolean;
+  isFeatured: boolean;
+  description: string | null;
+  headquarters: string | null;
+  startupCost: string | null;
+  totalInvestment: string | null;
+  franchisingSince: string | null;
+  contactPhone: string | null;
+  contactEmail: string | null;
+  websiteUrl: string | null;
+  veteransDiscount?: boolean | null;
+  discountDetails?: string | null;
+};
+
+function staticToView(item: FranchiseItem): FranchiseView {
+  return {
+    name: item.name,
+    slug: item.slug,
+    logo: item.logo,
+    category: item.category,
+    isActive: true,
+    isFeatured: item.isFeatured,
+    description: item.description,
+    headquarters: item.headquarters,
+    startupCost: item.startupCost,
+    totalInvestment: item.totalInvestment,
+    franchisingSince: item.franchisingSince,
+    contactPhone: item.phone,
+    contactEmail: item.email,
+    websiteUrl: item.website,
+    veteransDiscount: null,
+    discountDetails: null,
+  };
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -12,11 +53,15 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  let franchise;
+  let franchise: FranchiseView | null = null;
   try {
-    franchise = await prisma.franchise.findUnique({ where: { slug } });
+    franchise = (await prisma.franchise.findUnique({ where: { slug } })) as FranchiseView | null;
   } catch {
-    return { title: "Франшиза не найдена | UFA" };
+    /* fall through */
+  }
+  if (!franchise) {
+    const fb = ALL_FRANCHISES.find((f) => f.slug === slug);
+    franchise = fb ? staticToView(fb) : null;
   }
   if (!franchise) return { title: "Франшиза не найдена | UFA" };
   return {
@@ -28,13 +73,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function FranchiseDetailPage({ params }: PageProps) {
   const { slug } = await params;
 
-  let franchise;
+  let franchise: FranchiseView | null = null;
   try {
-    franchise = await prisma.franchise.findUnique({
+    franchise = (await prisma.franchise.findUnique({
       where: { slug },
-    });
+    })) as FranchiseView | null;
   } catch {
-    notFound();
+    /* fall through to static fallback */
+  }
+
+  if (!franchise) {
+    const fb = ALL_FRANCHISES.find((f) => f.slug === slug);
+    if (fb) franchise = staticToView(fb);
   }
 
   if (!franchise || !franchise.isActive) notFound();
@@ -86,9 +136,9 @@ export default async function FranchiseDetailPage({ params }: PageProps) {
             <Link href="/contact">
               <Button size="lg" className="w-full mb-3 h-14 text-base font-semibold">Запросить информацию</Button>
             </Link>
-            {franchise.website && (
+            {franchise.websiteUrl && (
               <div className="text-center mb-8">
-                <a href={franchise.website} target="_blank" rel="noopener noreferrer" className="text-sm text-[#3ECF8E] hover:underline">Посетить сайт</a>
+                <a href={franchise.websiteUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#3ECF8E] hover:underline">Посетить сайт</a>
               </div>
             )}
 
@@ -155,10 +205,10 @@ export default async function FranchiseDetailPage({ params }: PageProps) {
                     <a href={`mailto:${franchise.contactEmail}`} className="text-[#333333] hover:text-[#3ECF8E]">{franchise.contactEmail}</a>
                   </div>
                 )}
-                {franchise.website && (
+                {franchise.websiteUrl && (
                   <div>
                     <span className="text-gray-500">Сайт:</span><br />
-                    <a href={franchise.website} target="_blank" rel="noopener noreferrer" className="text-[#3ECF8E] hover:underline">{franchise.website}</a>
+                    <a href={franchise.websiteUrl} target="_blank" rel="noopener noreferrer" className="text-[#3ECF8E] hover:underline">{franchise.websiteUrl}</a>
                   </div>
                 )}
               </div>

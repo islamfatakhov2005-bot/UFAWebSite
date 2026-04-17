@@ -6,6 +6,7 @@ import FeaturedCarousel from "@/components/public/FeaturedCarousel";
 import FranchiseFilters from "@/components/public/FranchiseFilters";
 import { Select } from "@/components/ui/select";
 import prisma from "@/lib/db";
+import { ALL_FRANCHISES } from "@/lib/franchises-data";
 
 export const metadata: Metadata = {
   title: "Каталог франшиз | UFA",
@@ -46,9 +47,9 @@ export default async function FranchiseDirectoryPage({ searchParams }: PageProps
     orderBy = [{ isFeatured: "desc" }, { sortOrder: "asc" }, { name: "asc" }];
   }
 
-  let franchises: { id: number; name: string; slug: string; logo: string | null; category: string; isFeatured: boolean }[] = [];
+  let franchises: { id: number | string; name: string; slug: string; logo: string | null; category: string; isFeatured: boolean }[] = [];
   let totalCount = 0;
-  let featuredFranchises: { id: number; name: string; slug: string; logo: string | null }[] = [];
+  let featuredFranchises: { id: number | string; name: string; slug: string; logo: string | null }[] = [];
 
   try {
     [franchises, totalCount, featuredFranchises] = await Promise.all([
@@ -68,7 +69,39 @@ export default async function FranchiseDirectoryPage({ searchParams }: PageProps
       }),
     ]);
   } catch {
-    // DB unavailable — show empty state
+    /* DB unavailable — fall back to static catalog below */
+  }
+
+  // Fallback to static 40-franchise catalog when DB is empty/unavailable
+  if (totalCount === 0 && franchises.length === 0) {
+    const filtered = ALL_FRANCHISES.filter((f) => {
+      if (query && !f.name.toLowerCase().includes(query)) return false;
+      if (category && f.category !== category) return false;
+      return true;
+    });
+
+    const sorted = [...filtered].sort((a, b) => {
+      if (sortBy === "alpha") return a.name.localeCompare(b.name);
+      if (sortBy === "new") return 0;
+      if (a.isFeatured !== b.isFeatured) return a.isFeatured ? -1 : 1;
+      return a.name.localeCompare(b.name);
+    });
+
+    totalCount = sorted.length;
+    franchises = sorted
+      .slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
+      .map((f) => ({
+        id: f.id,
+        name: f.name,
+        slug: f.slug,
+        logo: f.logo,
+        category: f.category,
+        isFeatured: f.isFeatured,
+      }));
+    featuredFranchises = ALL_FRANCHISES
+      .filter((f) => f.isFeatured)
+      .slice(0, 10)
+      .map((f) => ({ id: f.id, name: f.name, slug: f.slug, logo: f.logo }));
   }
 
   const totalPages = Math.max(1, Math.ceil(totalCount / ITEMS_PER_PAGE));
